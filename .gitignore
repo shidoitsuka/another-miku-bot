@@ -1,3 +1,4 @@
 node_modules
 index.js.old2
 config.json
+package-lock.json
