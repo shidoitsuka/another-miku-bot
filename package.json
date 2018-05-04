@@ -12,6 +12,7 @@
     "cat-names": "^1.0.2",
     "discord.js": "^11.3.2",
     "dog-names": "^1.0.2",
-    "math.js": "^1.1.43"
+    "math.js": "^1.1.43",
+    "mathjs": "^4.2.1"
   }
 }
