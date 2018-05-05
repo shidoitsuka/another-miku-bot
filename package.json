@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "cat-names": "^1.0.2",
+    "chalk": "^2.4.1",
     "discord.js": "^11.3.2",
     "dog-names": "^1.0.2",
     "math.js": "^1.1.43",
