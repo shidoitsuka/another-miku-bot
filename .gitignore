@@ -3,3 +3,5 @@ index.js.old2
 config.json
 package-lock.json
 /commands/test.js
+#my ideas
+*.idea
