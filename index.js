@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./config.json');
 const math = require('mathjs');
+const chalk = require('chalk');
 require('./util/eventLoader.js')(bot);
 
 var reload = (message, cmd) => {
