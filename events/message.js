@@ -11,7 +11,7 @@ const answers = [
 var theAnswer = answers[Math.floor(Math.random() * answers.length)];
 const hello = [
     "H-hello",
-    "H-h-hi",
+    "H-hi",
     "M-my prefix is \`m\`",
     "Miku desu!",
     "I'm Here!",
@@ -20,6 +20,8 @@ const hello = [
 var theHi = hello[Math.floor(Math.random() * hello.length)];
 module.exports = message => {
     if (message.content == `<@${config.botID}>`) {
+      // TODO: FIX THIS
+        delete require.cache[require.resolve('./message.js')];
         message.channel.send(`${theHi} ${theAnswer}`);
     }
     if (!message.content.startsWith(config.prefix)) return;
