@@ -13,7 +13,8 @@
     "chalk": "^2.4.1",
     "discord.js": "^11.3.2",
     "dog-names": "^1.0.2",
-    "math.js": "^1.1.43",
+    "enmap": "^2.2.1",
+    "enmap-level": "^2.1.0",
     "mathjs": "^4.2.1"
   }
 }
