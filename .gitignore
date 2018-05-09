@@ -1,7 +1,13 @@
+#modules
 node_modules
+
+#my ideas
 index.js.old2
+*.idea
+/commands/test.js
+/commands/sleeping.js
+
+#sensitive
 config.json
 package-lock.json
-/commands/test.js
-#my ideas
-*.idea
+/commands/*.json
