@@ -1,33 +1,78 @@
 const Discord = require('discord.js');
-var answers = [
-    "https://image.ibb.co/bJHKdn/Capture.png",
-    "\`ur mom\`\n\`-Aere\`"
+const quotes = require("./quotes.json");
+const pics = [
+  // DitF
+  "https://worldwithouthorizons.com/wp-content/uploads/11-2.jpg",
+  "https://i.ytimg.com/vi/dBMKAJIKgFc/maxresdefault.jpg",
+  "https://formeinfullbloom.files.wordpress.com/2018/02/hiroandoni2.png",
 ];
-var theAnswer = answers[Math.floor(Math.random() * answers.length)];
+const randomPic = pics[Math.floor(Math.random() * pics.length)];
+const theAnswer = quotes.random[Math.floor(Math.random() * quotes.random.length)];
 exports.run = function(bot, message, args) {
-    if (theAnswer == "https://image.ibb.co/bJHKdn/Capture.png") {
-        const embed = new Discord.RichEmbed()
-            .setAuthor("Miku -- Quotes", "https://cdn.discordapp.com/avatars/381018297019269121/6eecdd6f48c7e75239f77a58584f93dd.png")
-            .setColor(0x1a9ca8)
-            .setImage("https://image.ibb.co/bJHKdn/Capture.png")
-            .setFooter("© 12042#5754", "https://cdn.discordapp.com/avatars/381018297019269121/6eecdd6f48c7e75239f77a58584f93dd.png");
-        message.channel.send({embed});
+
+  // AERE "https://image.ibb.co/h9OkpS/image.png", *//* "https://i.gyazo.com/thumb/1200/a90c0ad9a932317e08aa9dd34f884faf-png.jpg",
+  // if (theAnswer == "https://image.ibb.co/h9OkpS/image.png" || theAnswer == "https://i.gyazo.com/thumb/1200/a90c0ad9a932317e08aa9dd34f884faf-png.jpg") {
+  //   const embed = new Discord.RichEmbed()
+  //     .setAuthor("Miku -- Quotes")
+  //     .setColor(0x795548)
+  //     .setImage("https://image.ibb.co/bJHKdn/Capture.png")
+  //     .setFooter("© 12042#5754 | Amnesiac#9834", "https://tinyurl.com/MikuLogo");
+  //   message.channel.send({
+  //     embed
+  //   }).then(delete require.cache[require.resolve('./quotes.js')]);
+  // }
+
+  // TRUE LOVE
+  if (theAnswer == "truelove") {
+    const embed = new Discord.RichEmbed()
+      .setAuthor("Miku -- Quotes")
+      .setColor(0xffebee)
+      .setDescription("This is what we call.... \`#TRUELOVE!\` ( 0w0)-b")
+      .setImage(`${randomPic}`)
+      .setFooter("© 12042#5754 | Lenali/Aidelena#4769", "https://tinyurl.com/MikuLogo");
+    message.channel.send({
+      embed
+    }).then(delete require.cache[require.resolve('./quotes.js')]);
+  }
+
+  // NORMAL WITHOUT PARAM
+  else {
+    const quotesMotiv = quotes.motivate[Math.floor(Math.random() * quotes.motivate.length)];
+    if (args[0] == "-m") {
+      const embed = new Discord.RichEmbed()
+        .setAuthor("Miku -- Quotes")
+        .setColor(0x795548)
+        .setDescription(quotesMotiv)
+        .setFooter("© 12042#5754 | Lenali/Aidelena#4769", "https://tinyurl.com/MikuLogo");
+      message.channel.send({
+        embed
+      }).then(delete require.cache[require.resolve('./quotes.js')]);
     } else {
-        message.channel.send(theAnswer);
+      const embed = new Discord.RichEmbed()
+        .setAuthor("Miku -- Quotes")
+        .setColor(0x795548)
+        .setDescription(theAnswer)
+        .setFooter("© 12042#5754 | Lenali/Aidelena#4769", "https://tinyurl.com/MikuLogo");
+      message.channel.send({
+        embed
+      }).then(delete require.cache[require.resolve('./quotes.js')]);
     }
-    delete require.cache[require.resolve('./quotes.js')];
+  }
+  //
+  // // NORMAL QUOTES
+  // if (args[0] == "-m") {
+  //   const quotesMotiv = quotes.motivate[Math.floor(Math.random() * quotes.motivate.length)];
+  //   message.channel.send(quotesMotiv).then(delete require.cache[require.resolve('./quotes.js')]);
+  // }
 };
 
 exports.conf = {
-    aliases: [
-        "quote",
-        "qotd"
-    ]
+  aliases: ["quote", "qotd"]
 };
 
 exports.help = {
-    name: "quotes",
-    category: "fun",
-    description: "Print out great quotes!",
-    usage: "quotes"
+  name: "quotes",
+  category: "Misc.",
+  description: "Print out great quotes!",
+  usage: "quotes \`<parameters>\`\n**Parameters**  : -m"
 };
