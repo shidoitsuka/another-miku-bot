@@ -1,5 +1,7 @@
 # Miku Bot
-[![N|Solid](https://img.shields.io/npm/v/discord.js.svg?maxAge=3600)](https://nodejs.org/en//)[![N|Solid](https://img.shields.io/npm/dt/discord.js.svg?maxAge=3600)](https://discord.js.org)
+[![N|Solid](https://img.shields.io/npm/v/discord.js.svg?maxAge=3600)](https://nodejs.org/en//)
+[![N|Solid](https://img.shields.io/npm/dt/discord.js.svg?maxAge=3600)](https://discord.js.org)
+[![N|Solid](https://nodei.co/npm/discord.js.png?downloads=true&stars=true)](https://www.npmjs.org/package/discord.js)
 
 ### About
 > This is the remake of my first [miku-bot](https://github.com/shidoitsuka/miku-bot).
