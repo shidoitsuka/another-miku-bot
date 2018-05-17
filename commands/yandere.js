@@ -11,8 +11,8 @@ const sayings = [
   "Let me cut your hands so i can hold it forever",
   "IF I CANNOT HAVE YOU, THEN NO ONE CAN!"
 ];
-const answer = sayings[Math.floor(Math.random() * sayings.length)];
 exports.run = function(bot, message, args) {
+  const answer = sayings.random();
   message.channel.send(answer);
   delete require.cache[require.resolve('./yandere.js')];
 };
@@ -25,5 +25,7 @@ exports.help = {
   name: "yandere",
   category: "Fun",
   description: "This is how yandere person prove their love!",
-  usage: "yandere"
+  usage: "yandere",
+  param: "",
+  aliases: ""
 };

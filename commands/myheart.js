@@ -1,6 +1,5 @@
-// TODO: https://media.discordapp.net/attachments/434692075217485834/441921290786570251/image_1.jpg
+const Discord = require('discord.js');
 exports.run = function(bot, message, args) {
-  const Discord = require('discord.js');
   const embed = new Discord.RichEmbed()
     .setAuthor("Miku")
     .setColor(0x1a9ca8)
@@ -13,12 +12,13 @@ exports.run = function(bot, message, args) {
 };
 
 exports.conf = {
-  aliases: []
+  aliases: ["mahart", "mhahart", "mhaheart"]
 };
 
 exports.help = {
   name: "myheart",
   category: "Fun",
   description: "Your heart, Your soul.\n-Angel Beats",
-  usage: "myheart"
+  usage: "myheart",
+  aliases: "mahart, mhahart, mhaheart"
 };

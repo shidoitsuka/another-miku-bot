@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const config = require('../config.json');
 const kissLink = require('./kiss.json'); // Kiss Link
-const answers = kissLink[Math.floor(Math.random() * kissLink.length)]; // Random the Kiss Link
 exports.run = function(bot, message, args) {
   // Words to be answered
   const words = [
@@ -9,18 +8,9 @@ exports.run = function(bot, message, args) {
     `Look at ${message.author.username} and **${args[0]}**! O////O`,
     `How cute, ${message.author.username} is kissing **${args[0]}**!`
   ];
-  // Random the words
-  const wordAnswer = words[Math.floor(Math.random() * words.length)];
-
-  /**
-   * To separate command and arguments
-   * <config>example help
-   * output=
-   * command : example
-   * argument : help
-   **/
-  var args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-  var command = args.shift().toLowerCase();
+  // Random the words & Kiss Link
+  const wordAnswer = words.random();
+  const answers = kissLink.random();
 
   // BEGIN if no argument a.k.a no user is mentioned or said
   if (!args[0]) {
@@ -82,12 +72,14 @@ exports.run = function(bot, message, args) {
 }; // END exports
 
 exports.conf = {
-  aliases: []
+  aliases: ["kissu"]
 };
 
 exports.help = {
   name: "kiss",
   category: "Fun",
-  description: "Kiss someone!`",
-  usage: "kiss \`<mention user>\` or \`<name>\`"
+  description: "Kiss someone!",
+  usage: "kiss \`<mention user>\` or \`<name>\`",
+  param: "\`<mention user>\` or \`<name>\` are optional.",
+  aliases: "kissu"
 };

@@ -1,13 +1,13 @@
-const math = require('mathjs');
 const Discord = require('discord.js');
-var answers = [
+const math = require('mathjs');
+const answers = [
   "Should be ",
   "I guess it's ",
   "It should be ",
   "Hmmm... Probably "
 ];
-var theAnswer = answers[Math.floor(Math.random() * answers.length)];
 exports.run = function(bot, message, args) {
+  const theAnswer = answers.random();
   var txt = message.content.slice(6);
   try {
     if (txt == "2+2" || txt == "2+ 2" || txt == "2 +2" || txt == "2 + 2") {
@@ -47,12 +47,14 @@ exports.run = function(bot, message, args) {
 };
 
 exports.conf = {
-  aliases: ["mafs"]
+  aliases: ["mafs", "maffs", "maff"]
 };
 
 exports.help = {
   name: "math",
   category: "Misc.",
   description: "Let me do complex math for you!",
-  usage: "math \`<expression>\`"
+  usage: "math \`<expression>\`",
+  param: "",
+  aliases: "mafs, maffs, maff"
 };

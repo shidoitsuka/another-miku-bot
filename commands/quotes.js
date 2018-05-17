@@ -1,15 +1,14 @@
 const Discord = require('discord.js');
-const quotes = require("./quotes.json");
+const quotes = require("./quotes.json"); // the quotes
 const pics = [
   // DitF
   "https://worldwithouthorizons.com/wp-content/uploads/11-2.jpg",
   "https://i.ytimg.com/vi/dBMKAJIKgFc/maxresdefault.jpg",
   "https://formeinfullbloom.files.wordpress.com/2018/02/hiroandoni2.png",
 ];
-const randomPic = pics[Math.floor(Math.random() * pics.length)];
-const theAnswer = quotes.random[Math.floor(Math.random() * quotes.random.length)];
 exports.run = function(bot, message, args) {
-
+  const randomPic = pics.random();
+  const theAnswer = quotes.random[Math.floor(Math.random() * quotes.random.length)];
   // AERE "https://image.ibb.co/h9OkpS/image.png", *//* "https://i.gyazo.com/thumb/1200/a90c0ad9a932317e08aa9dd34f884faf-png.jpg",
   // if (theAnswer == "https://image.ibb.co/h9OkpS/image.png" || theAnswer == "https://i.gyazo.com/thumb/1200/a90c0ad9a932317e08aa9dd34f884faf-png.jpg") {
   //   const embed = new Discord.RichEmbed()
@@ -74,5 +73,7 @@ exports.help = {
   name: "quotes",
   category: "Misc.",
   description: "Print out great quotes!",
-  usage: "quotes \`<parameters>\`\n**Parameters**  : -m"
+  usage: "quotes \`<parameters>\`",
+  param: "\-m  :  motivation",
+  aliases: "quote, qotd"
 };

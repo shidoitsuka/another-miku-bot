@@ -10,12 +10,14 @@ exports.run = function(bot, message, args) {
 };
 
 exports.conf = {
-  aliases: []
+  aliases: ["r"]
 };
 
 exports.help = {
   name: "reload",
   category: "\`Owner Only\`",
   description: "Reload specific commands",
-  usage: "reload \`<command>\`"
+  usage: "reload \`<command>\`",
+  param: "",
+  aliases: "r"
 };

@@ -1,8 +1,8 @@
-const package = require('../package.json');
 const Discord = require('discord.js');
+const package = require('../package.json');
 exports.run = function(bot, message, args) {
   const embed = new Discord.RichEmbed()
-    .setAuthor(`Miku -- About me`)
+    .setAuthor(`Miku -- About me`, "", "https://github.com/shidoitsuka/another-miku-bot")
     .setThumbnail("https://tinyurl.com/MikuLogo")
     .setColor(0x1a9ca8)
     .setDescription("Hello, I\'m Miku!\nA \`just4fun\` discord bot written over discord.js framework with :heart: by 12042#5754.")
@@ -13,7 +13,7 @@ exports.run = function(bot, message, args) {
     .addField("dog-names version:", `${package.dependencies["dog-names"].slice(1)}`, true)
     .addField("cat-names version:", `${package.dependencies["cat-names"].slice(1)}`, true)
     .addField("math.js version:", `${package.dependencies["mathjs"].slice(1)}`, true)
-    .setFooter(`© 12042#5754 | v${package.version}`);
+    .setFooter(`Click title for the source-code | v${package.version}-beta`);
   message.channel.send({
     embed
   });
@@ -27,5 +27,7 @@ exports.help = {
   name: "about",
   category: "System.",
   description: "Print out my information such as modules, version, etc.",
-  usage: "about"
+  usage: "about",
+  param: "",
+  aliases: "info"
 };

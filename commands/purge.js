@@ -1,4 +1,4 @@
-exports.run = function(bot, message, args) {
+exports.run = async function(bot, message, args) {
   const user = message.mentions.users.first();
   const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2]);
   if (!amount) return message.reply('Must specify an amount to delete!');
@@ -16,12 +16,14 @@ exports.run = function(bot, message, args) {
 };
 
 exports.conf = {
-  aliases: []
+  aliases: ["prune"]
 };
 
 exports.help = {
   name: "purge",
   category: "Administrator",
   description: "Delete messages",
-  usage: "purge \`<amount of messages>\`"
+  usage: "purge \`<amount of messages>\`",
+  param: "",
+  aliases: "prune"
 };

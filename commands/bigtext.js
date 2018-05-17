@@ -29,12 +29,14 @@ exports.run = function(bot, message, args) {
 };
 
 exports.conf = {
-  aliases: []
+  aliases: ["btext"]
 };
 
 exports.help = {
   name: "bigtext",
   category: "Fun",
-  description: "Senapi doesn\'t notice you? Use \`Bigtext!\`",
-  usage: "bigtext \`<text>\`?"
+  description: "Senapi doesn\'t notice you? Use \`Bigtext!\`!",
+  usage: "bigtext \`<text>\`?",
+  param: "",
+  aliases: "btext"
 };

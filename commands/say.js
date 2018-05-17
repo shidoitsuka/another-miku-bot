@@ -1,8 +1,13 @@
-const config = require('../config.json');
 exports.run = function(bot, message, args) {
-  var args = message.content.split(' ');
-  var msg = args.shift().slice(config.prefix.length);
-  message.channel.send(args.join(" "));
+  if (!args[0]) return message.channel.send(":no_mouth:");
+  else {
+    if (args[0] == "-d") {
+      message.delete().then(args.shift());
+      message.channel.send(args.join(" "));
+    } else {
+      message.channel.send(args.join(" "))
+    }
+  }
 };
 
 exports.conf = {
@@ -10,8 +15,10 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "sad",
+  name: "say",
   category: "Fun",
   description: "Too shy to say it? I\'ll do it for you!",
-  usage: "say <text>"
+  usage: "say <text>",
+  param: "-d  :  delete",
+  aliases: ""
 };

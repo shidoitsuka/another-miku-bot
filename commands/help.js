@@ -2,19 +2,10 @@ const Discord = require('discord.js');
 const config = require('../config.json');
 const bot = new Discord.Client();
 exports.run = function(bot, message, args) {
-  /**
-   * To separate command and arguments
-   * <config>example help
-   * output=
-   * command : example
-   * argument : help
-   **/
-  var args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-  var command = args.shift().toLowerCase();
   try { // BEGIN TRY
     // BEGIN if no arguments a.k.a show all commands
     if (!args[0]) {
-      message.channel.send("Command list is not yet available.");
+      message.channel.send("This command is under maintenance.");
     } // END if no arguments a.k.a show all commands
     else { // BEGIND individual commands
       let cmdName = require(`./${args[0]}.js`).help;
@@ -50,5 +41,7 @@ exports.help = {
   name: "help",
   category: "System",
   description: "Displays all available commands.",
-  usage: "help \`<command>\`"
+  usage: "help \`<command>\`",
+  param: "\`<command>\` is optional.",
+  aliases: "h, halp"
 };

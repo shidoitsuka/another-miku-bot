@@ -10,5 +10,7 @@ exports.help = {
   name: "lenny",
   category: "Fun",
   description: "\`( ͡° ͜ʖ ͡°) u-ugh!\`",
-  usage: "lenny"
+  usage: "lenny",
+  param: "",
+  aliases: ""
 };

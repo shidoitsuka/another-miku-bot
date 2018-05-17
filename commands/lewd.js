@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const lewdLink = require('./lewd.json');
-const answers = lewdLink[Math.floor(Math.random() * lewdLink.length)];
 exports.run = function(bot, message, args) {
+  // random link
+  const answers = lewdLink.random();
   const embed = new Discord.RichEmbed()
     .setAuthor("Miku -- Lewd", "", answers)
     .setColor(0x1a9ca8)
@@ -22,5 +23,7 @@ exports.help = {
   name: "lewd",
   category: "Fun",
   description: ">////< y so lewd!?`",
-  usage: "lewd"
+  usage: "lewd",
+  param: "",
+  aliases: ""
 };
