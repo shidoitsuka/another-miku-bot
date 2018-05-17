@@ -1,6 +1,6 @@
 {
   "name": "miku",
-  "version": "0.1.2",
+  "version": "1.1.0",
   "description": "Miku Tutorial Bot",
   "main": "index.js",
   "scripts": {
@@ -16,5 +16,14 @@
     "enmap": "^2.2.1",
     "enmap-level": "^2.1.0",
     "mathjs": "^4.2.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shidoitsuka/another-miku-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shidoitsuka/another-miku-bot/issues"
+  },
+  "homepage": "https://github.com/shidoitsuka/another-miku-bot#readme"
 }
