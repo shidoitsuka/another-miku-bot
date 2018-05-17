@@ -2,7 +2,7 @@
 node_modules
 
 #my ideas
-index.js.old2
+*.old
 *.idea
 /commands/test.js
 /commands/sleeping.js
@@ -11,3 +11,5 @@ index.js.old2
 config.json
 package-lock.json
 /commands/*.json
+*.rar
+/data/
