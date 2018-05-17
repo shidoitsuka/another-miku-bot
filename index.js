@@ -1,19 +1,16 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const config = require('./config.json');
+const fs = require('fs');
 const math = require('mathjs');
 const chalk = require('chalk');
-const Enmap = require("enmap");
-const EnmapLevel = require("enmap-level");
 const {
   promisify
 } = require("util");
-const readdir = promisify(require("fs").readdir);
+const readdir = promisify(fs.readdir);
+const Enmap = require("enmap");
+const EnmapLevel = require("enmap-level");
 require('./util/eventLoader.js')(bot);
-
-// COMMANDS & ALIASES
-bot.commands = new Enmap();
-bot.aliases = new Enmap();
+require("./modules/function.js")(bot);
 
 // RELOAD
 var reload = (message, cmd) => {
@@ -33,34 +30,33 @@ var reload = (message, cmd) => {
   };
 }
 
-// bot.elevation = function(msg) {
-//   let permlvl = 0;
-//   let mod_role = msg.guild.roles.find('name', 'Moderator');
-//   if (mod_role && msg.member.roles.has(mode_role.id)) permlvl = 2;
-//   let admin_role = msg.guild.roles.find('name', 'Admin');
-//   if (msg.author.id === config.ownerID) permlvl = 4;
-//   return permlvl;
-// };
-
-var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
+bot.config = require('./config.json');
+bot.commands = new Enmap();
+bot.aliases = new Enmap();
+bot.settings = new Enmap({
+  provider: new EnmapLevel({
+    name: "settings"
+  })
+});
 
 bot.on('warn', e => {
-  console.log(chalk.bgYellow(e.replace(regToken, 'that was redacted')));
+  console.log(chalk.bgYellow(e));
 });
 
 bot.on('error', e => {
-  console.log(chalk.bgRed(e.replace(regToken, 'that was redacted')));
+  console.log(chalk.bgRed(e));
 });
 
 // INITIALIZATION
 const init = async () => {
   const cmdFiles = await readdir("./commands/");
-  console.log(`Loading a total of ${cmdFiles.length} commands.`);
   cmdFiles.forEach(f => {
     if (!f.endsWith(".js")) return;
+    const response = bot.loadCommand(f);
+    if (response) console.log(response);
   });
 };
 
 exports.reload = reload;
+bot.login(bot.config.token);
 init();
-bot.login(config.token);
