@@ -9,13 +9,17 @@
   "author": "brian",
   "license": "MIT",
   "dependencies": {
+    "canvas": "^1.6.11",
+    "canvas-constructor": "^1.0.1",
     "cat-names": "^1.0.2",
     "chalk": "^2.4.1",
     "discord.js": "^11.3.2",
     "dog-names": "^1.0.2",
     "enmap": "^2.2.1",
     "enmap-level": "^2.1.0",
-    "mathjs": "^4.2.1"
+    "mathjs": "^4.2.1",
+    "nekos.life": "^1.0.5",
+    "npm": "^6.0.1"
   },
   "devDependencies": {},
   "repository": {
