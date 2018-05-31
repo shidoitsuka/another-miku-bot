@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const config = require('../config.json');
 const chalk = require('chalk');
 const fs = require('fs');
@@ -13,11 +14,6 @@ const badWords = ["fuck", "shit", "bitch"];
 const sucks = ["usak", "usuk", "u sak", "u suk", "usuck"];
 const moms = ["u mom", "ur mom", "your mom", "umom", "urmom", "yourmom"];
 
-// SLEEP FUNCTION
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 // START
 module.exports = async function(message) {
   // IF INCLUDES OWNER ID
@@ -28,13 +24,25 @@ module.exports = async function(message) {
       .setAuthor("Miku")
       .setColor(0x1a9ca8)
       .setImage("https://tinyurl.com/DiscordPinged")
-      .setDescription(`Don\'t ping **Brian**, please! UwU`)
-      .setFooter("© 12042#5754");
+      .setDescription(`Don\'t ping **Brian**, please! UwU`);
     message.channel.send({
       embed
-    }).then(response => response.delete(2500));
+    }).then(response => response.delete(3500));
     // message.channel.send(`\`${message.author.username}\`, Brian is sleeping right now.\nTry again later.`).then(response => response.delete(10000));
   }
+  if (message.content.includes(config.babeID)) {
+    if (message.author.bot) return;
+    if (message.content.includes("say")) return;
+    const embed = new Discord.RichEmbed()
+      .setAuthor("Miku")
+      .setColor(0x1a9ca8)
+      .setDescription(`ping me i knock your dick off 1v1 me slut`)
+      .setFooter("-Aere");
+    message.channel.send({
+      embed
+    }).then(response => response.delete(3500));
+  }
+
   // UR MOM DETECTOR
   if (moms.some(word =>
       message.content.toLowerCase().includes(word))) {
@@ -94,7 +102,7 @@ module.exports = async function(message) {
     try {
       cmd.run(bot, message, args);
     } catch (e) {
-      console.log(chalk.red(`Error: ${err.stack}`));
+      console.log(chalk.red(`Error: ${e.stack}`));
       message.react("❌");
     }
   }
