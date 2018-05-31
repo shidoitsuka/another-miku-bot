@@ -1,11 +1,12 @@
 const Discord = require('discord.js');
 const package = require('../package.json');
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   const embed = new Discord.RichEmbed()
     .setAuthor(`Miku -- About me`, "", "https://github.com/shidoitsuka/another-miku-bot")
     .setThumbnail("https://tinyurl.com/MikuLogo")
     .setColor(0x1a9ca8)
-    .setDescription("Hello, I\'m Miku!\nA \`just4fun\` discord bot written over discord.js framework with :heart: by 12042#5754.")
+    .setDescription("Hello, I\'m Miku!\nA \`just4fun\` discord bot written over discord.js framework with ❤ by 12042#5754.")
     .addField("NodeJS version:", `${process.version.slice(1).split(".").join(".")}`, true)
     .addField("discord.js version:", `${package.dependencies["discord.js"].slice(1)}`, true)
     .addField("Chalk version:", `${package.dependencies["chalk"].slice(1)}`, true)
