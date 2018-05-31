@@ -6,7 +6,8 @@ const answers = [
   "It should be ",
   "Hmmm... Probably "
 ];
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   const theAnswer = answers.random();
   var txt = message.content.slice(6);
   try {
@@ -15,8 +16,7 @@ exports.run = function(bot, message, args) {
         .setAuthor("Miku", "https://tinyurl.com/MikuCalc")
         .setColor(0x1a9ca8)
         .setDescription("Let him answer you:")
-        .setImage("https://goo.gl/tVGvMX")
-        .setFooter("© 12042#5754");
+        .setImage("https://goo.gl/tVGvMX");
       message.channel.send({
         embed
       });
@@ -25,23 +25,20 @@ exports.run = function(bot, message, args) {
       const embed = new Discord.RichEmbed()
         .setAuthor("Miku -- Math", "https://tinyurl.com/MikuCalc")
         .setColor(0x1a9ca8)
-        .setDescription(`${theAnswer}\`${ans}\``)
-        .setFooter("© 12042#5754");
+        .setDescription(`${theAnswer}\`${ans}\``);
       message.channel.send({
         embed
       });
       delete require.cache[require.resolve('./math.js')];
     }
   } catch (err) {
+    const embed = new Discord.RichEmbed()
+      .setAuthor("Miku -- Error")
+      .setThumbnail("https://tinyurl.com/MikuError")
+      .setColor(0xf44336)
+      .setDescription(`Something went wrong!\n**Error**  : \n${err.name} ${err.message}`);
     message.channel.send({
-      embed: {
-        color: 0xc62828,
-        title: "Error x.x",
-        description: `${err.name}\n${err.message}`,
-        footer: {
-          text: "© 12042#5754"
-        }
-      }
+      embed
     });
   }
 };

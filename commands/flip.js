@@ -1,4 +1,5 @@
 const coins = ["Heads", "Tails", "Try again!"];
+
 exports.run = function(bot, message, args) {
   const flipped = coins.random();
   message.channel.send(flipped);

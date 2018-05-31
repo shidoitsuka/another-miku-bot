@@ -1,11 +1,9 @@
 const config = require('../config.json');
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   // if args[0] length is not 1, return
-  if (args[0].length != 1) {
-    message.channel.send("Error.")
-  } else {
-    message.channel.send(`https://emojipedia.org/regional-indicator-symbol-letter-${args[0]}`);
-  }
+  if (args[0].length != 1) return message.channel.send("Error.");
+  else message.channel.send(`https://emojipedia.org/regional-indicator-symbol-letter-${args[0]}`);
 };
 
 exports.conf = {

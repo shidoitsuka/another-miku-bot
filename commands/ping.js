@@ -1,6 +1,6 @@
-exports.run = function(bot, message, args) {
+exports.run = (bot, message, args) => {
   message.channel.send("Pong!").then(m => {
-    m.edit(`:ping_pong: took \`${m.createdTimestamp - message.createdTimestamp}ms\` for me to edit the message.`)
+    m.edit(`:ping_pong: \`${m.createdTimestamp - message.createdTimestamp}ms\``)
   });
 }
 

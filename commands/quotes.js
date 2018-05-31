@@ -6,7 +6,8 @@ const pics = [
   "https://i.ytimg.com/vi/dBMKAJIKgFc/maxresdefault.jpg",
   "https://formeinfullbloom.files.wordpress.com/2018/02/hiroandoni2.png",
 ];
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   const randomPic = pics.random();
   const theAnswer = quotes.random[Math.floor(Math.random() * quotes.random.length)];
   // AERE "https://image.ibb.co/h9OkpS/image.png", *//* "https://i.gyazo.com/thumb/1200/a90c0ad9a932317e08aa9dd34f884faf-png.jpg",
@@ -28,7 +29,7 @@ exports.run = function(bot, message, args) {
       .setColor(0xffebee)
       .setDescription("This is what we call.... \`#TRUELOVE!\` ( 0w0)-b")
       .setImage(`${randomPic}`)
-      .setFooter("© 12042#5754 | Lenali/Aidelena#4769", "https://tinyurl.com/MikuLogo");
+      .setFooter("© 12042#5754 & Lenali/Aidelena#4769");
     message.channel.send({
       embed
     }).then(delete require.cache[require.resolve('./quotes.js')]);
@@ -42,7 +43,7 @@ exports.run = function(bot, message, args) {
         .setAuthor("Miku -- Quotes")
         .setColor(0x795548)
         .setDescription(quotesMotiv)
-        .setFooter("© 12042#5754 | Lenali/Aidelena#4769", "https://tinyurl.com/MikuLogo");
+        .setFooter("© 12042#5754 & Lenali/Aidelena#4769");
       message.channel.send({
         embed
       }).then(delete require.cache[require.resolve('./quotes.js')]);
@@ -51,7 +52,7 @@ exports.run = function(bot, message, args) {
         .setAuthor("Miku -- Quotes")
         .setColor(0x795548)
         .setDescription(theAnswer)
-        .setFooter("© 12042#5754 | Lenali/Aidelena#4769", "https://tinyurl.com/MikuLogo");
+        .setFooter("© 12042#5754 & Lenali/Aidelena#4769");
       message.channel.send({
         embed
       }).then(delete require.cache[require.resolve('./quotes.js')]);

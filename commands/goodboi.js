@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   const embed = new Discord.RichEmbed()
     .setAuthor("Miku -- Good Boi!", "", "https://cdn.discordapp.com/attachments/424300803541696522/443085511729348608/226114699_9c9cc0b2.png")
     .setColor(0x1a9ca8)
     .setDescription(`You\'re such a good boi, ${message.author.username}!`)
-    .setImage("https://cdn.discordapp.com/attachments/424300803541696522/443085511729348608/226114699_9c9cc0b2.png")
-    .setFooter("© 12042#5754", "https://tinyurl.com/MikuLogo");
+    .setImage("https://cdn.discordapp.com/attachments/424300803541696522/443085511729348608/226114699_9c9cc0b2.png");
   message.channel.send({
     embed
   });

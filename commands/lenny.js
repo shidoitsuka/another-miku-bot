@@ -1,4 +1,4 @@
-exports.run = function(bot, message, args) {
+exports.run = (bot, message, args) => {
   message.channel.send("( ͡° ͜ʖ ͡°)");
 };
 

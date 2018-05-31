@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const lewdLink = require('./lewd.json');
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   // random link
   const answers = lewdLink.random();
   const embed = new Discord.RichEmbed()
@@ -8,7 +9,7 @@ exports.run = function(bot, message, args) {
     .setColor(0x1a9ca8)
     .setDescription(`Look at ${message.author.username}!\nThey\'re thinking about lewd things! >////<`)
     .setImage(`${answers}`)
-    .setFooter("© 12042#5754 | Google Images", "https://tinyurl.com/MikuLogo");
+    .setFooter("Google Images");
   message.channel.send({
     embed
   });

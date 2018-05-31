@@ -1,13 +1,14 @@
 const Discord = require('discord.js');
 const number = Math.floor((Math.random() * 40) + 1);
 const images = `https://ohlookitsderpy.space/images/miku/image(${number}).jpg`;
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   const embed = new Discord.RichEmbed()
     .setAuthor("Miku - Images")
     .setColor(0x1a9ca8)
     .setImage(images)
     .setDescription("No picture? Please try again.")
-    .setFooter("© 12042#5754 | Images from ohlookitsderpy.space", "https://tinyurl.com/MikuLogo");
+    .setFooter("Images from ohlookitsderpy.space");
   message.channel.send("Under maintenance.");
   delete require.cache[require.resolve('./miku.js')];
 };

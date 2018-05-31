@@ -11,10 +11,11 @@ const sayings = [
   "Let me cut your hands so i can hold it forever",
   "IF I CANNOT HAVE YOU, THEN NO ONE CAN!"
 ];
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   const answer = sayings.random();
-  message.channel.send(answer);
-  delete require.cache[require.resolve('./yandere.js')];
+  message.channel.send(answer)
+    .then(delete require.cache[require.resolve('./yandere.js')]);
 };
 
 exports.conf = {

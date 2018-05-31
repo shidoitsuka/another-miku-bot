@@ -4,7 +4,8 @@ const rates = [
   "6/10 :upside_down:", "7/10 :relieved:", "8/10 :blush:", "9/10 :heart_eyes:", "10/10 :clap:"
 ];
 const config = require('../config.json');
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   var msg = message.content.slice();
   if (!args[0]) {
     message.channel.send("I can't rate *nobody* :confused:");

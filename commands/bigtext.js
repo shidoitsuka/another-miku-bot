@@ -1,4 +1,4 @@
-exports.run = function(bot, message, args) {
+exports.run = (bot, message, args) => {
   message.delete();
   const msg = message.content.slice(9);
   const mRegex = msg.replace(/\s/g, '');
@@ -35,8 +35,8 @@ exports.conf = {
 exports.help = {
   name: "bigtext",
   category: "Fun",
-  description: "Senapi doesn\'t notice you? Use \`Bigtext!\`!",
-  usage: "bigtext \`<text>\`?",
+  description: "Senpai doesn\'t notice you? Use \`Bigtext\`!",
+  usage: "bigtext \`<text>\`",
   param: "",
   aliases: "btext"
 };

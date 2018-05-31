@@ -1,4 +1,4 @@
-exports.run = function(bot, message, args) {
+exports.run = (bot, message, args) => {
   if (!args[0]) return message.channel.send(":no_mouth:");
   else {
     if (args[0] == "-d") {

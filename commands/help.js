@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const config = require('../config.json');
 const bot = new Discord.Client();
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   try { // BEGIN TRY
     // BEGIN if no arguments a.k.a show all commands
     if (!args[0]) {
@@ -12,9 +13,8 @@ exports.run = function(bot, message, args) {
       const embed = new Discord.RichEmbed()
         .setAuthor("Miku -- Help")
         .setColor(0x0776b7)
-        .setDescription(`**Command**  : ${cmdName.name}\n**Category**  : ${cmdName.category}\n**Description**  : ${cmdName.description}\n**Usage**  : ${cmdName.usage}`)
-        .setThumbnail("https://tinyurl.com/MikuHelp")
-        .setFooter("© 12042#5754", "https://tinyurl.com/MikuLogo");
+        .setDescription(`**Command**  : ${cmdName.name}\n**Category**  : ${cmdName.category}\n**Description**  : ${cmdName.description}\n**Usage**  : ${cmdName.usage}\n**Parameters**  : ${cmdName.param}\n**Aliases**  : ${cmdName.aliases}`)
+        .setThumbnail("https://tinyurl.com/MikuHelp");
       message.channel.send({
         embed
       });
@@ -25,8 +25,7 @@ exports.run = function(bot, message, args) {
       .setAuthor("Miku -- Error")
       .setThumbnail("https://tinyurl.com/MikuError")
       .setColor(0xf44336)
-      .setDescription(`Something went wrong!\n**Error**  : \n${err.name} ${err.message}`)
-      .setFooter("© 12042#5754");
+      .setDescription(`Something went wrong!\n**Error**  : \nTry using \`command name\` instead of aliases.`);
     message.channel.send({
       embed
     });
