@@ -17,15 +17,14 @@ exports.run = async (bot, message, args) => {
   let description, image;
 
   // STATEMENT
-  if (!args[0]) description = idkD, image = idkI;
-  else description = wordAnswer, image = answers;
+  !args[0] ? (description = idkD, image = idkI) : (description = wordAnswer, image = answers.url);
 
   // BEGIN
   const embed = new Discord.RichEmbed()
-    .setAuthor("Miku -- Kiss", "", `${image.url}`)
+    .setAuthor("Miku -- Kiss", "", `${image}`)
     .setColor(0x1a9ca8)
     .setDescription(description)
-    .setImage(`${image.url}`)
+    .setImage(`${image}`)
     .setFooter(`${!args[0] ? "" : "Image by nekos.life"}`);
   message.channel.send("**Loading Image...**")
     .then(m => m.edit({

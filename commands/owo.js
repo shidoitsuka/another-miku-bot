@@ -9,7 +9,7 @@ exports.run = async (bot, message, args) => {
     const text = await neko.getSFWOwOify({
       text: args.join(" ")
     });
-    message.channel.send(["**Thinking...**", "**Translating...**"].random())
+    message.channel.send(["**Thinking...**", "**Translating...**", "**Twanyswatinyg... OwO**", "**Thinykinyg... OwO**"].random())
       .then(m => m.edit(text.owo))
       .then(delete require.cache[require.resolve('./owo.js')]);
   }
