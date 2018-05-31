@@ -1,73 +1,39 @@
 const Discord = require('discord.js');
-const config = require('../config.json');
-const hugLink = require('./hug.json'); // Hug Link
+const nekoclient = require('nekos.life');
+const neko = new nekoclient();
 
-// START
-exports.run = function(bot, message, args) {
+// START-MAIN
+exports.run = async (bot, message, args) => {
   const words = [
     `${message.author.username} is hugging **${args[0]}** >////<`,
     `Look at ${message.author.username} and **${args[0]}**! O////O`,
     `How cute, ${message.author.username} is hugging **${args[0]}**!`
   ];
-  // Random the words & hug Link
-  const wordAnswer = words.random();
-  const answers = hugLink.random();
+  // VARIABLES
+  const wordAnswer = words.random(),
+    answers = await neko.getSFWHug(),
+    idkI = "https://tinyurl.com/MikuIDK",
+    idkD = `**${message.author.username}** trying to hug themselves,\nI wonder how...`;
+  let description, image;
 
-  if (!args[0]) {
-    const embed = new Discord.RichEmbed()
-      .setAuthor("Miku -- Hug", "", "https://tinyurl.com/MikuIDK")
-      .setColor(0x1a9ca8)
-      .setDescription(`${message.author.username} trying to hug themselves,\nI wonder how...`)
-      .setImage("https://tinyurl.com/MikuIDK")
-      .setFooter("© 12042#5754", "https://tinyurl.com/MikuLogo");
-    message.channel.send({
+  // STATEMENT
+  if (!args[0]) description = idkD, image = idkI;
+  else description = wordAnswer, image = answers;
+
+  // BEGIN
+  const embed = new Discord.RichEmbed()
+    .setAuthor("Miku -- Hug", "", `${image.url}`)
+    .setColor(0x1a9ca8)
+    .setDescription(description)
+    .setImage(`${image.url}`)
+    .setFooter(`${!args[0] ? "" : "Image by nekos.life"}`);
+  message.channel.send("**Loading Image...**")
+    .then(m => m.edit({
       embed
-    });
-  } else if (args[0] == `<@${config.botID}>`) {
-    // BEGIN if the <author> is owner
-    if (message.author.id == config.ownerID) {
-      const embed = new Discord.RichEmbed()
-        .setAuthor("Miku -- Hug", "", answers)
-        .setColor(0x1a9ca8)
-        .setDescription(`I love you!❤`)
-        .setImage("https://tinyurl.com/MikuHug")
-        .setFooter("© 12042#5754 | Google Images", "https://tinyurl.com/MikuLogo");
-      message.channel.send({
-        embed
-      });
-    } // END if the <author> is owner
-
-    // BEGIN if the <author> is NOT owner
-    else {
-      const embed = new Discord.RichEmbed()
-        .setAuthor("Miku -- Hug", "", answers)
-        .setColor(0x1a9ca8)
-        .setDescription(`Sorry but, you are not <@${config.ownerID}>! >////<`)
-        .setImage("https://tinyurl.com/MikuSorry")
-        .setFooter("© 12042#5754 | Google Images", "https://tinyurl.com/MikuLogo");
-      message.channel.send({
-        embed
-      });
-    } // END if the <author> is NOT owner
-  } // END if miku is mentioned
-
-  // BEGIN DEFAULT if someone mentioned someone or said someone's name
-  else {
-    const embed = new Discord.RichEmbed()
-      .setAuthor("Miku -- Hug", "", answers)
-      .setColor(0x1a9ca8)
-      .setDescription(`${wordAnswer}`)
-      .setImage(`${answers}`)
-      .setFooter("© 12042#5754 | Google Images", "https://tinyurl.com/MikuLogo");
-    message.channel.send({
-      embed
-    });
-  } // END DEFAULT
-
-  // deletes the cache to make it randomed again
-  delete require.cache[require.resolve('./hug.js')];
-
-};
+    }))
+    .then(delete require.cache[require.resolve('./hug.js')])
+    .catch(err => console.log(err.stack));
+}; // END-MAIN
 
 exports.conf = {
   aliases: []
