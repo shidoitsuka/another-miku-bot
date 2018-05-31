@@ -9,6 +9,21 @@ const {
 const readdir = promisify(fs.readdir);
 const Enmap = require("enmap");
 const EnmapLevel = require("enmap-level");
+const {
+  Canvas
+} = require("canvas-constructor");
+const {
+  resolve,
+  join
+} = require("path");
+const {
+  Attachment
+} = require("discord.js");
+const {
+  get
+} = require("snekfetch");
+const nekoclient = require('nekos.life');
+const neko = new nekoclient();
 require('./util/eventLoader.js')(bot);
 require("./modules/function.js")(bot);
 
@@ -39,11 +54,11 @@ bot.settings = new Enmap({
   })
 });
 
-bot.on('warn', e => {
+bot.on('warn', (e) => {
   console.log(chalk.bgYellow(e));
 });
 
-bot.on('error', e => {
+bot.on('error', (e) => {
   console.log(chalk.bgRed(e));
 });
 
