@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
-exports.run = function(bot, message, args) {
+
+exports.run = (bot, message, args) => {
   if (!message.mentions.users.size) {
     const embed = new Discord.RichEmbed()
       .setAuthor("Miku -- Avatar", "", message.author.displayAvatarURL)
       .setColor(0x1a9ca8)
-      .setFooter(`© 12042#5754 | ${message.author.username}\'s avatar`, "https://tinyurl.com/MikuLogo")
+      .setFooter(`${message.author.username}\'s avatar`)
       .setImage(message.author.displayAvatarURL);
     message.channel.send({
       embed
@@ -14,8 +15,8 @@ exports.run = function(bot, message, args) {
     const embed = new Discord.RichEmbed()
       .setAuthor("Miku -- Avatar", "", mentionMember.displayAvatarURL)
       .setColor(0x1a9ca8)
-      .setFooter(`© 12042#5754 | ${mentionMember.username}\'s avatar`, "https://tinyurl.com/MikuLogo")
-      .setImage(mentionMember.displayAvatarURL);
+      .setImage(mentionMember.displayAvatarURL)
+      .setFooter(`${mentionMember.username}\'s avatar`);
     message.channel.send({
       embed
     });
