@@ -1,6 +1,7 @@
-const config = require('../config.json');
-const answers = [
-  "Try again later (〜￣▽￣)〜",
+const Discord = require('discord.js');
+const nekoclient = require('nekos.life');
+const neko = new nekoclient();
+const answers = ["Try again later (〜￣▽￣)〜",
   "I-i don't know (UwU)",
   // positives
   "Yessu!",
@@ -13,10 +14,24 @@ const answers = [
   "Don't count on it ƪ(˘⌣˘)ʃ",
   "I haven't been programmed to know that yet (⌯˃̶᷄ ﹏ ˂̶᷄⌯)ﾟ"
 ];
-exports.run = function(bot, message, args) {
+
+exports.run = async (bot, message, args) => {
   const ebans = answers.random();
   if (!args[0]) {
     message.channel.send(":question::question::question::question::question:");
+  }
+  if (args[0] == "-i") {
+    const eightball = await neko.getSFW8Ball();
+    const embed = new Discord.RichEmbed()
+      .setAuthor("Miku -- Magic 8ball", "", `${eightball.url}`)
+      .setColor(0x1a9ca8)
+      .setDescription(eightball.response)
+      .setImage(`${eightball.url}`)
+      .setFooter("Image by nekos.life");
+    message.channel.send("**Thinking...**")
+      .then(m => m.edit({
+        embed
+      }));
   } else {
     message.channel.send(ebans);
   }
@@ -33,6 +48,6 @@ exports.help = {
   category: "Fun",
   description: "The power of the \`Magic 8ball!\`.",
   usage: "8ball \`<question>\`",
-  param: "",
+  param: "-i  :  use nekos.life API",
   aliases: "8b"
 };
