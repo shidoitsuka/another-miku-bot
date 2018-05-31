@@ -1,7 +1,7 @@
 #modules
 node_modules
 
-#my ideas
+#my-ideas
 *.old
 *.idea
 /commands/test.js
@@ -11,5 +11,11 @@ node_modules
 config.json
 package-lock.json
 /commands/*.json
-*.rar
 /data/
+
+#backup/old-stuffs/etc
+/commands/commands-bak
+*.rar
+*.jpg
+*.jpeg
+*.png
