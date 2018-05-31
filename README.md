@@ -13,13 +13,17 @@ This bot is a just4fun bot, which does not meant to do administrator-side stuffs
 ### What can this bot do?
 - Fun stuffs
 - Give you quotes
-- Much-Much-More in future!
+- Make you laugh
+- Gives you the power of the *Magic 8 Ball*
+- Much much more in future!
 
 ### Modules
 You need to install these modules to run **Miku**, especially [discord.js](https://www.npmjs.com/package/discord.js) library.
 
 | Modules | Link |
 | ------ | ------ |
+| canvas | https://www.npmjs.com/package/canvas |
+| canvas-constructor | https://www.npmjs.com/package/canvas-constructor |
 | cat-names | https://www.npmjs.com/package/cat-names |
 | chalk | https://www.npmjs.com/package/chalk |
 | discord.js | https://www.npmjs.com/package/discord.js |
@@ -27,6 +31,7 @@ You need to install these modules to run **Miku**, especially [discord.js](https
 | enmap | https://www.npmjs.com/package/enmap |
 | enmap-level | https://www.npmjs.com/package/enmap-level |
 | math.js | https://www.npmjs.com/package/mathjs |
+| nekos.life | https://www.npmjs.com/package/nekos.life |
 
 ### Usage
 
@@ -39,6 +44,6 @@ $ node index.js
 ```
 And you are good to go!
 ### Contribute! OwO
-Want to contribute? Great! You are very welcomed ❤
+Want to contribute? Great! You are very welcomed! ❤
 ### License
 Miku-bot is Licensed under the [MIT License](https://github.com/shidoitsuka/another-miku-bot/blob/master/LICENSE)
