@@ -1,4 +1,4 @@
-module.exports = (bot) => {
+module.exports = (bot, message) => {
 
   // RANDOM
   Array.prototype.random = function() {
@@ -20,5 +20,10 @@ module.exports = (bot) => {
     } catch (e) {
       return `Unable to load command ${commandName}: ${e.stack}`;
     }
+  };
+
+  // SLEEP FUNCTION
+  sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
   };
 };
