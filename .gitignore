@@ -15,7 +15,5 @@ package-lock.json
 
 #backup/old-stuffs/etc
 /commands/commands-bak
+/images/
 *.rar
-*.jpg
-*.jpeg
-*.png
