@@ -17,6 +17,7 @@
     "dog-names": "^1.0.2",
     "enmap": "^2.2.1",
     "enmap-level": "^2.1.0",
+    "fs-nextra": "^0.3.5",
     "mathjs": "^4.2.1",
     "nekos.life": "^1.0.5",
     "npm": "^6.0.1"
