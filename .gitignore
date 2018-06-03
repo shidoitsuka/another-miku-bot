@@ -17,3 +17,8 @@ package-lock.json
 /commands/commands-bak
 /images/
 *.rar
+
+#linux-stuff
+*.deb
+*.tar.gz
+*.sh
