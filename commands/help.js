@@ -6,7 +6,20 @@ exports.run = (bot, message, args) => {
   try { // BEGIN TRY
     // BEGIN if no arguments a.k.a show all commands
     if (!args[0]) {
-      message.channel.send("This command is under maintenance.");
+      const embed = new Discord.RichEmbed()
+        .setAuthor("Miku -- Help")
+        .setColor(0x0776b7)
+        .addField("Administrator", "`purge`", true)
+        .addField("Fun", "`8ball` `bigtext` `catnames` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
+         `hug` `kiss` `lenny` `lennyd` `lewd` `miku` `myheart` `omg` `owo` `pat` `poke`\
+          `ratewaifu` `say` `slap` `thonk` `tickle` `tts` `which` `yandere`", true)
+        .addField("Miscellaneous", "`gfycat` `google` `indicator` `math` `quotes` `showcode` `urban`", true)
+        .addField("Utility", "`about` `avatar` `ping`", true)
+        .setFooter("Use help `<command name>` for advanced help.")
+        .setThumbnail("Https://tinyurl.com/MikuHelp");
+      message.channel.send({
+        embed
+      });
     } // END if no arguments a.k.a show all commands
     else { // BEGIND individual commands
       let cmdName = require(`./${args[0]}.js`).help;
@@ -38,7 +51,7 @@ exports.conf = {
 
 exports.help = {
   name: "help",
-  category: "System",
+  category: "Util.",
   description: "Displays all available commands.",
   usage: "help \`<command>\`",
   param: "\`<command>\` is optional.",
