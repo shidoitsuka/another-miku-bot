@@ -7,7 +7,7 @@ exports.run = (bot, message, args) => {
     // BEGIN if no arguments a.k.a show all commands
     if (!args[0]) {
       const embed = new Discord.RichEmbed()
-        .setAuthor("Miku -- Help")
+        .setAuthor("Miku -- Help", "Https://tinyurl.com/MikuLogo")
         .setColor(0x0776b7)
         .addField("Administrator", "`purge`", true)
         .addField("Fun", "`8ball` `bigtext` `catnames` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
@@ -15,7 +15,7 @@ exports.run = (bot, message, args) => {
           `ratewaifu` `say` `slap` `thonk` `tickle` `tts` `which` `yandere`", true)
         .addField("Miscellaneous", "`gfycat` `google` `indicator` `math` `quotes` `showcode` `urban`", true)
         .addField("Utility", "`about` `avatar` `ping`", true)
-        .setFooter("Use help `<command name>` for advanced help.")
+        .setFooter("Use help <command name> for advanced help.")
         .setThumbnail("Https://tinyurl.com/MikuHelp");
       message.channel.send({
         embed
