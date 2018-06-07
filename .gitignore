@@ -12,6 +12,7 @@ config.json
 package-lock.json
 /commands/*.json
 /data/
+/assets
 
 #backup/old-stuffs/etc
 /commands/commands-bak
