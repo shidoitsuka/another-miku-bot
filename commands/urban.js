@@ -43,7 +43,7 @@ exports.conf = {
 
 exports.help = {
   name: "urban",
-  category: "Fun",
+  category: "Misc.",
   description: "Define Your World.",
   usage: "urban \`<search query>\`",
   param: "",
