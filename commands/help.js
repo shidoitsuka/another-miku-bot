@@ -11,8 +11,8 @@ exports.run = (bot, message, args) => {
         .setColor(0x0776b7)
         .addField("Administrator", "`purge`", true)
         .addField("Fun", "`8ball` `bigtext` `catnames` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
-         `hug` `kiss` `lenny` `lennyd` `lewd` `miku` `myheart` `omg` `owo` `pat` `poke`\
-          `ratewaifu` `say` `slap` `thonk` `tickle` `tts` `which` `yandere`", true)
+ `hug` `kiss` `lenny` `lennyd` `lewd` `miku` `myheart` `omg` `owo` `pat` `poke` `ratewaifu` `say` `slap`\
+ `thonk` `tickle` `tts` `which` `yandere`", true)
         .addField("Miscellaneous", "`gfycat` `google` `indicator` `math` `quotes` `showcode` `urban`", true)
         .addField("Utility", "`about` `avatar` `ping`", true)
         .setFooter("Use help <command name> for advanced help.")
