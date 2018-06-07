@@ -4,13 +4,26 @@ const urban = require('relevant-urban');
 exports.run = async (bot, message, args) => {
   let dictionary;
   const pending = await message.channel.send(":mag:**Searching...**");
-  if (!args[0]) dictionary = await urban.random();
+  if (!args[0]) {
+    dictionary = await urban.random();
+    const embed = new Discord.RichEmbed()
+      .setAuthor("Miku -- Urban Dictionary", "", dictionary.urbanURL)
+      .setThumbnail("https://tinyurl.com/y95f3ztk")
+      .setColor(0x795548)
+      .addField("Word  :", dictionary.word, true)
+      .addField("Author  :", dictionary.author, true)
+      .addField("Definition  :", dictionary.definition, false)
+      .setFooter("urban | click title for more info.");
+    pending.edit({
+      embed
+    });
+  }
   if (args[0]) {
     try {
       dictionary = await urban(args.join(" "));
       const embed = new Discord.RichEmbed()
         .setAuthor("Miku -- Urban Dictionary", "", dictionary.urbanURL)
-        .setThumbnail("https://tinyurl.com/MikuUD")
+        .setThumbnail("https://tinyurl.com/y95f3ztk")
         .setColor(0x795548)
         .addField("Word  :", dictionary.word, true)
         .addField("Author  :", dictionary.author, true)

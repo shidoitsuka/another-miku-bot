@@ -4,7 +4,7 @@ const neko = new nekoclient();
 
 // START-MAIN
 exports.run = async (bot, message, args) => {
-  if (!args[0]) return message.channel.send("UwU");
+  if (!args[0]) return message.channel.send(["https://tinyurl.com/MikuOwOHehe", "UwU"].random());
   else {
     const text = await neko.getSFWOwOify({
       text: args.join(" ")
