@@ -5,6 +5,14 @@ module.exports = (bot, message) => {
     return this[Math.floor(Math.random() * this.length)]
   };
 
+  // CHECK ARRAY VALUES ARE **ALL** THE SAME
+  same = arr => arr.every(v => v === arr[0]);
+
+  // REMOVE BLANK VALUES IN ARRAY
+  Array.prototype.blank = function() {
+    return this.filter(entry => entry.trim() != '');
+  };
+
   // LOAD COMMAND
   bot.loadCommand = (commandName) => {
     try {
