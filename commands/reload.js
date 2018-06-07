@@ -16,7 +16,7 @@ exports.conf = {
 
 exports.help = {
   name: "reload",
-  category: "\`Owner Only\`",
+  category: "**Owner Only**",
   description: "Reload specific commands",
   usage: "reload \`<command>\`",
   param: "",

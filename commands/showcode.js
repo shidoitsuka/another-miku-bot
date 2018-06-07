@@ -13,7 +13,7 @@ exports.conf = {
 
 exports.help = {
   name: "showcode",
-  category: "Fun",
+  category: "Misc.",
   description: "",
   usage: "showcode",
   param: "",

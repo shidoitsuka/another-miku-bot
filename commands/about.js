@@ -18,8 +18,10 @@ exports.run = (bot, message, args) => {
     .addField("enmap-level version:", `${package.dependencies["enmap-level"].slice(1)}`, true)
     .addField("fs-nextra version:", `${package.dependencies["fs-nextra"].slice(1)}`, true)
     .addField("gfycat-sdk version:", `${package.dependencies["gfycat-sdk"].slice(1)}`, true)
+    .addField("google-images version:", `${package.dependencies["google-images"].slice(1)}`, true)
     .addField("math.js version:", `${package.dependencies["mathjs"].slice(1)}`, true)
     .addField("nekos.life version:", `${package.dependencies["nekos.life"].slice(1)}`, true)
+    .addField("relevant-urban version:", `${package.dependencies["relevant-urban"].slice(1)}`, true)
     .addField("Invite link:", "[Click Me!](https://discordapp.com/oauth2/authorize/?permissions=2080898303&scope=bot&client_id=364242246314360843)", true)
 
     .setFooter(`Click title for the source-code | v${package.version}-beta`);
@@ -34,7 +36,7 @@ exports.conf = {
 
 exports.help = {
   name: "about",
-  category: "System.",
+  category: "Util.",
   description: "Print out my information such as modules, version, etc.",
   usage: "about",
   param: "",

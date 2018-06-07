@@ -29,6 +29,7 @@ exports.conf = {
 
 exports.help = {
   name: "google",
+  category: "Misc."
   description: "Google image search",
   usage: "google \`<search_query>\`",
   param: "",

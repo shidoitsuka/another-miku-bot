@@ -10,7 +10,7 @@ exports.conf = {
 
 exports.help = {
   name: "ping",
-  category: "Misc.",
+  category: "Util.",
   description: "Pong!",
   usage: "ping",
   param: "",

@@ -29,7 +29,7 @@ exports.conf = {
 
 exports.help = {
   name: "avatar",
-  category: "Misc.",
+  category: "Util.",
   description: "Display someone\'s avatar.",
   usage: "avatar \`<mention user>\`",
   param: "\`<mention user>\` is optional.",
