@@ -14,6 +14,16 @@ const badWords = ["fuck", "shit", "bitch"];
 
 // START
 module.exports = async function(message) {
+  /**
+   * To separate command and arguments
+   * <prefix>example help
+   * output=
+   * command : example
+   * argument : help
+   **/
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+
   // BAD WORDS DETECTOR
   if (badWords.some(word =>
       message.content.toLowerCase().includes(word))) {
@@ -27,19 +37,16 @@ module.exports = async function(message) {
       delete require.cache[require.resolve('./message.js')]
     );
   }
+  if (message.content.startsWith(`<@!${config.botID}>`)) {
+    const theEmoji = emojis.random();
+    const theHi = hello.random();
+    message.channel.send(`${theHi} ${theEmoji}`).then(
+      delete require.cache[require.resolve('./message.js')]
+    );
+  }
 
   // IF (!PREFIX) || BOT
   if (!message.content.startsWith(config.prefix) || message.author.bot) return;
-
-  /**
-   * To separate command and arguments
-   * <prefix>example help
-   * output=
-   * command : example
-   * argument : help
-   **/
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
 
   let bot = message.client;
   let cmd;
