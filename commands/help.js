@@ -15,7 +15,7 @@ exports.run = (bot, message, args) => {
  `thonk` `tickle` `tts` `which` `yandere`", true)
         .addField("Miscellaneous", "`gfycat` `google` `indicator` `math` `quotes` `showcode` `urban`", true)
         .addField("Utility", "`about` `avatar` `ping`", true)
-        .setFooter("Use help <command name> for advanced help.")
+        .setFooter("Use help <command name> for advanced help. (Including usage, aliases, etc.)")
         .setThumbnail("https://tinyurl.com/MikuHelp");
       message.channel.send({
         embed
