@@ -30,8 +30,14 @@ You need to install these modules to run **Miku**, especially [discord.js](https
 | dog-names | https://www.npmjs.com/package/dog-names |
 | enmap | https://www.npmjs.com/package/enmap |
 | enmap-level | https://www.npmjs.com/package/enmap-level |
+| fs-nextra | https://www.npmjs.com/package/fs-nextra |
+| gfycat-sdk | https://www.npmjs.com/package/gfycat-sdk |
+| google-images | https://www.npmjs.com/package/google-images |
 | math.js | https://www.npmjs.com/package/mathjs |
 | nekos.life | https://www.npmjs.com/package/nekos.life |
+| relevant-urban | https://www.npmjs.com/package/relevant-urban |
+
+>Note that not all packages are important. But I'd recommend you to install everything to run all commands smoothly.
 
 ### Usage
 
