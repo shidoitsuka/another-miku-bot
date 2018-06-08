@@ -48,6 +48,7 @@ var reload = (message, cmd) => {
 bot.config = require('./config.json');
 bot.commands = new Enmap();
 bot.aliases = new Enmap();
+bot.cdTime = new Enmap();
 bot.settings = new Enmap({
   provider: new EnmapLevel({
     name: "settings"
@@ -70,6 +71,11 @@ const init = async () => {
     const response = bot.loadCommand(f);
     if (response) console.log(response);
   });
+  // cmdFiles.forEach(f => {
+  //   if (!f.endsWith(".js")) return;
+  //   const respo = bot.loadCooldown(f);
+  //   if (respo) console.log(respo);
+  // });
 };
 
 exports.reload = reload;
