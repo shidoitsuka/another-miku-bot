@@ -35,7 +35,8 @@ exports.run = async (bot, message, args) => {
 }; // END-MAIN
 
 exports.conf = {
-  aliases: []
+  aliases: [],
+  cooldown: 5
 };
 
 exports.help = {

@@ -20,7 +20,8 @@ exports.run = async (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: ["c", "talk"]
+  aliases: ["c", "talk"],
+  cooldown: 5
 };
 
 exports.help = {

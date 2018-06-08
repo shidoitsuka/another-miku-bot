@@ -29,7 +29,8 @@ exports.run = (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: ["btext"]
+  aliases: ["btext"],
+  cooldown: 5
 };
 
 exports.help = {

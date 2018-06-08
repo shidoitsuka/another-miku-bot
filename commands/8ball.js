@@ -40,7 +40,8 @@ exports.run = async (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: ["8b"]
+  aliases: ["8b"],
+  cooldown: 5
 };
 
 exports.help = {

@@ -16,7 +16,8 @@ exports.run = async (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: ["prune"]
+  aliases: ["prune"],
+  cooldown: 5
 };
 
 exports.help = {

@@ -18,7 +18,8 @@ exports.run = async (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: ["random"]
+  aliases: ["random"],
+  cooldown: 5
 }
 
 exports.help = {

@@ -13,7 +13,8 @@ exports.run = (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: ["speak"]
+  aliases: ["speak"],
+  cooldown: 10
 };
 
 exports.help = {

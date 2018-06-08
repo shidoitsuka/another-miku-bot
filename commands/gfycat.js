@@ -28,7 +28,8 @@ exports.run = async (bot, message, args) => {
   }).catch(e => reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**.`));
 };
 exports.conf = {
-  aliases: ["gfy", "gfys"]
+  aliases: ["gfy", "gfys"],
+  cooldown: 5
 };
 
 exports.help = {

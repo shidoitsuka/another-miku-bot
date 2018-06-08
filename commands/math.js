@@ -44,7 +44,8 @@ exports.run = (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: ["mafs", "maffs", "maff"]
+  aliases: ["mafs", "maffs", "maff"],
+  cooldown: 3
 };
 
 exports.help = {
