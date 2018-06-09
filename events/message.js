@@ -65,29 +65,34 @@ module.exports = async function(message) {
       // VARIABLES
       let theCmd, find, cd;
       if (bot.commands.has(command)) {
-        find = bot.commands.get(command);
-        theCmd = find.help.name;
-        cd = find.conf.cooldown * 1000;
+        find = bot.commands.get(command); // find the command
+        theCmd = find.help.name; // find command's name
+        cd = find.conf.cooldown * 1000; // find the cooldown and then make it second
       } else if (bot.aliases.has(command)) {
         find = bot.commands.get(bot.aliases.get(command));
         theCmd = find.help.name;
         cd = find.conf.cooldown * 1000;
       }
       const cooldowns = ["O///O I-I-I\'m Getting Dizzy!", "Can you like.... **wait** for few seconds?", "Please wait.", "_Cooling Down_..."].random();
-      // fakeTalkedRecently[message.author.id] = [theCmd];
-      // console.log(talkedRecently[message.author.id]);
       try {
+        /** this will return error for the first time, because userID : 'command' is
+         * not yet defined while no commands are on cooldown so i did some tricky stuff.
+         **/
         if (talkedRecently[message.author.id].includes(theCmd)) return message.channel.send(cooldowns).then(m => m.delete(3000));
+        /** since it's undefined, that means error.
+         * so i throw error to trigger the catch (e) to run the code
+         * then push it to talkedRecently. Sounds tricky, isn't it? damn.
+         **/
         if (talkedRecently[message.author.id].theCmd == undefined) {
           throw Error();
         }
       } catch (e) {
-        cmd.run(bot, message, args);
-        if (!talkedRecently[message.author.id]) talkedRecently[message.author.id] = [];
-        talkedRecently[message.author.id].push(theCmd);
+        cmd.run(bot, message, args); // run the command
+        if (!talkedRecently[message.author.id]) talkedRecently[message.author.id] = []; // if talkedRecently does not contain userID, define it
+        talkedRecently[message.author.id].push(theCmd); // then push the command used into it
         setTimeout(() => {
-          var a = talkedRecently[message.author.id].indexOf(theCmd);
-          talkedRecently[message.author.id].splice(a, 1);
+          let cmdIndex = talkedRecently[message.author.id].indexOf(theCmd); // define cmd Index because i'm using splice to remove the command's cooldown
+          talkedRecently[message.author.id].splice(cmdIndex, 1); // remove the cooldown
           fs.writeFile('./events/cooldowns.json', JSON.stringify(talkedRecently), (err) => {
             if (err) console.log(err);
           });
