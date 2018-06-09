@@ -68,14 +68,14 @@ const init = async () => {
   const cmdFiles = await readdir("./commands/");
   cmdFiles.forEach(f => {
     if (!f.endsWith(".js")) return;
-    const response = bot.loadCommand(f);
+    let response = bot.loadCommand(f);
     if (response) console.log(response);
   });
-  // cmdFiles.forEach(f => {
-  //   if (!f.endsWith(".js")) return;
-  //   const respo = bot.loadCooldown(f);
-  //   if (respo) console.log(respo);
-  // });
+  cmdFiles.forEach(f => {
+    if (!f.endsWith(".js")) return;
+    let response = bot.loadCooldown(f);
+    if (response) console.log(response);
+  });
 };
 
 exports.reload = reload;
