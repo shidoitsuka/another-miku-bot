@@ -7,7 +7,6 @@ const {
 } = require("util");
 const readdir = promisify(fs.readdir);
 let talkedRecently = JSON.parse(fs.readFileSync("./events/cooldowns.json", "utf8"));
-let fakeTalkedRecently = {};
 
 // SPEAKS
 const emojis = ["(#^.^#)", "(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "(✿ꈍ。 ꈍ✿)", "(ؑ‷ᵕؑ̇‷)◞✧", "(灬ºωº灬)♡"];
