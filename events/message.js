@@ -61,17 +61,55 @@ module.exports = async function(message) {
   // RUN COMMAND/ALIASES
   if (cmd) {
     try {
-      // REQUIRE THE COMMAND NAME
-      const theCmd = require(`../commands/${command}`);
-      const cooldownTime = bot.cdTime.get(theCmd);
+      // VARIABLES
+      let theCmd, find, cd;
+      // IF IT'S **NOT** ALIASES
+      if (bot.commands.has(command)) {
+        find = bot.commands.get(command); // FIND THE COMMAND
+        theCmd = find.help.name; // FIND THE COMMAND NAME TO STORE TO THE ARRAY OF SETS LATER
+        cd = find.conf.cooldown * 1000; // FIND THE COMMAND'S COOLDOWN TIME AND THEN MULTIPLY BY 1000 (because setTimeout uses ms instead of s)
+      }
+      // IF IT'S ALIASES
+      else if (bot.aliases.has(command)) {
+        // EXACTLY THE SAME AS **NOT** ALIASES
+        find = bot.commands.get(bot.aliases.get(command));
+        theCmd = find.help.name;
+        cd = find.conf.cooldown * 1000;
+      }
+      /**
+       * cmdCD should look **something** like this when someones running command/aliases :
+       * talkedRecently = {
+       *   "user1": [
+       *     "commandused",
+       *     "anothercommandused"
+       *   ],
+       *   "user2": [
+       *     "command used",
+       *     "command used number two"
+       *   ]
+       * }
+       * P.S: I'm not sure though, but that's what i imagine while making this cooldown, LOL.
+       **/
       const cmdCD = talkedRecently[message.author.id] = theCmd;
       const cooldowns = ["O///O I-I-I\'m Getting Dizzy!", "Can you like.... **wait** for few seconds?", "Please wait.", "_Cooling Down_..."].random();
+      /**
+       * IF talkedRecently **CONTAINS** <userID> **PLUS** <commandUsedByUser>
+       * return
+       **/
       if (talkedRecently.has(cmdCD)) return message.channel.send(cooldowns).then(m => m.delete(3000));
-      cmd.run(bot, message, args);
-      talkedRecently.add(cmdCD);
+      cmd.run(bot, message, args); // RUN THE COMMAND
+      talkedRecently.add(cmdCD); // AFTER RUNNING THE COMMAND, ADD THE USER TO talkedRecently.
+      /**
+       * DELETE USER FROM talkedRecently
+       * AFTER (variable cd)
+       * example : if user uses ping (1s cooldown)
+       * user will deleted from talkedRecently after 1s (including the ping, obviously because user uses ping)
+       * and IF user uses about (7s cooldown)
+       * user will deleted after 7s.
+       **/
       setTimeout(() => {
         talkedRecently.delete(cmdCD);
-      }, cooldownTime);
+      }, cd);
     } catch (e) {
       console.log(chalk.red(`Error: ${e.stack}`));
       message.react("❌");
