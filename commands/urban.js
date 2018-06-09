@@ -39,7 +39,7 @@ exports.run = async (bot, message, args) => {
 };
 exports.conf = {
   aliases: ["define"],
-  cooldown: 5
+  cooldown: 3
 };
 
 exports.help = {

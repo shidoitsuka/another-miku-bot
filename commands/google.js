@@ -21,11 +21,11 @@ exports.run = async (bot, message, args) => {
     reply.edit({
       embed
     });
-  }).catch(e => reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**. `));
+  }).catch(e => reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**.\nOr try again. `));
 }
 exports.conf = {
   aliases: ["gs"],
-  cooldown: 5
+  cooldown: 3
 }
 
 exports.help = {

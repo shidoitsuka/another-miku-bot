@@ -8,7 +8,7 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["indi"],
-  cooldown: 5
+  cooldown: 1
 };
 
 exports.help = {

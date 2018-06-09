@@ -36,7 +36,7 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["kissu"],
-  cooldown: 5
+  cooldown: 6
 };
 
 exports.help = {

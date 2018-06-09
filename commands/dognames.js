@@ -20,7 +20,7 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["dogname"],
-  cooldown: 5
+  cooldown: 4
 };
 
 exports.help = {

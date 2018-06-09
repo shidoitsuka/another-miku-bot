@@ -19,7 +19,7 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["l"],
-  cooldown: 5
+  cooldown: 6
 };
 
 exports.help = {
@@ -27,6 +27,6 @@ exports.help = {
   category: "Fun",
   description: ">////< y so lewd!?`",
   usage: "lewd",
-  param: "-anal\n-pussy\n-random\n-gif-neko\n-neko\n-oppai\n-lesb\n-cumslut",
+  param: "",
   aliases: "l"
 };

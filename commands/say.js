@@ -11,7 +11,7 @@ exports.run = (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: [],
+  aliases: ["echo"],
   cooldown: 3
 };
 
@@ -21,5 +21,5 @@ exports.help = {
   description: "Too shy to say it? I\'ll do it for you!",
   usage: "say <text>",
   param: "-d  :  delete",
-  aliases: ""
+  aliases: "echo"
 };

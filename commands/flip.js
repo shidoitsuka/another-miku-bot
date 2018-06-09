@@ -8,7 +8,7 @@ exports.run = function(bot, message, args) {
 
 exports.conf = {
   aliases: ["flipcoin", "flipcoins", "flips"],
-  cooldown: 5
+  cooldown: 3
 };
 
 exports.help = {
