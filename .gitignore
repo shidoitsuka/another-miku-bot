@@ -11,6 +11,7 @@ node_modules
 config.json
 package-lock.json
 /commands/*.json
+/events/cooldowns.json
 /data/
 /assets
 

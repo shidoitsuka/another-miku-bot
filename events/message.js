@@ -6,7 +6,8 @@ const {
   promisify
 } = require("util");
 const readdir = promisify(fs.readdir);
-let talkedRecently = new Set();
+let talkedRecently = JSON.parse(fs.readFileSync("./events/cooldowns.json", "utf8"));
+let fakeTalkedRecently = {};
 
 // SPEAKS
 const emojis = ["(#^.^#)", "(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "(✿ꈍ。 ꈍ✿)", "(ؑ‷ᵕؑ̇‷)◞✧", "(灬ºωº灬)♡"];
@@ -63,53 +64,38 @@ module.exports = async function(message) {
     try {
       // VARIABLES
       let theCmd, find, cd;
-      // IF IT'S **NOT** ALIASES
       if (bot.commands.has(command)) {
-        find = bot.commands.get(command); // FIND THE COMMAND
-        theCmd = find.help.name; // FIND THE COMMAND NAME TO STORE TO THE ARRAY OF SETS LATER
-        cd = find.conf.cooldown * 1000; // FIND THE COMMAND'S COOLDOWN TIME AND THEN MULTIPLY BY 1000 (because setTimeout uses ms instead of s)
-      }
-      // IF IT'S ALIASES
-      else if (bot.aliases.has(command)) {
-        // EXACTLY THE SAME AS **NOT** ALIASES
+        find = bot.commands.get(command);
+        theCmd = find.help.name;
+        cd = find.conf.cooldown * 1000;
+      } else if (bot.aliases.has(command)) {
         find = bot.commands.get(bot.aliases.get(command));
         theCmd = find.help.name;
         cd = find.conf.cooldown * 1000;
       }
-      /**
-       * cmdCD should look **something** like this when someones running command/aliases :
-       * talkedRecently = {
-       *   "user1": [
-       *     "commandused",
-       *     "anothercommandused"
-       *   ],
-       *   "user2": [
-       *     "command used",
-       *     "command used number two"
-       *   ]
-       * }
-       * P.S: I'm not sure though, but that's what i imagine while making this cooldown, LOL.
-       **/
-      const cmdCD = talkedRecently[message.author.id] = theCmd;
       const cooldowns = ["O///O I-I-I\'m Getting Dizzy!", "Can you like.... **wait** for few seconds?", "Please wait.", "_Cooling Down_..."].random();
-      /**
-       * IF talkedRecently **CONTAINS** <userID> **PLUS** <commandUsedByUser>
-       * return
-       **/
-      if (talkedRecently.has(cmdCD)) return message.channel.send(cooldowns).then(m => m.delete(3000));
-      cmd.run(bot, message, args); // RUN THE COMMAND
-      talkedRecently.add(cmdCD); // AFTER RUNNING THE COMMAND, ADD THE USER TO talkedRecently.
-      /**
-       * DELETE USER FROM talkedRecently
-       * AFTER (variable cd)
-       * example : if user uses ping (1s cooldown)
-       * user will deleted from talkedRecently after 1s (including the ping, obviously because user uses ping)
-       * and IF user uses about (7s cooldown)
-       * user will deleted after 7s.
-       **/
-      setTimeout(() => {
-        talkedRecently.delete(cmdCD);
-      }, cd);
+      // fakeTalkedRecently[message.author.id] = [theCmd];
+      // console.log(talkedRecently[message.author.id]);
+      try {
+        if (talkedRecently[message.author.id].includes(theCmd)) return message.channel.send(cooldowns).then(m => m.delete(3000));
+        if (talkedRecently[message.author.id].theCmd == undefined) {
+          throw Error();
+        }
+      } catch (e) {
+        cmd.run(bot, message, args);
+        if (!talkedRecently[message.author.id]) talkedRecently[message.author.id] = [];
+        talkedRecently[message.author.id].push(theCmd);
+        setTimeout(() => {
+          var a = talkedRecently[message.author.id].indexOf(theCmd);
+          talkedRecently[message.author.id].splice(a, 1);
+          fs.writeFile('./events/cooldowns.json', JSON.stringify(talkedRecently), (err) => {
+            if (err) console.log(err);
+          });
+        }, cd);
+        fs.writeFile('./events/cooldowns.json', JSON.stringify(talkedRecently), (err) => {
+          if (err) console.log(err);
+        });
+      }
     } catch (e) {
       console.log(chalk.red(`Error: ${e.stack}`));
       message.react("❌");
