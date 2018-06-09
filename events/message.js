@@ -11,7 +11,7 @@ let talkedRecently = new Set();
 // SPEAKS
 const emojis = ["(#^.^#)", "(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "(✿ꈍ。 ꈍ✿)", "(ؑ‷ᵕؑ̇‷)◞✧", "(灬ºωº灬)♡"];
 const hello = ["H-hello", "H-hi", "M-my prefix is \`m\`", "Miku desu!", "I'm Here!", "Hi!"];
-const badWords = ["fuck", "shit", "bitch"];
+const badWords = ["fuck", "shit", "bitch", "cunt"];
 
 // START
 module.exports = async function(message) {
@@ -61,16 +61,17 @@ module.exports = async function(message) {
   // RUN COMMAND/ALIASES
   if (cmd) {
     try {
+      // REQUIRE THE COMMAND NAME
+      const theCmd = require(`../commands/${command}`);
+      const cooldownTime = bot.cdTime.get(theCmd);
+      const cmdCD = talkedRecently[message.author.id] = theCmd;
       const cooldowns = ["O///O I-I-I\'m Getting Dizzy!", "Can you like.... **wait** for few seconds?", "Please wait.", "_Cooling Down_..."].random();
-      if (talkedRecently.has(message.author.id)) return message.channel.send(cooldowns).then(m => m.delete(3000));
+      if (talkedRecently.has(cmdCD)) return message.channel.send(cooldowns).then(m => m.delete(3000));
       cmd.run(bot, message, args);
-      talkedRecently.add(message.author.id)
+      talkedRecently.add(cmdCD);
       setTimeout(() => {
-        talkedRecently.delete(message.author.id);
-      }, 5000);
-      // console.log(bot.cdTime.get(command));
-      // console.log(bot.commands.get(command));
-      // console.log(bot.aliases.get(command));
+        talkedRecently.delete(cmdCD);
+      }, cooldownTime);
     } catch (e) {
       console.log(chalk.red(`Error: ${e.stack}`));
       message.react("❌");
