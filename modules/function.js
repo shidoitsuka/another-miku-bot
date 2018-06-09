@@ -29,20 +29,15 @@ module.exports = (bot, message) => {
       return `Unable to load command ${commandName}: ${e.stack}`;
     }
   };
-  // bot.loadCooldown = (commandName) => {
-  //   try {
-  //     const theCmd = require(`../commands/${commandName}`);
-  //     if (theCmd.init) {
-  //       theCmd.init(bot);
-  //     }
-  //     theCmd.conf.cooldown.forEach(cd => {
-  //       bot.cdTime.set(theCmd, theCmd.conf.cooldown * 1000);
-  //     });
-  //     return false;
-  //   } catch (e) {
-  //     return `Unable to load ${commandName}\'s cooldown: ${e.stack}`
-  //   }
-  // };
+  bot.loadCooldown = (commandName) => {
+    try {
+      const theCmd = require(`../commands/${commandName}`);
+      bot.cdTime.set(theCmd, theCmd.conf.cooldown * 1000);
+      return false;
+    } catch (e) {
+      return `Unable to load ${commandName}\'s cooldown: ${e.stack}`
+    }
+  };
 
   // SLEEP FUNCTION
   sleep = (ms) => {
