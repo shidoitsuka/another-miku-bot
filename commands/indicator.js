@@ -1,5 +1,3 @@
-const config = require('../config.json');
-
 exports.run = (bot, message, args) => {
   // if args[0] length is not 1, return
   if (args[0].length != 1) return message.channel.send("Error.");
