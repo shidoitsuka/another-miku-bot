@@ -1,5 +1,5 @@
 # Miku Bot
-[![N|Solid](https://img.shields.io/npm/v/discord.js.svg?maxAge=3600)](https://nodejs.org/en//)
+[![N|Solid](https://img.shields.io/npm/v/discord.js.svg?maxAge=3600)](https://nodejs.org/en/)
 [![N|Solid](https://img.shields.io/npm/dt/discord.js.svg?maxAge=3600)](https://discord.js.org)
 
 [![N|Solid](https://nodei.co/npm/discord.js.png?downloads=true&stars=true)](https://www.npmjs.org/package/discord.js)
@@ -13,7 +13,7 @@ This bot is a just4fun bot, which does not meant to do administrator-side stuffs
 ### What can this bot do?
 - Fun stuffs
 - Give you quotes
-- Make you laugh
+- Makes you laugh
 - Gives you the power of the *Magic 8 Ball*
 - Much much more in future!
 
