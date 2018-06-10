@@ -72,7 +72,11 @@ module.exports = async function(message) {
         theCmd = find.help.name;
         cd = find.conf.cooldown * 1000;
       }
-      const cooldowns = ["O///O I-I-I\'m Getting Dizzy!", "Can you like.... **wait** for few seconds?", "Please wait.", "_Cooling Down_..."].random();
+      const cooldowns = [`O//w//O I-I-I\'m Getting Dizzy!\n_(cooling down)_`,
+        `Can you like.... **wait** for few seconds?`,
+        `${message.author.id}-kun, **please wait**.`,
+        `I-I-It\'ts not like I\'m on **cooldown** or something, b-b-baka! >///<`
+      ].random();
       try {
         /** this will return error for the first time, because userID : 'command' is
          * not yet defined while no commands are on cooldown so i did some tricky stuff.
@@ -82,9 +86,7 @@ module.exports = async function(message) {
          * so i throw error to trigger the catch (e) to run the code
          * then push it to talkedRecently. Sounds tricky, isn't it? damn.
          **/
-        if (talkedRecently[message.author.id].theCmd == undefined) {
-          throw Error();
-        }
+        if (talkedRecently[message.author.id].theCmd == undefined) throw Error();
       } catch (e) {
         cmd.run(bot, message, args); // run the command
         if (!talkedRecently[message.author.id]) talkedRecently[message.author.id] = []; // if talkedRecently does not contain userID, define it
