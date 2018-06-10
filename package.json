@@ -1,6 +1,6 @@
 {
   "name": "miku",
-  "version": "1.2.5",
+  "version": "1.2.16",
   "description": "Miku Tutorial Bot",
   "main": "index.js",
   "scripts": {
