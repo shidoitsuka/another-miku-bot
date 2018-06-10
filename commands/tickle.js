@@ -42,7 +42,7 @@ exports.help = {
   name: "tickle",
   category: "Fun",
   description: "Tickle someone!",
-  usage: "tickle \`<mention user>\` or \`<name>\`",
-  param: "\`<mention user>\` or \`<name>\` are optional.",
+  usage: "tickle `[mention_user]` or `[name]`",
+  param: "",
   aliases: ""
 };

@@ -8,12 +8,13 @@ exports.run = (bot, message, args) => {
       const embed = new Discord.RichEmbed()
         .setAuthor("Miku -- Help", "https://tinyurl.com/MikuLogo")
         .setColor(0x0776b7)
+        .addField("Description:", "`<this-is-required>` `[this-is-optional]`\nYou cannot use aliases to get advanced help about command. Instead, use the command name itself", true)
         .addField("Administrator", "`purge`", true)
         .addField("Fun", "`8ball` `bigtext` `catnames` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
  `hug` `kiss` `lenny` `lennyd` `lewd` `match` `miku` `myheart` `omg` `owo` `pat` `poke` `ratewaifu` `say` `slap`\
  `thonk` `tickle` `tts` `which` `yandere`", true)
         .addField("Miscellaneous", "`gfycat` `google` `indicator` `math` `quotes` `showcode` `urban`", true)
-        .addField("Utility", "`about` `avatar` `ping` `tag`", true)
+        .addField("Utility", "`about` `avatar` `help` `ping` `tag`", true)
         .setFooter("Use help <command name> for advanced help. (Including usage, aliases, etc.)")
         .setThumbnail("https://tinyurl.com/MikuHelp");
       message.channel.send({
@@ -53,7 +54,7 @@ exports.help = {
   name: "help",
   category: "Util.",
   description: "Displays all available commands.",
-  usage: "help \`<command>\`",
-  param: "\`<command>\` is optional.",
+  usage: "help `[param]`",
+  param: "",
   aliases: "h, halp"
 };

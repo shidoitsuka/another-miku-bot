@@ -43,7 +43,7 @@ exports.help = {
   name: "slap",
   category: "Fun",
   description: "Slap someone!",
-  usage: "slap \`<mention user>\` or \`<name>\`",
-  param: "\`<mention user>\` or \`<name>\` are optional.",
+  usage: "slap `[mention_user]` or `[name]`",
+  param: "",
   aliases: ""
 };

@@ -27,7 +27,7 @@ exports.help = {
   name: "dognames",
   category: "Fun",
   description: "What\'s your name if you were born as a dog!?",
-  usage: "dognames \`<parameter>\`",
+  usage: "dognames `[param]`",
   param: "\`<parameter>\` is optional.\n-f  :  female\n-m  :  male",
   aliases: "dogname"
 };

@@ -43,7 +43,7 @@ exports.help = {
   name: "pat",
   category: "Fun",
   description: "Pat someone!",
-  usage: "pat \`<mention user>\` or \`<name>\`",
-  param: "\`<mention user>\` or \`<name>\` are optional.",
+  usage: "pat `[mention_user]` or `[name]`",
+  param: "",
   aliases: ""
 };

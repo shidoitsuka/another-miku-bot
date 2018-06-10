@@ -25,7 +25,7 @@ exports.help = {
   name: "which",
   category: "Fun",
   description: "Let me choose which one!",
-  usage: "which \`<x>\` or \`<y>\` or ....\`<n>\`",
+  usage: "which \`<x>\` or \`<y>\` or ....\`[n]\`",
   param: "",
   aliases: "pick, choose, thisthat"
 };

@@ -75,7 +75,7 @@ exports.help = {
   name: "quotes",
   category: "Misc.",
   description: "Print out great quotes!",
-  usage: "quotes \`<parameters>\`",
+  usage: "quotes \`[param]\`",
   param: "\-m  :  motivation",
   aliases: "quote, qotd"
 };

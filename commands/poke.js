@@ -42,7 +42,7 @@ exports.help = {
   name: "poke",
   category: "Fun",
   description: "Poke your senpai!",
-  usage: "poke \`<mention user>\` or \`<name>\`",
-  param: "\`<mention user>\` or \`<name>\` are optional.",
+  usage: "poke `[mention_user]` or `[name]`",
+  param: "",
   aliases: ""
 };

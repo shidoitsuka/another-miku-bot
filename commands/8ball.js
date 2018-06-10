@@ -17,9 +17,7 @@ const answers = ["Try again later (〜￣▽￣)〜",
 
 exports.run = async (bot, message, args) => {
   const ebans = answers.random();
-  if (!args[0]) {
-    message.channel.send(":question::question::question::question::question:");
-  }
+  if (!args[0]) return message.channel.send(":question::question::question::question::question:");
   if (args[0] == "-i") {
     const eightball = await neko.getSFW8Ball();
     const embed = new Discord.RichEmbed()
@@ -41,14 +39,14 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["8b"],
-  cooldown: 5
+  cooldown: 3
 };
 
 exports.help = {
   name: "8ball",
   category: "Fun",
   description: "The power of the \`Magic 8ball!\`.",
-  usage: "8ball \`<question>\`",
+  usage: "8ball `[param]` \`<question>\`",
   param: "-i  :  use nekos.life API",
   aliases: "8b"
 };
