@@ -73,8 +73,8 @@ module.exports = async function(message) {
         cd = find.conf.cooldown * 1000;
       }
       const cooldowns = [`O//w//O I-I-I\'m Getting Dizzy!\n_(cooling down)_`,
-        `Can you like.... **wait** for few seconds?`,
-        `${message.author.id}-kun, **please wait**.`,
+        `Can you like.... **wait** for few seconds? UwU`,
+        `**${message.author.username}**-kun, **please wait** UwU`,
         `I-I-It\'ts not like I\'m on **cooldown** or something, b-b-baka! >///<`
       ].random();
       try {
