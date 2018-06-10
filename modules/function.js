@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+
 module.exports = (bot, message) => {
 
   // RANDOM
@@ -24,9 +26,10 @@ module.exports = (bot, message) => {
       props.conf.aliases.forEach(alias => {
         bot.aliases.set(alias, props.help.name);
       });
+      console.log(chalk.bgWhite.black(`Loaded ${commandName}`));
       return false;
     } catch (e) {
-      return `Unable to load command ${commandName}: ${e.stack}`;
+      console.log(chalk.bgRed(`Unable to load command ${commandName}: ${e}`));
     }
   };
   bot.loadCooldown = (commandName) => {
@@ -35,7 +38,7 @@ module.exports = (bot, message) => {
       bot.cdTime.set(theCmd, theCmd.conf.cooldown * 1000);
       return false;
     } catch (e) {
-      return `Unable to load ${commandName}\'s cooldown: ${e.stack}`
+      console.log(chalk.bgRed(`Unable to load command ${commandName}\'s cooldown: ${e}`));
     }
   };
 
