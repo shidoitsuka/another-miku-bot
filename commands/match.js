@@ -12,11 +12,11 @@ exports.run = (bot, message, args) => {
   const firstP = values[0].toLowerCase() == "me" ? "you" : values[0];
   const secondP = values[1].toLowerCase() == "you" ? "me" : values[1];
   const answers = [
-    `${message.author.id}, this is my thought but... **${firstP}** and **${secondP}** match rate is ${rates}`,
-    `I\'m not really sure but, I heard someone whispered to me that **${firstP}** and **${secondP}** match rate is ${rates}`,
-    `${message.author.id}, since you\'re asking me, I\'d say ${rates} for **${firstP}** and **${secondP}**`,
+    `**${message.author.username}**, this is my thought but... **${firstP}** and **${secondP}** match rate is ${rates}`,
+    `I\'m not really sure but, someone whispered to me that **${firstP}** and **${secondP}** match rate is ${rates}`,
+    `**${message.author.username}**, since you\'re asking me, I\'d say ${rates} for **${firstP}** and **${secondP}**`,
     `You better believe me, It\'s ${rates}`
-  ]
+  ].random();
   message.channel.send(answers);
 };
 
