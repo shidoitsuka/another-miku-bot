@@ -8,6 +8,7 @@ const readdir = promisify(fs.readdir);
 const Enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
 const nekoclient = require('nekos.life');
+const chalk = require('chalk');
 const neko = new nekoclient();
 require('./util/eventLoader.js')(bot);
 require('./modules/function.js')(bot);

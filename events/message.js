@@ -10,7 +10,7 @@ let talkedRecently = JSON.parse(fs.readFileSync('./events/cooldowns.json', 'utf8
 
 // SPEAKS
 const emojis = ["(#^.^#)", "(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "(✿ꈍ。 ꈍ✿)", "(ؑ‷ᵕؑ̇‷)◞✧", "(灬ºωº灬)♡"];
-const hello = ["H-hello", "H-hi", "M-my prefix is \`x\`", "Miku desu!", "I'm Here!", "Hi!"];
+const hello = ["H-hello", "H-hi", "M-my prefix is \`x\`", "Miku desu!", "Hi!", "https://tinyurl.com/MikuOwO"];
 const badWords = ["fuck", "shit", "bitch", "cunt"];
 
 // START
