@@ -10,7 +10,7 @@ exports.run = (bot, message, args) => {
         .setColor(0x0776b7)
         .addField("Description:", "`<this-is-required>` `[this-is-optional]`\nYou cannot use aliases to get advanced help about command. Instead, use the command name itself", true)
         .addField("Administrator", "`purge`", true)
-        .addField("Fun", "`8ball` `bigtext` `catnames` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
+        .addField("Fun", "`8ball` `batslap` `bigtext` `brain` `catnames` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
  `hug` `kiss` `lenny` `lennyd` `lewd` `match` `miku` `myheart` `omg` `owo` `pat` `poke` `ratewaifu` `say` `slap`\
  `thonk` `tickle` `tts` `which` `yandere`", true)
         .addField("Miscellaneous", "`gfycat` `google` `indicator` `math` `quotes` `showcode` `urban`", true)
