@@ -3,14 +3,14 @@ const bot = new Discord.Client();
 const fs = require('fs');
 const {
   promisify
-} = require("util");
+} = require('util');
 const readdir = promisify(fs.readdir);
-const Enmap = require("enmap");
-const EnmapLevel = require("enmap-level");
+const Enmap = require('enmap');
+const EnmapLevel = require('enmap-level');
 const nekoclient = require('nekos.life');
 const neko = new nekoclient();
 require('./util/eventLoader.js')(bot);
-require("./modules/function.js")(bot);
+require('./modules/function.js')(bot);
 
 // RELOAD
 var reload = (message, cmd) => {
@@ -50,19 +50,19 @@ bot.on('error', (e) => {
 
 // INITIALIZATION
 const init = async () => {
-  const cmdFiles = await readdir("./commands/");
+  const cmdFiles = await readdir('./commands/');
   cmdFiles.forEach(f => {
-    if (!f.endsWith(".js")) return;
+    if (!f.endsWith('.js')) return;
     let response = bot.loadCommand(f);
     if (response) console.log(response);
   });
   cmdFiles.forEach(f => {
-    if (!f.endsWith(".js")) return;
+    if (!f.endsWith('.js')) return;
     let response = bot.loadCooldown(f);
     if (response) console.log(response);
   });
 };
 
 exports.reload = reload;
-bot.login(bot.config.token);
 init();
+bot.login(bot.config.token);
