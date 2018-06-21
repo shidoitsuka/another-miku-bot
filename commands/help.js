@@ -10,7 +10,7 @@ exports.run = (bot, message, args) => {
         .setColor(0x0776b7)
         .addField("Description:", "`<this-is-required>` `[this-is-optional]`\nYou cannot use aliases to get advanced help about command. Instead, use the command name itself", true)
         .addField("Administrator", "`purge`", true)
-        .addField("Fun", "`8ball` `batslap` `bigtext` `brain` `catnames` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
+        .addField("Fun", "`8ball` `batslap` `bigtext` `bulge` `brain` `catnames` `changemymind` `chat` `color` `cuddle` `dognames` `f` `flip` `goodboi`\
  `hug` `kiss` `lenny` `lennyd` `lewd` `match` `miku` `myheart` `omg` `owo` `pat` `poke` `ratewaifu` `say` `slap`\
  `thonk` `tickle` `tts` `which` `yandere`", true)
         .addField("Miscellaneous", "`gfycat` `google` `indicator` `math` `quotes` `showcode` `urban`", true)
@@ -23,10 +23,11 @@ exports.run = (bot, message, args) => {
     } // END if no arguments a.k.a show all commands
     else { // BEGIND individual commands
       let cmdName = require(`./${args[0]}.js`).help;
+      let cdDura = require(`./${args[0]}.js`).conf.cooldown;
       const embed = new Discord.RichEmbed()
         .setAuthor("Miku -- Help")
         .setColor(0x0776b7)
-        .setDescription(`**Command**  : ${cmdName.name}\n**Category**  : ${cmdName.category}\n**Description**  : ${cmdName.description}\n**Usage**  : ${cmdName.usage}\n**Parameters**  : ${cmdName.param}\n**Aliases**  : ${cmdName.aliases}`)
+        .setDescription(`**Command**      : ${cmdName.name}\n**Category**        : ${cmdName.category}\n**Description**   : ${cmdName.description}\n**Usage**             : ${cmdName.usage}\n**Parameters**   : ${cmdName.param}\n**Aliases**           : ${cmdName.aliases}\n**Cooldown**      : ${cdDura} second${cdDura == 1 ? "" : "(s)"}`)
         .setThumbnail("https://tinyurl.com/MikuHelp");
       message.channel.send({
         embed
@@ -38,7 +39,7 @@ exports.run = (bot, message, args) => {
       .setAuthor("Miku -- Error")
       .setThumbnail("https://tinyurl.com/MikuError")
       .setColor(0xf44336)
-      .setDescription(`Something went wrong!\n**Error**  : \nTry using \`command name\` instead of aliases.`);
+      .setDescription(`Cannot find  : \`${args.join(" ")}\``);
     message.channel.send({
       embed
     });
@@ -47,7 +48,7 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["h", "halp"],
-  cooldown: 7
+  cooldown: 3
 };
 
 exports.help = {
