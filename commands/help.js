@@ -10,29 +10,22 @@ exports.run = (bot, message, args) => {
         .setColor(0x0776b7)
         .addField("Description:", "`<this-is-required>` `[this-is-optional]`\nYou cannot use aliases to get advanced help about command. Instead, use the command name itself", true)
         .addField("Administrator", "`purge`", true)
-        .addField("Fun", "`8ball` `batslap` `bigtext` `bulge` `brain` `catnames` `changemymind` `chat` `color` `cuddle` `dognames` `f` `flip` `goodboi`\
- `hug` `kiss` `lenny` `lennyd` `lewd` `match` `miku` `myheart` `omg` `owo` `pat` `poke` `ratewaifu` `say` `slap`\
+        .addField("Fun", "`8ball` `batslap` `bigtext` `bulge` `brain` `catnames` `changemymind` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
+ `hug` `kiss` `lenny` `lennyd` `lewd` `match` `miku` `myheart` `omg` `owo` `pat` `poke` `ratewaifu` `say` `slap` `suggest`\
  `thonk` `tickle` `tts` `which` `yandere`", true)
         .addField("Miscellaneous", "`gfycat` `google` `indicator` `math` `quotes` `showcode` `urban`", true)
-        .addField("Utility", "`about` `avatar` `help` `ping` `tag`", true)
+        .addField("Utility", "`about` `avatar` `canvas` `color` `help` `ping` `tag`", true)
         .setFooter("Use help <command name> for advanced help. (Including usage, aliases, etc.)")
         .setThumbnail("https://tinyurl.com/MikuHelp");
       message.channel.send({
         embed
       });
     } // END if no arguments a.k.a show all commands
-    else { // BEGIND individual commands
+    else {
       let cmdName = require(`./${args[0]}.js`).help;
       let cdDura = require(`./${args[0]}.js`).conf.cooldown;
-      const embed = new Discord.RichEmbed()
-        .setAuthor("Miku -- Help")
-        .setColor(0x0776b7)
-        .setDescription(`**Command**      : ${cmdName.name}\n**Category**        : ${cmdName.category}\n**Description**   : ${cmdName.description}\n**Usage**             : ${cmdName.usage}\n**Parameters**   : ${cmdName.param}\n**Aliases**           : ${cmdName.aliases}\n**Cooldown**      : ${cdDura} second${cdDura == 1 ? "" : "(s)"}`)
-        .setThumbnail("https://tinyurl.com/MikuHelp");
-      message.channel.send({
-        embed
-      });
-    } // END individual commands
+      message.channel.send(`\`\`\`\nCommand      : ${cmdName.name}\nCategory     : ${cmdName.category}\nDescription  : ${cmdName.description}\nUsage        : ${cmdName.usage}\nParameter(s) : ${cmdName.param}\nAliases      : ${cmdName.aliases}\nCooldown     : ${cdDura} second${cdDura == 1 ? "" : "(s)"}\n\`\`\``);
+    }
   } // END TRY
   catch (err) { // BEGIN CATCH
     const embed = new Discord.RichEmbed()
