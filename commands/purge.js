@@ -24,7 +24,7 @@ exports.help = {
   name: "purge",
   category: "Administrator",
   description: "Delete messages",
-  usage: "purge \`<amount of messages>\`",
+  usage: "purge <amount of messages>",
   param: "",
   aliases: "prune"
 };

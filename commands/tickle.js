@@ -42,7 +42,7 @@ exports.help = {
   name: "tickle",
   category: "Fun",
   description: "Tickle someone!",
-  usage: "tickle `[mention_user]` or `[name]`",
+  usage: "tickle [mention_user] or [name]",
   param: "",
   aliases: ""
 };

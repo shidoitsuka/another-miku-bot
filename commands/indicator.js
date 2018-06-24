@@ -12,8 +12,8 @@ exports.conf = {
 exports.help = {
   name: "indicator",
   category: "Misc.",
-  description: "I\'ll give you link for \`text-indicator\` that you\'re looking for.",
-  usage: "indicator \`<letter>\`",
+  description: "I\'ll give you link for text-indicator that you\'re looking for.",
+  usage: "indicator <letter>",
   param: "",
   aliases: "indi"
 };

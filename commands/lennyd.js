@@ -11,7 +11,7 @@ exports.conf = {
 exports.help = {
   name: "lennyd",
   category: "Fun",
-  description: "\`( ͡° ͜ʖ ͡°) u-ugh!\`\n*d stands for delete*",
+  description: "( ͡° ͜ʖ ͡°) u-ugh!\n*d stands for delete*",
   usage: "lennyd",
   param: "",
   aliases: ""

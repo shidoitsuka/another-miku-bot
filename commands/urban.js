@@ -46,7 +46,7 @@ exports.help = {
   name: "urban",
   category: "Misc.",
   description: "Define Your World.",
-  usage: "urban \`[search_query]\`",
+  usage: "urban [search_query]",
   param: "",
   aliases: "define"
 };

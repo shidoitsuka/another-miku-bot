@@ -9,10 +9,13 @@
   "author": "brian",
   "license": "MIT",
   "dependencies": {
+    "anime-scraper": "^3.0.0",
+    "aniscrape": "^0.1.1",
     "canvas": "^1.6.11",
     "canvas-constructor": "^1.0.1",
     "cat-names": "^1.0.2",
     "chalk": "^2.4.1",
+    "cleverbot.io": "^1.0.4",
     "discord.js": "^11.3.2",
     "dog-names": "^1.0.2",
     "enmap": "^2.2.1",
@@ -22,8 +25,9 @@
     "google-images": "^2.1.0",
     "mathjs": "^4.2.1",
     "nekos.life": "^1.0.5",
-    "npm": "^6.0.1",
-    "relevant-urban": "^2.0.0"
+    "npm": "^6.1.0",
+    "relevant-urban": "^2.0.0",
+    "synonyms": "^1.0.1"
   },
   "devDependencies": {},
   "repository": {

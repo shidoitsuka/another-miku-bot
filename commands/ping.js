@@ -1,6 +1,14 @@
 exports.run = (bot, message, args) => {
-  message.channel.send("Pong!").then(m => {
-    m.edit(`:ping_pong: | Took me \`${m.createdTimestamp - message.createdTimestamp}ms\` to read & edit the message!`)
+  message.channel.send("**Pinging...**").then(m => {
+    let time = m.createdTimestamp - message.createdTimestamp;
+    const answers = [
+      `Well done **${message.author.username}**-kun. You just wasted \`${time}ms\` of my time!`,
+      `_angry pinging noises_ \`${time}ms\``,
+      `B-b-baka! It\'s \`${time}ms\`.\nHappy now?!`,
+      `You\'ve made me \`${time}\` older by just asking.`,
+      `:ping_pong: | \`${time}ms\` to read & edit this message!`
+    ].random();
+    m.edit(answers);
   });
 }
 

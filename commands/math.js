@@ -52,7 +52,7 @@ exports.help = {
   name: "math",
   category: "Misc.",
   description: "Let me do complex math for you!",
-  usage: "math \`<expression>\`",
+  usage: "math <expression>",
   param: "",
   aliases: "mafs, maffs, maff"
 };

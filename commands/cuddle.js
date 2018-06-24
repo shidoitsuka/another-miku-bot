@@ -43,7 +43,7 @@ exports.help = {
   name: "cuddle",
   category: "Fun",
   description: "Cuddle someone!",
-  usage: "cuddle \`<mention user>\` or \`<name>\`",
-  param: "\`<mention user>\` or \`<name>\` are optional.",
+  usage: "cuddle [mention_user] or [name]",
+  param: "",
   aliases: ""
 };

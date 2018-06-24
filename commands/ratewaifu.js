@@ -38,7 +38,7 @@ exports.help = {
   name: "ratewaifu",
   category: "Fun",
   description: "I believe i have been programmed to rate you accurately.",
-  usage: "ratewaifu \`<mention user>\` or \`<name>\`",
+  usage: "ratewaifu <mention_user> or <name>",
   param: "",
   aliases: ""
 };

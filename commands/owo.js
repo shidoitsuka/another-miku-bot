@@ -24,7 +24,7 @@ exports.help = {
   name: "owo",
   category: "Fun",
   description: "OwO What\'s this?\nEnygwish Twanyswatow!",
-  usage: "owo \`<text>\`",
+  usage: "owo <text>",
   param: "",
   aliases: ""
 };

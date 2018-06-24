@@ -36,8 +36,8 @@ exports.conf = {
 exports.help = {
   name: "bigtext",
   category: "Fun",
-  description: "Senpai doesn\'t notice you? Use \`Bigtext\`!",
-  usage: "bigtext \`<text>\`",
+  description: "Senpai doesn\'t notice you? Use Bigtext!",
+  usage: "bigtext <text>",
   param: "",
   aliases: "btext"
 };

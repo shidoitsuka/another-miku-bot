@@ -42,7 +42,7 @@ exports.help = {
   name: "tag",
   category: "Util.",
   description: "",
-  usage: "tag \`[tag_name]\`",
+  usage: "tag [tag_name]",
   param: "",
   aliases: "tags"
 };
