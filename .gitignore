@@ -5,7 +5,9 @@ node_modules
 *.old
 *.idea
 /commands/test.js
-/commands/sleeping.js
+/util/goodbye.json
+/util/totalCmd.json
+/util/welcome.json
 
 #sensitive
 config.json
@@ -24,3 +26,14 @@ package-lock.json
 *.deb
 *.tar.gz
 *.sh
+
+#kinda buggy
+/commands/batslap.js
+/commands/brain.js
+/commands/bulge.js
+/commands/canvas.js
+/commands/changemymind.js
+/commands/color.js
+/commands/rps.js
+/commands/set.js
+/commands/suggest.js
