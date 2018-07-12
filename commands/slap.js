@@ -43,7 +43,7 @@ exports.help = {
   name: "slap",
   category: "Fun",
   description: "Slap someone!",
-  usage: "slap [mention_user] or [name]",
+  usage: "slap [mention-user] or [name]",
   param: "",
   aliases: ""
 };

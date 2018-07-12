@@ -6,7 +6,6 @@ const rates = [
 const config = require('../config.json');
 
 exports.run = (bot, message, args) => {
-  var msg = message.content.slice();
   if (!args[0]) {
     message.channel.send("I can't rate *nobody* :confused:");
   }
@@ -20,7 +19,7 @@ exports.run = (bot, message, args) => {
   } else if (args[0]) {
     const waifus = rates.random();
     if (message.content.includes(config.ownerID) || message.content.includes(config.botID)) return;
-    if (args[0] == message.author.id) {
+    if (args[0] == message.author.id || args[0] == "me") {
       message.channel.send(`Sure, lemme give you a ${waifus}.`);
     } else {
       message.channel.send(`Sure **${message.author.username}**. I'll give${message.content.substr(10)} a ${waifus}`);
@@ -38,7 +37,7 @@ exports.help = {
   name: "ratewaifu",
   category: "Fun",
   description: "I believe i have been programmed to rate you accurately.",
-  usage: "ratewaifu <mention_user> or <name>",
+  usage: "ratewaifu <mention-user> or <name>",
   param: "",
   aliases: ""
 };

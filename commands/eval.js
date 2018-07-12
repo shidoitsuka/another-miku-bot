@@ -7,11 +7,19 @@ exports.run = async (bot, message, args) => {
   });
   const pending = await message.channel.send("**Evaluating...**");
   const reply = await pending;
+  let coded;
   try {
-    const coded = eval(code);
-    reply.edit(coded, {
-      code: 'js'
-    });
+    if (message.content.includes("await")) {
+      coded = eval(`async ev() => { ${code} }`);
+      reply.edit(ev(), {
+        code: 'js'
+      });
+    } else {
+      coded = eval(code);
+      reply.edit(coded, {
+        code: 'js'
+      });
+    }
   } catch (e) {
     reply.edit(e, {
       code: 'js'

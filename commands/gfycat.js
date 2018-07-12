@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const config = require('../config.json');
 const Gfycat = require('gfycat-sdk');
+const config = require('../config.json');
 var gfycat = new Gfycat({
   clientId: config.client_id,
   clientSecret: config.client_secret
@@ -24,7 +24,7 @@ exports.run = async (bot, message, args) => {
       .setImage(`${data.gfycats[0].gifUrl}`);
     reply.edit({
       embed
-    });
+    })
   }).catch(e => reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**.`));
 };
 exports.conf = {
@@ -36,7 +36,7 @@ exports.help = {
   name: "gfycat",
   category: "Misc.",
   description: "Search GIF Images using gfycat API.",
-  usage: "gfycat <search_query>",
+  usage: "gfycat <search-query>",
   param: "",
   aliases: "gfy, gfys"
 };

@@ -3,10 +3,8 @@ const fs = require('fs');
 let file = JSON.parse(fs.readFileSync("./commands/f.json", "utf8"));
 
 exports.run = (bot, message, args) => {
-  if (!file) {
-    file = {
-      total: 0
-    }
+  if (!file) file = {
+    total: 0
   }
   const total = file.total + 1;
   file = {
@@ -16,7 +14,7 @@ exports.run = (bot, message, args) => {
     if (err) console.log(err.stack)
   });
   const embed = new Discord.RichEmbed()
-    .setDescription(`${message.author.username} has paid their respect!`)
+    .setDescription(`**${message.author.username}** has paid their respect!`)
     .setColor(0x1a9ca8)
     .setFooter(`Total respect paid: ${file.total}.`);
   message.channel.send({
@@ -26,7 +24,7 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: [],
-  cooldown: 7
+  cooldown: 10
 };
 
 exports.help = {

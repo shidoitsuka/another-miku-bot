@@ -32,7 +32,7 @@ exports.help = {
   name: "avatar",
   category: "Util.",
   description: "Display someone\'s avatar.",
-  usage: "avatar [mention_user]",
+  usage: "avatar [mention-user]",
   param: "",
   aliases: "pfp"
 };
