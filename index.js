@@ -10,6 +10,8 @@ const EnmapLevel = require('enmap-level');
 const nekoclient = require('nekos.life');
 const chalk = require('chalk');
 const neko = new nekoclient();
+// let welcome = fs.readFileSync("./util/welcome.json", "utf8");
+// let goodbye = fs.readFileSync("./util/goodbye.json", "utf8");
 require('./util/eventLoader.js')(bot);
 require('./modules/function.js')(bot);
 
@@ -41,13 +43,9 @@ bot.settings = new Enmap({
   })
 });
 
-bot.on('warn', (e) => {
-  console.log(chalk.bgYellow(e));
-});
+bot.on('guildMemberAdd', member => {});
 
-bot.on('error', (e) => {
-  console.log(chalk.bgRed(e));
-});
+bot.on('guildMemberRemove', member => {});
 
 // INITIALIZATION
 const init = async () => {

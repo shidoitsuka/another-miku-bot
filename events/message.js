@@ -7,10 +7,11 @@ const {
 } = require('util');
 const readdir = promisify(fs.readdir);
 let talkedRecently = JSON.parse(fs.readFileSync('./events/cooldowns.json', 'utf8'));
+let totalCommands = JSON.parse(fs.readFileSync('./util/totalCmd.json', 'utf8'));
 
 // SPEAKS
 const emojis = ["(#^.^#)", "(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "(✿ꈍ。 ꈍ✿)", "(ؑ‷ᵕؑ̇‷)◞✧", "(灬ºωº灬)♡"];
-const hello = ["H-hello", "H-hi", "M-my prefix is \`x\`", "Miku desu!", "Hi!", "https://tinyurl.com/MikuOwO"];
+const hello = ["H-hello", "H-hi", "M-my prefix is \`x\`", "Miku desu!", "Hi!", "<:\MikuOwO:461430503422296064>"];
 const badWords = ["fuck", "shit", "bitch", "cunt"];
 
 // START
@@ -89,6 +90,16 @@ module.exports = async function(message) {
         if (talkedRecently[message.author.id].theCmd == undefined) throw Error();
       } catch (e) {
         cmd.run(bot, message, args); // run the command
+        if (!totalCommands) totalCommands = {
+          total: 0
+        }
+        const total = totalCommands.total + 1;
+        totalCommands = {
+          total: total
+        }
+        fs.writeFileSync('./util/totalCmd.json', JSON.stringify(totalCommands), (err) => {
+          if (err) console.log(err.stack)
+        });
         if (!talkedRecently[message.author.id]) talkedRecently[message.author.id] = []; // if talkedRecently does not contain userID, define it
         talkedRecently[message.author.id].push(theCmd); // then push the command used into it
         setTimeout(() => {
