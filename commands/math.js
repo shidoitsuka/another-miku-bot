@@ -29,7 +29,6 @@ exports.run = (bot, message, args) => {
       message.channel.send({
         embed
       });
-      delete require.cache[require.resolve('./math.js')];
     }
   } catch (err) {
     const embed = new Discord.RichEmbed()

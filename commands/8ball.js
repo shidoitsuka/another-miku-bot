@@ -33,8 +33,6 @@ exports.run = async (bot, message, args) => {
   } else {
     message.channel.send(ebans);
   }
-  // delete cache
-  delete require.cache[require.resolve('./8ball.js')];
 };
 
 exports.conf = {
