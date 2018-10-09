@@ -14,7 +14,7 @@ exports.conf = {
 
 exports.help = {
   name: "showcode",
-  category: "Misc.",
+  category: "Miscellaneous",
   description: "",
   usage: "showcode",
   param: "",

@@ -50,7 +50,7 @@ exports.conf = {
 
 exports.help = {
   name: "math",
-  category: "Misc.",
+  category: "Miscellaneous",
   description: "Let me do complex math for you!",
   usage: "math <expression>",
   param: "",

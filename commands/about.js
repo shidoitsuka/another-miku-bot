@@ -45,7 +45,7 @@ exports.conf = {
 
 exports.help = {
   name: "about",
-  category: "Util.",
+  category: "Utility",
   description: "Print out my information such as modules, version, etc.",
   usage: "about",
   param: "",

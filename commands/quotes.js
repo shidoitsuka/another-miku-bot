@@ -22,7 +22,7 @@ exports.conf = {
 
 exports.help = {
   name: "quotes",
-  category: "Misc.",
+  category: "Miscellaneous",
   description: "Print out great quotes!",
   usage: "quotes [param]",
   param: "\-m  :  motivation",

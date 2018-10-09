@@ -34,7 +34,7 @@ exports.conf = {
 
 exports.help = {
   name: "gfycat",
-  category: "Misc.",
+  category: "Miscellaneous",
   description: "Search GIF Images using gfycat API.",
   usage: "gfycat <search-query>",
   param: "",

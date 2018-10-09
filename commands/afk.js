@@ -17,7 +17,7 @@ exports.conf = {
 
 exports.help = {
   name: "afk",
-  category: "Misc.",
+  category: "Miscellaneous",
   description: "Run this so that I can tell them you're not around.",
   usage: "afk",
   param: "",

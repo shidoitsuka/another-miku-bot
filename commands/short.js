@@ -26,7 +26,7 @@ exports.conf = {
 
 exports.help = {
   name: "short",
-  category: "Util.",
+  category: "Utility",
   description: "Give me your super-long-URL and I\'ll give you the short version of that.",
   usage: "short <url>",
   param: "",

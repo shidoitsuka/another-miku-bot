@@ -21,7 +21,7 @@ exports.conf = {
 
 exports.help = {
   name: "setwelcome",
-  category: "Util.",
+  category: "Administrator",
   description: "Set a welcome channel.",
   usage: "setwelcome #[channel-name]",
   param: "",
