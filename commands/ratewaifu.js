@@ -11,7 +11,7 @@ exports.run = (bot, message, args) => {
   }
   // if they rate owner
   if (message.content.includes(config.ownerID)) {
-    message.channel.send("I'd rate " + `<@${config.ownerID}>` + " a 11/10! :heart:");
+    message.channel.send(`I'd rate <@${config.ownerID}> a 11/10! :heart:`);
   }
   // if they rate miku
   if (message.content.includes(config.botID)) {
