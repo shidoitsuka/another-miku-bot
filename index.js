@@ -6,12 +6,10 @@ const {
 } = require('util');
 const readdir = promisify(fs.readdir);
 const Enmap = require('enmap');
-const EnmapLevel = require('enmap-level');
 const nekoclient = require('nekos.life');
 const chalk = require('chalk');
 const neko = new nekoclient();
-// let welcome = fs.readFileSync("./util/welcome.json", "utf8");
-// let goodbye = fs.readFileSync("./util/goodbye.json", "utf8");
+var talkedRecently = JSON.parse(fs.readFileSync('./assets/cooldowns.json', 'utf8'));
 require('./util/eventLoader.js')(bot);
 require('./modules/function.js')(bot);
 
@@ -37,15 +35,6 @@ bot.config = require('./config.json');
 bot.commands = new Enmap();
 bot.aliases = new Enmap();
 bot.cdTime = new Enmap();
-bot.settings = new Enmap({
-  provider: new EnmapLevel({
-    name: "settings"
-  })
-});
-
-bot.on('guildMemberAdd', member => {});
-
-bot.on('guildMemberRemove', member => {});
 
 // INITIALIZATION
 const init = async () => {
@@ -61,6 +50,11 @@ const init = async () => {
     if (response) console.log(response);
   });
 };
+
+talkedRecently = {};
+fs.writeFile('./assets/cooldowns.json', JSON.stringify(talkedRecently), (err) => {
+  if (err) console.log(err);
+}); // CLEAN USER COOLDOWNS
 
 exports.reload = reload;
 init();
