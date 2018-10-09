@@ -18,7 +18,7 @@ This bot is a just4fun bot, which does not meant to do administrator-side stuffs
 - Much much more in future!
 
 ### Modules
-You need to install these modules to run **Miku**, especially [discord.js](https://www.npmjs.com/package/discord.js) library.
+Used Libraries:
 
 | Modules | Link |
 | ------ | ------ |
@@ -39,13 +39,14 @@ You need to install these modules to run **Miku**, especially [discord.js](https
 
 >Note that not all packages are important. But I'd recommend you to install everything to run all commands smoothly.
 
-### Usage
+### Usage & Modules
 
 You need [Node.js](https://nodejs.org/) v8+ to run the bot.
-After installation & downloading this repository (including the modules) :
 
 Head to the bot directory and then simply run
 ```sh
+$ npm i -S
+# and then
 $ node index.js
 ```
 And you are good to go!
