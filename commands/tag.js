@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
-const tags = require('./tag.json');
 const fs = require('fs');
-let tagFile = JSON.parse(fs.readFileSync("./commands/tag.json", "utf8"));
+let tagFile = JSON.parse(fs.readFileSync("./assets/tag.json", "utf8"));
 
 exports.run = async (bot, message, args) => {
+	const tags = require('../assets/tag.json');
   const embed = new Discord.RichEmbed()
     .setAuthor("Available Tags")
     .setColor(0xf5ab35)
@@ -18,7 +18,7 @@ exports.run = async (bot, message, args) => {
     args.shift();
     const toBeAdded = args.join(" ");
     tagFile[tagName] = toBeAdded;
-    fs.writeFile('./commands/tag.json', JSON.stringify(tagFile), (err) => {
+    fs.writeFile('./assets/tag.json', JSON.stringify(tagFile), (err) => {
       if (err) console.log(err);
     });
     return;

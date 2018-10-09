@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-let file = JSON.parse(fs.readFileSync("./commands/f.json", "utf8"));
+let file = JSON.parse(fs.readFileSync("./assets/f.json", "utf8"));
 
 exports.run = (bot, message, args) => {
   if (!file) file = {
@@ -10,7 +10,7 @@ exports.run = (bot, message, args) => {
   file = {
     total: total
   }
-  fs.writeFile('./commands/f.json', JSON.stringify(file), (err) => {
+  fs.writeFile('./assets/f.json', JSON.stringify(file), (err) => {
     if (err) console.log(err.stack)
   });
   const embed = new Discord.RichEmbed()

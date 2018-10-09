@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const package = require('../package.json');
 const fs = require('fs');
-const subtotal = JSON.parse(fs.readFileSync('./util/totalCmd.json'));
-const total = subtotal.total;
 
 exports.run = (bot, message, args) => {
+  const subtotal = JSON.parse(fs.readFileSync('./assets/totalCmd.json'));
+  const total = subtotal.total;
   const cpu = Math.round(process.cpuUsage().system / 1024 / 1024 * 100) + "%";
   const memory = Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + " MB";
   const embed = new Discord.RichEmbed()
@@ -31,7 +31,7 @@ exports.run = (bot, message, args) => {
     .addField("CPU Usage:", cpu, true)
     .addField("Memory Usage:", memory, true)
     .addField("Invite link:", "[Click Me!](https://discordapp.com/oauth2/authorize/?permissions=2080898303&scope=bot&client_id=364242246314360843)", true)
-    .addField("Fan server is here!!", "[Click Me!](https://discord.gg/EWb8tKu)", true)
+    .addField("Fan server is here!!", "[Click Me!](https://discord.gg/uxseTvy)", true)
     .setFooter(`Click title for my source-code | v${package.version}-beta`);
   message.channel.send({
     embed

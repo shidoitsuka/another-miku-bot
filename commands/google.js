@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
+const config = require('../config.json');
 const GoogleImages = require('google-images');
-const client = new GoogleImages(process.env.GID, process.env.GAPI);
+const client = new GoogleImages(config.gSEID, config.googleAPI);
 
 exports.run = async (bot, message, args) => {
   if (!args[0]) return message.channel.send(":question:");

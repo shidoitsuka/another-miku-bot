@@ -1,7 +1,5 @@
 const Discord = require('discord.js');
-const lewdLink = require('./lewd.json');
-const nekoclient = require('nekos.life');
-const neko = new nekoclient();
+const lewdLink = require('../assets/lewd.json');
 
 exports.run = async (bot, message, args) => {
   const image = lewdLink.random();

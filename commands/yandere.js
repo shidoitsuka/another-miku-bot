@@ -14,13 +14,12 @@ const sayings = [
 
 exports.run = (bot, message, args) => {
   const answer = sayings.random();
-  message.channel.send(answer)
-    .then(delete require.cache[require.resolve('./yandere.js')]);
+  message.channel.send(answer);
 };
 
 exports.conf = {
   aliases: [],
-  cooldown: 3
+  cooldown: 1.5
 };
 
 exports.help = {
