@@ -8,7 +8,7 @@ module.exports = (bot, message) => {
   };
 
   // CHECK ARRAY VALUES ARE **ALL** THE SAME
-  same = arr => arr.every(v => v === arr[0]);
+  same = arr => arr.every(x => x.toLowerCase() === arr[0].toLowerCase());
 
   // REMOVE BLANK VALUES IN ARRAY
   Array.prototype.blank = function() {
