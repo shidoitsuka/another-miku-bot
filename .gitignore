@@ -1,25 +1,5 @@
 #modules
 node_modules
-
-#my-ideas
-*.old
-*.idea
-/commands/test.js
-/util/goodbye.json
-/util/totalCmd.json
-/util/welcome.json
-
-#sensitive
-config.json
-package-lock.json
-/commands/*.json
-/events/cooldowns.json
-/data/
-/assets
-
-#backup/old-stuffs/etc
-/commands/commands-bak
-/images/
 *.rar
 
 #linux-stuff
@@ -27,13 +7,13 @@ package-lock.json
 *.tar.gz
 *.sh
 
-#kinda buggy
-/commands/batslap.js
-/commands/brain.js
-/commands/bulge.js
-/commands/canvas.js
-/commands/changemymind.js
-/commands/color.js
-/commands/rps.js
-/commands/set.js
-/commands/suggest.js
+#my-ideas
+*.old
+*.idea
+
+#sensitive
+config.json
+package-lock.json
+/data/
+/assets/*.json
+/images/
