@@ -9,13 +9,9 @@ const readdir = promisify(fs.readdir);
 let talkedRecently = JSON.parse(fs.readFileSync('./assets/cooldowns.json', 'utf8'));
 let totalCommands = JSON.parse(fs.readFileSync('./assets/totalCmd.json', 'utf8'));
 
-// SPEAKS
-const emojis = ["(#^.^#)", "(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "(✿ꈍ。 ꈍ✿)", "(ؑ‷ᵕؑ̇‷)◞✧", "(灬ºωº灬)♡"];
-const hello = ["H-hello", "H-hi", "M-my prefix is \`x\`", "Miku desu!", "Hi!" /*, "<:\MikuOwO:461430503422296064>"*/ ];
-const badWords = ["fuck", "shit", "bitch", "cunt"];
-
 // START
 module.exports = async function(message) {
+  if (message.channel.type == "dm") return;
   /**
    * To separate command and arguments
    * <prefix>example help
@@ -26,29 +22,85 @@ module.exports = async function(message) {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
+  // PREFIX DATA
+  let prefixes = JSON.parse(fs.readFileSync('./assets/prefixes.json', 'utf8'));
+  // SPEAKS
+  const emojis = ["(#^ω^#)", "(✿ꈍ。 ꈍ✿)", "(ؑ‷ᵕؑ̇‷)◞✧", "(灬ºωº灬)♡", "(UωU)", "(OωO)", "(O///ω///O)", "(U///ω///U)"],
+    hello = [`M-my prefix is \`${prefixes[message.guild.id]}\``, "Miku desu!", "Hi!"],
+    badWords = ["fuck", "shit", "bitch", "cunt"],
+    afkBack = [`Welcome Back **${message.author.username}**!`,
+      `Hi again! I\'ve turned off your AFK mode, **${message.author.username}**`,
+      `Okaerinasai, **${message.author.username}**! (UωU)`,
+      `I-I-It\'s not like I\'m happy because you\'re back, b-b-baka **${message.author.username}**!`,
+      `I-It\'s not like I wanted to greet you because you just came back, baka!`
+    ].random(),
+    afkSaid = [
+      "They said: ",
+      "If I remember it correctly, they said: ",
+      "They told me to say: "
+    ].random();
+
+  // DEFAULT PREFIX
+  if (!prefixes[message.guild.id]) {
+    prefixes[message.guild.id] = config.prefix;
+    fs.writeFile('./assets/prefixes.json', JSON.stringify(prefixes), (err) => {
+      if (err) console.log(err);
+    });
+  }
+
   // AFK DATA
   let AFKdata = JSON.parse(fs.readFileSync('./assets/afk.json', 'utf8'));
 
   // COME BACK FROM AFK
-  if (AFKdata.includes(message.author.id) && command !== "afk") {
-    let AFKindex = AFKdata.indexOf(message.author.id);
-    AFKdata.splice(AFKindex, 1);
-    message.channel.send(`Welcome back **${message.author.username}**!`);
+  if (message.author.id in AFKdata && command !== "afk") {
+    delete AFKdata[message.author.id];
     fs.writeFile('./assets/afk.json', JSON.stringify(AFKdata), (err) => {
-      if (err) console.log(err.stack)
+      if (err) console.log(err);
+    });
+    embed.setAuthor("User AFK");
+    embed.setColor("#1a9ca8");
+    embed.setDescription(afkBack);
+    embed.setFooter("You are no longer in AFK mode.");
+    message.channel.send({
+      embed
     });
   }
 
   // AFK - MENTIONED
-  if (AFKdata.some(users => message.content.includes(`<@${users}>`)) || AFKdata.some(users => message.content.includes(`<@!${users}>`))) {
-    message.channel.send(`**${message.author.username}**, they are **AFK** at the moment, please try again later!`);
+  // VARIABLES
+  /*
+   * what i'm trying to do is
+   * check if the message contains mentioned users
+   * then check if the mentioned users itself is "in the AFKdata"
+   * this AFKcheck function will return boolean
+   */
+  var AFKcheck = user => {
+    return user.id in AFKdata;
+  }
+
+  // this one will filter the mentioned users
+  const AFKandMentioned = message.mentions.users.filter(AFKcheck);
+  // WHEN SOMEONE IS MENTIONED AND THE MENTIONED IS AFK (TRUE)
+  if (AFKandMentioned.size) {
+    // get the mentioned & afk user's reason
+    var reason = AFKandMentioned.map(user => {
+      return AFKdata[user.id];
+    });
+    embed.setAuthor("User AFK");
+    embed.setColor("#1a9ca8");
+    embed.setDescription(`${afkSaid}\n\`\`\`${reason}\`\`\``);
+    embed.setFooter(`${message.author.username}, they are AFK at the moment, please try again later!.`)
+    message.channel.send({
+      embed
+    });
   }
 
   // BAD WORDS DETECTOR
-  if (badWords.some(word =>
-      message.content.toLowerCase().includes(word))) {
-    message.channel.send(`**${message.author.username}**, Watch your language.`).then(response => response.delete(1000));
-  }
+  // if (badWords.some(word =>
+  //     message.content.toLowerCase().includes(word))) {
+  //   // if (message.guild.id == "332144661751922688") return;
+  //   message.channel.send(`**${message.author.username}**, Watch your language.`).then(response => response.delete(1000));
+  // }
 
   // MENTION MIKU
   if (message.content.startsWith(`<@${config.botID}>`) || message.content.startsWith(`<@!${config.botID}>`)) {
@@ -57,8 +109,8 @@ module.exports = async function(message) {
     message.channel.send(`${theHi} ${theEmoji}`);
   }
 
-  // IF (!PREFIX) || BOT
-  if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+  // IF NOT STARTED WITH PREFIX OR ITS A BOT, RETURN
+  if (!message.content.startsWith(prefixes[message.guild.id]) || message.author.bot) return;
 
   let bot = message.client;
   let cmd;
