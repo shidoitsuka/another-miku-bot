@@ -21,8 +21,8 @@ exports.run = (bot, message, args) => {
           .setAuthor("Miku -- Help", "https://tinyurl.com/MikuLogo")
           .setColor(0x0776b7)
           .addField("Description:", "`<this-is-required>` `[this-is-optional]`\nUse \`NSFW Channel\` to see available NSFW commands.", true)
-          .addField("Administrator", "`purge` `setwelcome`", true)
-          .addField("Fun", "`8ball` `anime` `batslap` `bigtext` `bulge` `brain` `catnames` `changemymind` `chat` `cuddle` `dognames` `f` `flip` `goodboi`\
+          .addField("Administrator", "`purge` `set`", true)
+          .addField("Fun", "`8ball` `anime` `batslap` `bigtext` `bulge` `brain` `catnames` `changemymind` `chat` `cuddle` `dognames` `excuseme` `f` `flip` `goodboi`\
   `hug` `kiss` `lenny` `lennyd` `lewd` `match` `miku` `myheart` `omg` `owo` `pat` `poke` `ratewaifu` `say` `slap` `suggest`\
   `thonk` `tickle` `tts` `which` `yandere` `yesno`", true)
           .addField("Miscellaneous", "`afk` `gfycat` `google` `indicator` `math` `quotes` `short` `showcode` `urban`", true)
