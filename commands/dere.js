@@ -31,16 +31,16 @@
 //   });
 // }; // END exports
 //
-// exports.conf = {
-//   aliases: [],
-//   cooldown: 5
-// };
-//
-// exports.help = {
-//   name: "dere",
-//   category: "Fun",
-//   description: "Are you a tsundere or yandere? UwU",
-//   usage: "dere",
-//   param: "",
-//   aliases: ""
-// };
+exports.conf = {
+  aliases: [],
+  cooldown: 5
+};
+
+exports.help = {
+  name: "dere",
+  category: "Fun",
+  description: "Are you a tsundere or yandere? UwU",
+  usage: "dere",
+  param: "",
+  aliases: ""
+};
