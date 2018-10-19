@@ -1,8 +1,8 @@
 const fs = require('fs');
 // if (!message.member.permissions.has("MANAGE_GUILD")) return message.channel.send("You don't have permission to run this!");
 const parameters = [
-  "\n-prefix      : set guild\'s custom prefix. (use \"default\" to use miku\'s default prefix)",
-  "-welcome     : set guild\'s greeting channel. (use \"off\" to turn off the feature)",
+  "\n-prefix     : set guild\'s custom prefix. (use \"default\" to use miku\'s default prefix)",
+  "-welcome    : set guild\'s greeting channel. (use \"off\" to turn off the feature)",
 ].join("\n");
 
 exports.run = async (bot, message, args) => {
@@ -51,7 +51,6 @@ exports.run = async (bot, message, args) => {
       // DEFAULT VALUE
     default:
       message.channel.send("Invalid Parameters!");
-      break;
   }
 };
 
