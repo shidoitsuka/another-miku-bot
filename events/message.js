@@ -110,7 +110,7 @@ module.exports = async function(message) {
   }
 
   // IF NOT STARTED WITH PREFIX OR ITS A BOT, RETURN
-  if (!message.content.startsWith(prefixes[message.guild.id]) || message.author.bot) return;
+  if ((!message.content.startsWith(prefixes[message.guild.id]) && !message.content.startsWith(config.prefix)) || message.author.bot) return;
 
   let bot = message.client;
   let cmd;

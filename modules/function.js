@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+const fs = require('fs');
 
 module.exports = (bot, message) => {
 
@@ -29,6 +30,7 @@ module.exports = (bot, message) => {
       console.log(chalk.bgWhite.black(`Loaded ${commandName}`));
       return false;
     } catch (e) {
+      console.log(e.stack);
       console.log(chalk.bgRed(`Unable to load command ${commandName}: ${e}`));
     }
   };
