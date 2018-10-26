@@ -3,7 +3,7 @@ const fs = require('fs');
 let tagFile = JSON.parse(fs.readFileSync("./assets/tag.json", "utf8"));
 
 exports.run = async (bot, message, args) => {
-  const tags = require('../assets/tag.json');
+  const tags = require('../../assets/tag.json');
   const embed = new Discord.RichEmbed()
     .setAuthor("Available Tags")
     .setColor(0xf5ab35)
