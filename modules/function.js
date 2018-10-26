@@ -23,6 +23,7 @@ module.exports = (bot) => {
       // walk through the sub folders using walker module
       const folder = walker(`./commands/`)
         .on('file', (file) => {
+          if (!file.endsWith(".js")) return;
           const props = require(`../${file}`);
           if (props.init) {
             props.init(bot);
