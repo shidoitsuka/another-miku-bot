@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const quotes = require("../assets/quotes.json"); // the quotes
+const quotes = require("../../assets/quotes.json"); // the quotes
 
 exports.run = (bot, message, args) => {
   const theAnswer = quotes["random"].random();

@@ -30,7 +30,6 @@ exports.run = async (bot, message, args) => {
     .then(m => m.edit({
       embed
     }))
-    .then(delete require.cache[require.resolve('./cuddle.js')])
     .catch(err => console.log(err.stack));
 }; // END exports
 
@@ -43,7 +42,7 @@ exports.help = {
   name: "cuddle",
   category: "Fun",
   description: "Cuddle someone!",
-  usage: "cuddle [mention-user] or [name]",
+  usage: "cuddle <mention-user> or <name>",
   param: "",
   aliases: ""
 };

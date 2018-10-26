@@ -30,7 +30,6 @@ exports.run = async (bot, message, args) => {
     .then(m => m.edit({
       embed
     }))
-    .then(delete require.cache[require.resolve('./pat.js')])
     .catch(err => console.log(err.stack));
 }; // END exports
 
@@ -43,7 +42,7 @@ exports.help = {
   name: "pat",
   category: "Fun",
   description: "Pat someone!",
-  usage: "pat [mention-user] or [name]",
+  usage: "pat <mention-user> or <name>",
   param: "",
   aliases: ""
 };

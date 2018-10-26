@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('../config.json');
+const config = require('../../config.json');
 const GoogleImages = require('google-images');
 const client = new GoogleImages(config.gSEID, config.googleAPI);
 

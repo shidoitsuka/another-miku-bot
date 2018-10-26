@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const lewdLink = require('../assets/lewd.json');
+const lewdLink = require('../../assets/lewd.json');
 
 exports.run = async (bot, message, args) => {
   const image = lewdLink.random();
@@ -12,7 +12,6 @@ exports.run = async (bot, message, args) => {
   message.channel.send("**Loading Image...**").then(m => m.edit({
     embed
   }));
-  delete require.cache[require.resolve('./lewd.js')];
 };
 
 exports.conf = {

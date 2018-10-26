@@ -2,18 +2,17 @@ const Discord = require('discord.js');
 const nekoclient = require('nekos.life');
 const neko = new nekoclient();
 
+// START-MAIN
 exports.run = async (bot, message, args) => {
-  // Words to be answered
   const words = [
-    `${message.author.username} is kissing **${args[0]}** >////<`,
-    `Look at ${message.author.username} and **${args[0]}**! O////O`,
-    `How cute, ${message.author.username} is kissing **${args[0]}**!`
+    `${message.author.username} is feeding **${args[0]}**!`,
+    `${message.author.username} : Here, you can have it!`
   ];
   // VARIABLES
   const wordAnswer = words.random(),
-    answers = await neko.getSFWKiss(),
+    answers = await neko.getSFWFeed(),
     idkI = "https://tinyurl.com/MikuIDK",
-    idkD = `**${message.author.username}** trying to kiss themselves,\nI wonder how...`;
+    idkD = `**${message.author.username}** trying to feed themselves,\nI wonder how...`;
   let description, image;
 
   // STATEMENT
@@ -21,7 +20,7 @@ exports.run = async (bot, message, args) => {
 
   // BEGIN
   const embed = new Discord.RichEmbed()
-    .setAuthor("Miku -- Kiss", "", `${image}`)
+    .setAuthor("Miku -- Feed", "", `${image}`)
     .setColor(0x1a9ca8)
     .setDescription(description)
     .setImage(`${image}`)
@@ -30,20 +29,19 @@ exports.run = async (bot, message, args) => {
     .then(m => m.edit({
       embed
     }))
-    .then(delete require.cache[require.resolve('./kiss.js')])
     .catch(err => console.log(err.stack));
-}; // END exports
+};
 
 exports.conf = {
-  aliases: ["kissu"],
+  aliases: [],
   cooldown: 6
 };
 
 exports.help = {
-  name: "kiss",
+  name: "feed",
   category: "Fun",
-  description: "Kiss someone!",
-  usage: "kiss [mention-user] or [name]",
+  description: "Feed your senpai!",
+  usage: "feed <mention-user> or <name>",
   param: "",
-  aliases: "kissu"
+  aliases: ""
 };

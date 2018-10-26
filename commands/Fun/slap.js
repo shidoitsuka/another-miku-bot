@@ -2,17 +2,18 @@ const Discord = require('discord.js');
 const nekoclient = require('nekos.life');
 const neko = new nekoclient();
 
-// START-MAIN
 exports.run = async (bot, message, args) => {
+  // Words to be answered
   const words = [
-    `${message.author.username} is poking **${args[0]}**!`,
-    `Poke poke!`
+    `You deserve this, **${args[0]}**!`,
+    `......`,
+    `Bad **${args[0]}**!! >:C`
   ];
   // VARIABLES
   const wordAnswer = words.random(),
-    answers = await neko.getSFWPoke(),
+    answers = await neko.getSFWSlap(),
     idkI = "https://tinyurl.com/MikuIDK",
-    idkD = `**${message.author.username}** trying to poke themselves,\nI wonder how...`;
+    idkD = `**${message.author.username}** trying to slap themselves,\nI wonder why...`;
   let description, image;
 
   // STATEMENT
@@ -20,7 +21,7 @@ exports.run = async (bot, message, args) => {
 
   // BEGIN
   const embed = new Discord.RichEmbed()
-    .setAuthor("Miku -- Poke", "", `${image}`)
+    .setAuthor("Miku -- Slap", "", `${image}`)
     .setColor(0x1a9ca8)
     .setDescription(description)
     .setImage(`${image}`)
@@ -29,9 +30,8 @@ exports.run = async (bot, message, args) => {
     .then(m => m.edit({
       embed
     }))
-    .then(delete require.cache[require.resolve('./poke.js')])
     .catch(err => console.log(err.stack));
-};
+}; // END exports
 
 exports.conf = {
   aliases: [],
@@ -39,10 +39,10 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "poke",
+  name: "slap",
   category: "Fun",
-  description: "Poke your senpai!",
-  usage: "poke [mention-user] or [name]",
+  description: "Slap someone!",
+  usage: "slap <mention-user> or <name>",
   param: "",
   aliases: ""
 };

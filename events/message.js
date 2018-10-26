@@ -142,6 +142,13 @@ module.exports = async function(message) {
         `Cooling down UwU`,
         `Just a 'lil bit more, **${message.author.username}**`
       ].random();
+      const ran = `${message.author.tag}  ::  ${message.author.id}
+=====================================
+command ran : ${command}
+content     : ${args.join(" ")}
+guild name  : ${message.guild.name}
+guild ID    : ${message.guild.id}
+=====================================\n`;
       try {
         /** this will return error for the first time, because userID : 'command' is
          * not yet defined while no commands are on cooldown so i did some tricky stuff.
@@ -153,11 +160,10 @@ module.exports = async function(message) {
          **/
         if (talkedRecently[message.author.id].theCmd == undefined) throw Error();
       } catch (e) {
-        cmd.run(bot, message, args); // run the command
-        console.log(`${message.author.tag} just ran ${command} ${args.join(" ")}`);
-        if (!totalCommands) totalCommands = {
-          total: 0
-        }
+        // run the command
+        cmd.run(bot, message, args);
+        // log it
+        console.log(ran);
         const total = totalCommands.total + 1;
         totalCommands = {
           total: total

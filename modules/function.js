@@ -1,7 +1,8 @@
+const Discord = require('discord.js');
 const chalk = require('chalk');
-const fs = require('fs');
+const walker = require('walker');
 
-module.exports = (bot, message) => {
+module.exports = (bot) => {
 
   // RANDOM
   Array.prototype.random = function() {
@@ -19,28 +20,26 @@ module.exports = (bot, message) => {
   // LOAD COMMAND
   bot.loadCommand = (commandName) => {
     try {
-      const props = require(`../commands/${commandName}`);
-      if (props.init) {
-        props.init(bot);
-      }
-      bot.commands.set(props.help.name, props);
-      props.conf.aliases.forEach(alias => {
-        bot.aliases.set(alias, props.help.name);
-      });
+      // walk through the sub folders using walker module
+      const folder = walker(`./commands/`)
+        .on('file', (file) => {
+          const props = require(`../${file}`);
+          if (props.init) {
+            props.init(bot);
+          }
+          // set the command's name
+          bot.commands.set(props.help.name, props);
+          // set the command's cooldown
+          bot.cdTime.set(props, props.conf.cooldown * 1000);
+          // then the aliases
+          props.conf.aliases.forEach(alias => {
+            bot.aliases.set(alias, props.help.name);
+          });
+        });
       console.log(chalk.bgWhite.black(`Loaded ${commandName}`));
       return false;
     } catch (e) {
-      console.log(e.stack);
       console.log(chalk.bgRed(`Unable to load command ${commandName}: ${e}`));
-    }
-  };
-  bot.loadCooldown = (commandName) => {
-    try {
-      const theCmd = require(`../commands/${commandName}`);
-      bot.cdTime.set(theCmd, theCmd.conf.cooldown * 1000);
-      return false;
-    } catch (e) {
-      console.log(chalk.bgRed(`Unable to load command ${commandName}\'s cooldown: ${e}`));
     }
   };
 

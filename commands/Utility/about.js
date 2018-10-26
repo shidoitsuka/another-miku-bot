@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const package = require('../package.json');
+const package = require('../../package.json');
 const fs = require('fs');
 
 exports.run = (bot, message, args) => {

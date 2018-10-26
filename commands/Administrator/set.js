@@ -17,14 +17,15 @@ exports.run = async (bot, message, args) => {
   // SWITCH
   switch (args[0]) {
     case "-welcome":
-      if (args[1] == "off") {
+      if (args[1].toLowerCase() == "off") {
         delete welcomes[guildID];
         fs.writeFile('./assets/welcome.json', JSON.stringify(welcomes), (err) => {
           if (err) console.log(err);
         });
         message.channel.send("Turned off greeting!");
       } else {
-        welcomes[guildID] = channelID;
+        if (message.mentions.channels.first()) welcomes[guildID] = message.mentions.channels.first().id;
+        if (!message.mentions.channels.first()) welcomes[guildID] = channelID;
         fs.writeFile('./assets/welcome.json', JSON.stringify(welcomes), (err) => {
           if (err) console.log(err);
         });
@@ -32,7 +33,7 @@ exports.run = async (bot, message, args) => {
       }
       break;
     case "-prefix":
-      if (args[1] == "default" || args[1] == "x") {
+      if (args[1].toLowerCase() == "default" || args[1] == "x") {
         delete prefixes[guildID];
         fs.writeFile('./assets/prefixes.json', JSON.stringify(prefixes), (err) => {
           if (err) console.log(err);

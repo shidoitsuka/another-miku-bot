@@ -1,4 +1,4 @@
-const main = require('../index.js');
+const main = require('../../index.js');
 
 exports.run = (bot, message, args) => {
   if (message.author.id != '332424370272337923') return message.channel.send("Invalid Permission(s).");
