@@ -1,14 +1,9 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
-const {
-  promisify
-} = require('util');
-const readdir = promisify(fs.readdir);
 const Enmap = require('enmap');
-const nekoclient = require('nekos.life');
 const chalk = require('chalk');
-const neko = new nekoclient();
+const walker = require('walker');
 var talkedRecently = JSON.parse(fs.readFileSync('./assets/cooldowns.json', 'utf8'));
 require('./util/eventLoader.js')(bot);
 require('./modules/function.js')(bot);
@@ -38,23 +33,19 @@ bot.cdTime = new Enmap();
 
 // INITIALIZATION
 const init = async () => {
-  const cmdFiles = await readdir('./commands/');
-  cmdFiles.forEach(f => {
-    if (!f.endsWith('.js')) return;
-    let response = bot.loadCommand(f);
-    if (response) console.log(response);
-  });
-  cmdFiles.forEach(f => {
-    if (!f.endsWith('.js')) return;
-    let response = bot.loadCooldown(f);
-    if (response) console.log(response);
-  });
+  const folder = walker(`./commands/`)
+    .on('file', (file) => {
+      // if (!f.endsWith('.js')) return;
+      let response = bot.loadCommand(file);
+      if (response) console.log(response);
+    });
 };
 
+// CLEAN USER COOLDOWNS
 talkedRecently = {};
 fs.writeFile('./assets/cooldowns.json', JSON.stringify(talkedRecently), (err) => {
   if (err) console.log(err);
-}); // CLEAN USER COOLDOWNS
+});
 
 exports.reload = reload;
 init();
