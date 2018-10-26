@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const embed = new Discord.RichEmbed();
 const config = require('../config.json');
 const chalk = require('chalk');
 const fs = require('fs');
