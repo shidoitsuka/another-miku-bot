@@ -1,3 +1,4 @@
+// NOT YET READY
 exports.run = (bot, message, args) => {
   if (!args[0]) return message.channel.send("Invalid Format!");
   let fileSize, speed, eta;
