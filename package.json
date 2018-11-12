@@ -11,7 +11,7 @@
   "dependencies": {
     "anime-scraper": "^3.0.0",
     "aniscrape": "^0.1.1",
-    "canvas": "^2.0.1",
+    "canvas": "github:Automattic/node-canvas#92b192447e9b9ae98da0f801e4e34afdd1dc1ef8",
     "canvas-constructor": "^1.0.1",
     "cat-names": "^1.0.2",
     "chalk": "^2.4.1",
