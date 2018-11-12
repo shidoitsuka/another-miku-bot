@@ -19,7 +19,7 @@ exports.help = {
   name: "say",
   category: "Fun",
   description: "Too shy to say it? I\'ll do it for you!",
-  usage: "say <text>",
+  usage: "say [parameter] <text>",
   param: "-d  :  delete",
   aliases: "echo"
 };

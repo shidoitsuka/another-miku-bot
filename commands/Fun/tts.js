@@ -14,14 +14,16 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["speak"],
-  cooldown: 7
+  cooldown: 7,
+  botPermission: [],
+  userPermission: []
 };
 
 exports.help = {
   name: "tts",
   category: "Fun",
   description: "Too shy to say it? I\'ll do it for you, with voice! (OwO)",
-  usage: "tts <text>",
+  usage: "tts [parameter] <text>",
   param: "-d  :  delete",
   aliases: "speak"
 };
