@@ -7,14 +7,13 @@ exports.run = async (bot, message, args) => {
   });
   const pending = await message.channel.send("**Evaluating...**");
   const reply = await pending;
-  let coded;
   try {
-    coded = eval(code);
+    coded = await eval(code);
     reply.edit(coded, {
       code: 'js'
     }).catch(e => reply.edit(e.stack, {
       code: 'js'
-    }));;
+    }));
   } catch (e) {
     reply.edit(e.stack, {
       code: 'js'
@@ -26,7 +25,7 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["ev"],
-  cooldown: 1
+  cooldown: 0.5
 }
 
 exports.help = {

@@ -10,6 +10,7 @@ node_modules
 #my-ideas
 *.old
 *.idea
+test.js
 
 #sensitive
 config.json
@@ -17,3 +18,6 @@ package-lock.json
 /data/
 /assets/*.json
 /images/
+
+#misc
+/commands/canvas
