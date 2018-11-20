@@ -14,9 +14,8 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["speak"],
-  cooldown: 7,
-  botPermission: [],
-  userPermission: []
+  cooldown: 3,
+  guildOnly: true
 };
 
 exports.help = {

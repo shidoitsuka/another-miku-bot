@@ -28,13 +28,13 @@ exports.run = async (bot, message, args) => {
   message.channel.send("**Loading Image...**")
     .then(m => m.edit({
       embed
-    }))
-    .catch(err => console.log(err.stack));
+    }));
 };
 
 exports.conf = {
   aliases: [],
-  cooldown: 6
+  cooldown: 6,
+  guildOnly: true
 };
 
 exports.help = {

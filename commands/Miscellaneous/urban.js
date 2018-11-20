@@ -39,7 +39,8 @@ exports.run = async (bot, message, args) => {
 };
 exports.conf = {
   aliases: ["define"],
-  cooldown: 3
+  cooldown: 3,
+  guildOnly: false
 };
 
 exports.help = {

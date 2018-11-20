@@ -21,10 +21,12 @@ exports.run = async (bot, message, args) => {
       embed
     });
   }).catch(e => reply.edit(`❌ | Something went wrong. Please try again.`));
-}
+};
+
 exports.conf = {
   aliases: ["gs"],
-  cooldown: 3
+  cooldown: 3,
+  guildOnly: false
 }
 
 exports.help = {

@@ -30,7 +30,8 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["btext"],
-  cooldown: 5
+  cooldown: 5,
+  guildOnly: false
 };
 
 exports.help = {

@@ -19,7 +19,8 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["gneko", "nekog"],
-  cooldown: 2
+  cooldown: 2,
+  guildOnly: true
 }
 
 exports.help = {

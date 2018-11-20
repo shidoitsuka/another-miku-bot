@@ -16,7 +16,8 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["catname"],
-  cooldown: 4
+  cooldown: 4,
+  guildOnly: false
 };
 
 exports.help = {

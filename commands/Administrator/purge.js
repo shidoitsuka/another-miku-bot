@@ -1,4 +1,5 @@
 exports.run = async (bot, message, args) => {
+  if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("🔒 Sorry, you lack the **MANAGE_MESSAGES** permission.");
   const user = message.mentions.users.first();
   const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2]);
   if (!amount) return message.reply('Must specify an amount to delete!');
@@ -17,7 +18,8 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["prune"],
-  cooldown: 3
+  cooldown: 3,
+  guildOnly: true
 };
 
 exports.help = {

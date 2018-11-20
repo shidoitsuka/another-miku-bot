@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
 
-exports.run = (bot, message, args) => {
+exports.run = (bot, message, args, prefix) => {
   // variables
   const subFolders = fs.readdirSync('./commands/').filter(folders => folders != 'Owner');
   var cmdCategory = [],
@@ -18,10 +18,10 @@ exports.run = (bot, message, args) => {
         cmdCategory.splice(subFolders[i], 1);
       }
       embed.setAuthor("Miku -- Help", "http://tinyurl.com/ybabktzo");
-      embed.setColor(0x0776b7);
+      embed.setDescription(`Usage: \`${prefix}command\`\nDescription: \`<this-is-required>\` \`[this-is-optional]\`\nPlease use NSFW channel to run NSFW command(s).`);
       embed.setThumbnail("https://tinyurl.com/MikuHelp");
-      embed.setFooter("Use help <command name> for advanced help. (Including usage, aliases, etc.)\nPlease use NSFW channel to run NSFW command(s).");
-      embed.setDescription("Description: `<this-is-required>` `[this-is-optional]`.");
+      embed.setColor(0x0776b7);
+      embed.setFooter(`Use ${prefix}help <command name> for advanced help. (Including usage, aliases, etc.)`);
       message.channel.send({
         embed
       });
@@ -31,8 +31,8 @@ exports.run = (bot, message, args) => {
       if (bot.commands.has(cmd)) find = bot.commands.get(cmd);
       else if (bot.aliases.has(cmd)) find = bot.commands.get(bot.aliases.get(cmd));
       let cmdName = find.help;
-      let cdDura = find.conf.cooldown;
-      message.channel.send(`==== ==== Advanced Help ==== ====\n\nCommand      :: ${cmdName.name}\nCategory     :: ${cmdName.category}\nDescription  :: ${cmdName.description}\nUsage        :: ${cmdName.usage}\nParameter(s) :: ${cmdName.param}\nAliases      :: ${cmdName.aliases}\nCooldown     :: ${cdDura} second${cdDura == 1 ? "" : "(s)"}\n\n=================================`, {
+      let cmdConf = find.conf;
+      message.channel.send(`==== ==== Advanced Help ==== ====\n\nCommand      :: ${cmdName.name}\nCategory     :: ${cmdName.category}\nDescription  :: ${cmdName.description}\nUsage        :: ${cmdName.usage}\nParameter(s) :: ${cmdName.param}\nAliases      :: ${cmdName.aliases}\nCooldown     :: ${cmdConf.cooldown} second${cmdConf.cooldown == 1 ? "" : "(s)"}\nguildOnly    :: ${cmdConf.guildOnly}\n\n=================================`, {
         code: 'asciidoc'
       });
     }
@@ -56,7 +56,8 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["h", "halp"],
-  cooldown: 3
+  cooldown: 3,
+  guildOnly: false
 };
 
 exports.help = {

@@ -25,8 +25,9 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["ev"],
-  cooldown: 0.5
-}
+  cooldown: 0.1,
+  guildOnly: false
+};
 
 exports.help = {
   name: "eval",
@@ -34,4 +35,4 @@ exports.help = {
   usage: "",
   param: "",
   aliases: "ev"
-}
+};

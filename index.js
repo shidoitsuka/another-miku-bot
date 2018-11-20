@@ -12,6 +12,7 @@ bot.config = require('./config.json');
 bot.commands = new Enmap();
 bot.aliases = new Enmap();
 bot.cdTime = new Enmap();
+bot.commandsConf = new Enmap();
 
 // INITIALIZATION
 const init = async () => {

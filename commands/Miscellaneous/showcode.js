@@ -9,7 +9,8 @@ exports.run = (bot, message, args) => {
 };
 exports.conf = {
   aliases: ["code"],
-  cooldown: 3
+  cooldown: 1,
+  guildOnly: false
 };
 
 exports.help = {

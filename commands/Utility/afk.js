@@ -1,9 +1,10 @@
 const fs = require('fs');
+const reasons = ["cuz y not", "nothing. yes.\nn o t h i n g.", "they choose not to tell", "none", "cuz they\'re lifeless"];
 
 exports.run = async (bot, message, args) => {
   let data = JSON.parse(fs.readFileSync('./assets/afk.json', 'utf8')),
     reason = args.join(" ");
-  if (!reason) reason = "nothing. yes.\nn o t h i n g.";
+  if (!reason) reason = reasons.random();
   if (Object.keys(data).includes(message.author.id)) return message.channel.send("You are in AFK mode already!");
   data[message.author.id] = reason;
   message.channel.send("You are in AFK mode now!");
@@ -14,7 +15,8 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: [],
-  cooldown: 1
+  cooldown: 1,
+  guildOnly: false
 };
 
 exports.help = {

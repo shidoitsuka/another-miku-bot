@@ -19,7 +19,8 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["anal"],
-  cooldown: 2
+  cooldown: 2,
+  guildOnly: true
 }
 
 exports.help = {

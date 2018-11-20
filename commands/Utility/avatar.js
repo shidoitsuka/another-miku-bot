@@ -25,7 +25,8 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["pfp"],
-  cooldown: 7
+  cooldown: 5,
+  guildOnly: false
 };
 
 exports.help = {

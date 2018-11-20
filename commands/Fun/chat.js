@@ -21,7 +21,8 @@ exports.run = async (bot, message, args) => {
 
 exports.conf = {
   aliases: ["c", "talk"],
-  cooldown: 2
+  cooldown: 2,
+  guildOnly: false
 };
 
 exports.help = {

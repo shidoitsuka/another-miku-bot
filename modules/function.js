@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const walker = require('walker');
 
-module.exports = (bot) => {
+module.exports = (bot, message) => {
 
   // NUMBER FORMATTER
   String.prototype.toMoney = function() {
@@ -10,7 +10,7 @@ module.exports = (bot) => {
 
   // RANDOM
   Array.prototype.random = function() {
-    return this[Math.floor(Math.random() * this.length)]
+    return this[Math.floor(Math.random() * this.length)];
   };
 
   // CHECK ARRAY VALUES ARE **ALL** THE SAME
@@ -32,6 +32,7 @@ module.exports = (bot) => {
           if (props.init) {
             props.init(bot);
           }
+          bot.commandsConf.set(props.help.name, props.conf.guildOnly);
           // set the command's name
           bot.commands.set(props.help.name, props);
           // set the command's cooldown

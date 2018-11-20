@@ -90,7 +90,8 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["tags"],
-  cooldown: 1.5
+  cooldown: 1.5,
+  guildOnly: true
 };
 
 exports.help = {

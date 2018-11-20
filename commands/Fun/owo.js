@@ -10,14 +10,14 @@ exports.run = async (bot, message, args) => {
       text: args.join(" ")
     });
     message.channel.send(["**Thinking...**", "**Translating...**", "**Twanyswatinyg... OωO**", "**Thinykinyg... OωO**"].random())
-      .then(m => m.edit(text.owo))
-      .then(delete require.cache[require.resolve('./owo.js')]);
+      .then(m => m.edit(text.owo));
   }
 };
 
 exports.conf = {
   aliases: [],
-  cooldown: 2
+  cooldown: 2,
+  guildOnly: false
 };
 
 exports.help = {

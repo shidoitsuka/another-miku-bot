@@ -17,7 +17,8 @@ exports.run = (bot, message, args) => {
 
 exports.conf = {
   aliases: ["quote", "qotd"],
-  cooldown: 1.5
+  cooldown: 1.5,
+  guildOnly: false
 };
 
 exports.help = {

@@ -10,12 +10,12 @@ exports.run = (bot, message, args) => {
     .setDescription("No picture? Please try again.")
     .setFooter("Images from ohlookitsderpy.space");
   message.channel.send("Under maintenance.");
-  delete require.cache[require.resolve('./miku.js')];
 };
 
 exports.conf = {
   aliases: [],
-  cooldown: 5
+  cooldown: 5,
+  guildOnly: false
 };
 
 exports.help = {

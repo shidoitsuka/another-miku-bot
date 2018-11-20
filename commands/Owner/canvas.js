@@ -35,12 +35,13 @@ exports.run = async (bot, message, args) => {
     });
     message.channel.stopTyping();
   }
-}
+};
 
 exports.conf = {
   aliases: [],
-  cooldown: 3
-}
+  cooldown: 3,
+  guildOnly: false
+};
 
 exports.help = {
   name: "canvas",
@@ -49,4 +50,4 @@ exports.help = {
   usage: "canvas new Canvas(width, height).chain().(...)().toBuffer();",
   param: "",
   aliases: ""
-}
+};

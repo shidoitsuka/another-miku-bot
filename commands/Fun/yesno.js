@@ -1,16 +1,14 @@
-const answers = ["Yes", "No"];
-const sayings = ["Probably", "I'm sure It's a", "It's a", "Should be", "Are you joking? It's", "I told you It's"];
-
 exports.run = (bot, message, args) => {
-  const answer = answers.random();
-  const saying = sayings.random();
+  const sayings = ["Probably", "I'm sure It's a", "It's a", "Should be", "Are you joking? It's", "I told you It's"].random();
+  const answers = ["Yes", "No"].random();
   if (!args[0]) return message.channel.send("I don't know! UωU");
-  message.channel.send(`${saying} **${answer}**!`);
+  message.channel.send(`${sayings} **${answers}**!`);
 };
 
 exports.conf = {
   aliases: [],
-  cooldown: 1.5
+  cooldown: 1.5,
+  guildOnly: false
 };
 
 exports.help = {

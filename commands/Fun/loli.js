@@ -5,7 +5,8 @@ const config = require('../../config.json');
 exports.run = async (bot, message, args) => {};
 exports.conf = {
   aliases: [],
-  cooldown: 6
+  cooldown: 6,
+  guildOnly: true
 };
 
 exports.help = {
