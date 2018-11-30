@@ -10,10 +10,14 @@ exports.run = async (bot, message, args) => {
   let prefixes = JSON.parse(fs.readFileSync('./assets/prefixes.json', 'utf8'));
   // VARIABLES
   let channelID = message.channel.id,
-    guildID = message.guild.id;
+    guildID = message.guild.id,
+    welcomeChannel;
+
+  if (guildID in welcomes) welcomeChannel = bot.channels.get(welcomes[guildID]).name;
+  else welcomeChannel = "not specified";
 
   if (!args[0]) return message.channel.send(`prefix          :: ${prefixes[guildID]}
-welcome-channel :: #${bot.channels.get(welcomes[guildID]).name} (${welcomes[guildID]})`, {
+welcome-channel :: ${welcomeChannel} (${welcomes[guildID] == undefined ? "" : welcomes[guildID]})`, {
     code: 'asciidoc'
   });
 
@@ -59,10 +63,7 @@ welcome-channel :: #${bot.channels.get(welcomes[guildID]).name} (${welcomes[guil
       break;
       // DEFAULT VALUE
     default:
-      message.channel.send(`prefix          :: ${prefixes[guildID]}
-welcome-channel :: #${bot.channels.get(welcomes[guildID]).name} (${welcomes[guildID]})`, {
-        code: 'asciidoc'
-      });
+      message.channel.send("Invalid Parameter(s)!");
   }
 };
 

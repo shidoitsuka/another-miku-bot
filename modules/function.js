@@ -53,4 +53,5 @@ module.exports = (bot, message) => {
   sleep = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   };
+
 };
