@@ -32,6 +32,9 @@ module.exports = async function(message) {
   /* AFK */
   // COME BACK FROM AFK
   if (message.author.id in AFKdata && command !== "afk") {
+    // when you came back from AFK
+    const afkBack = [`Welcome Back **${message.author.username}**!`, `Hi again! I\'ve turned off your AFK mode, **${message.author.username}**`, `Okaerinasai, **${message.author.username}**! (UωU)`, `I-I-It\'s not like I\'m happy because you\'re back, b-b-baka **${message.author.username}**!`, `I-It\'s not like I wanted to greet you because you just came back, baka!`].random();
+
     delete AFKdata[message.author.id];
     fs.writeFile('./assets/afk.json', JSON.stringify(AFKdata), (err) => {
       if (err) console.log(err);
@@ -60,6 +63,9 @@ module.exports = async function(message) {
     const reason = AFKandMentioned.map(user => {
       return AFKdata[user.id];
     });
+
+    // miku tryna remember what was your reason
+    const afkSaid = ["They said: ", "If I remember it correctly, they said: ", "They told me to say: "].random();
     embed.setAuthor("User AFK").setColor("#1a9ca8").setDescription(`${afkSaid}\n\`\`\`${reason}\`\`\``).setFooter(`${message.author.username}, they are AFK at the moment, please try again later!.`);
     message.channel.send({
       embed
@@ -84,12 +90,6 @@ module.exports = async function(message) {
 
       // bad words - UNRELEASED
       badWords = ["fuck", "shit", "bitch", "cunt"],
-
-      // miku tryna remember what was your reason
-      afkSaid = ["They said: ", "If I remember it correctly, they said: ", "They told me to say: "].random(),
-
-      // when you came back from AFK
-      afkBack = [`Welcome Back **${message.author.username}**!`, `Hi again! I\'ve turned off your AFK mode, **${message.author.username}**`, `Okaerinasai, **${message.author.username}**! (UωU)`, `I-I-It\'s not like I\'m happy because you\'re back, b-b-baka **${message.author.username}**!`, `I-It\'s not like I wanted to greet you because you just came back, baka!`].random(),
 
       // what miku will say if you're on cooldown
       cooldowns = [`O//w//O I-I-I\'m Getting Dizzy!\n_(cooling down)_`, `Can you like.... **wait** for few seconds? UwU`, `**${message.author.username}**-kun, **please wait** UwU`, `I-I-It\'ts not like I\'m on **cooldown** or something, b-b-baka! >///<`, `Cooling down UwU`, `Just a 'lil bit more, **${message.author.username}**`].random();
