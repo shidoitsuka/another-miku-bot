@@ -28,4 +28,17 @@ exports.run = async (bot, message, args) => {
   }).catch(e => reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**.`));
 };
 
-s
+exports.conf = {
+  aliases: ["gfy", "gfys"],
+  cooldown: 3,
+  guildOnly: false
+};
+
+exports.help = {
+  name: "gfycat",
+  category: "Miscellaneous",
+  description: "Search GIF Images using gfycat API.",
+  usage: "gfycat <search-query>",
+  param: "",
+  aliases: "gfy, gfys"
+};
