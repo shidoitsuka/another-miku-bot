@@ -13,9 +13,6 @@ module.exports = (bot, message) => {
     return this[Math.floor(Math.random() * this.length)];
   };
 
-  // CHECK ARRAY VALUES ARE **ALL** THE SAME
-  same = arr => arr.every(x => x.toLowerCase() === arr[0].toLowerCase());
-
   // REMOVE BLANK VALUES IN ARRAY
   Array.prototype.blank = function() {
     return this.filter(entry => entry.trim() != '');
@@ -50,8 +47,9 @@ module.exports = (bot, message) => {
   };
 
   // SLEEP FUNCTION
-  sleep = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  };
+  sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  // CHECK ARRAY VALUES ARE **ALL** THE SAME
+  same = arr => arr.every(x => x.toLowerCase() === arr[0].toLowerCase());
 
 };
