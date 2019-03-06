@@ -1,17 +1,17 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const embed = new Discord.RichEmbed();
 const fs = require('fs');
 
 exports.run = (bot, message, args, prefix) => {
   // variables
   const subFolders = fs.readdirSync('./commands/').filter(folders => folders != 'Owner');
-  var cmdCategory = [],
+  let cmdCategory = [],
     textToBeSend = '';
 
   try { // BEGIN TRY
     if (!args[0]) {
-      const embed = new Discord.RichEmbed();
-      for (var i = 0; i < subFolders.length; i++) {
+      for (let i = 0; i < subFolders.length; i++) {
         cmdCategory.push(subFolders[i]);
         let availableCommands = fs.readdirSync(`./commands/${subFolders[i]}`).filter(files => files.endsWith(".js")).map(x => x.replace(".js", "")).join(', ');
         embed.addField(cmdCategory, availableCommands, true);
