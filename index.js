@@ -4,7 +4,6 @@ const fs = require('fs');
 const Enmap = require('enmap');
 const chalk = require('chalk');
 const walker = require('walker');
-var talkedRecently = JSON.parse(fs.readFileSync('./assets/cooldowns.json', 'utf8'));
 require('./util/eventLoader.js')(bot);
 require('./modules/function.js')(bot);
 
@@ -22,13 +21,13 @@ const init = async () => {
       let response = bot.loadCommand(file);
       if (response) console.log(response);
     });
-};
 
-// CLEAN USER COOLDOWNS
-talkedRecently = {};
-fs.writeFile('./assets/cooldowns.json', JSON.stringify(talkedRecently), (err) => {
-  if (err) console.log(err);
-});
+  // CLEAN USER COOLDOWNS
+  const talkedRecently = {};
+  fs.writeFile('./assets/cooldowns.json', JSON.stringify(talkedRecently), (err) => {
+    if (err) console.log(err);
+  });
+};
 
 init();
 bot.login(bot.config.token);
