@@ -15,6 +15,7 @@ test.js
 #sensitive
 config.json
 package-lock.json
+yarn.lock
 /data/
 /assets/*.json
 /images/
