@@ -1,12 +1,10 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const embed = new Discord.RichEmbed();
 
 exports.run = (bot, message) => {
   embed.setImage("http://tinyurl.com/y9fl7nck");
   embed.setFooter("© Google Images");
-  message.channel.send({
-    embed
-  });
+  message.channel.send({ embed });
 };
 
 exports.conf = {

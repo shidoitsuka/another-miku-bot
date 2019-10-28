@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const nekoclient = require('nekos.life');
+const Discord = require("discord.js");
+const nekoclient = require("nekos.life");
 const neko = new nekoclient();
 
 exports.run = async (bot, message, args) => {
@@ -10,11 +10,11 @@ exports.run = async (bot, message, args) => {
       owo: "true"
     });
     args.shift();
-    message.channel.send("**Thinykinyg... OwO**").then(m => m.edit(theChat.response));
+    message.channel
+      .send("**Thinykinyg... OwO**")
+      .then(m => m.edit(theChat.response));
   } else {
-    const theChat = await neko.getSFWChat({
-      text: args.join(" ")
-    });
+    const theChat = await neko.getSFWChat({ text: args.join(" ") });
     message.channel.send("**Thinking...**").then(m => m.edit(theChat.response));
   }
 };
@@ -30,6 +30,6 @@ exports.help = {
   category: "Fun",
   description: "Talk with me!",
   usage: "chat [param] <text>",
-  param: "-owo  :  OwO What\'s dis?",
+  param: "-owo  :  OwO What's dis?",
   aliases: "c, talk"
 };

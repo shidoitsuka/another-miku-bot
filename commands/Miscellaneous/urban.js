@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const urban = require('relevant-urban');
+const Discord = require("discord.js");
+const urban = require("relevant-urban");
 
 exports.run = async (bot, message, args) => {
   let dictionary;
@@ -14,9 +14,7 @@ exports.run = async (bot, message, args) => {
       .addField("Author  :", dictionary.author, true)
       .addField("Definition  :", dictionary.definition, false)
       .setFooter("urban | click title for more info.");
-    pending.edit({
-      embed
-    });
+    pending.edit({ embed });
   }
   if (args[0]) {
     try {
@@ -29,9 +27,7 @@ exports.run = async (bot, message, args) => {
         .addField("Author  :", dictionary.author, true)
         .addField("Definition  :", dictionary.definition, false)
         .setFooter("urban | click title for more info.");
-      pending.edit({
-        embed
-      });
+      pending.edit({ embed });
     } catch (err) {
       pending.edit(`❌ | Couldn\'t find **${args.join(" ")}**.`);
     }

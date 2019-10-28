@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const nekoclient = require('nekos.life');
+const Discord = require("discord.js");
+const nekoclient = require("nekos.life");
 const neko = new nekoclient();
 
 // START-MAIN
@@ -16,7 +16,9 @@ exports.run = async (bot, message, args) => {
   let description, image;
 
   // STATEMENT
-  !args[0] ? (description = idkD, image = idkI) : (description = wordAnswer, image = answers.url);
+  !args[0]
+    ? ((description = idkD), (image = idkI))
+    : ((description = wordAnswer), (image = answers.url));
 
   // BEGIN
   const embed = new Discord.RichEmbed()
@@ -25,10 +27,7 @@ exports.run = async (bot, message, args) => {
     .setDescription(description)
     .setImage(`${image}`)
     .setFooter(`${!args[0] ? "" : "Image by nekos.life"}`);
-  message.channel.send("**Loading Image...**")
-    .then(m => m.edit({
-      embed
-    }));
+  message.channel.send("**Loading Image...**").then(m => m.edit({ embed }));
 };
 
 exports.conf = {

@@ -1,16 +1,10 @@
 exports.run = (bot, message, args) => {
-  if (!args[0]) return message.channel.send("woo!", {
-    code: "css"
-  });
+  if (!args[0]) return message.channel.send("woo!", { code: "css" });
   if (args[0] == "-d") {
     message.delete().then(args.shift());
-    return message.channel.send(args.join(" "), {
-      code: "css"
-    });
+    return message.channel.send(args.join(" "), { code: "css" });
   }
-  message.channel.send(args.join(" "), {
-    code: "css"
-  });
+  message.channel.send(args.join(" "), { code: "css" });
 };
 
 exports.conf = {

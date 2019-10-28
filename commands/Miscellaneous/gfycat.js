@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const Gfycat = require('gfycat-sdk');
-const config = require('../../config.json');
+const Discord = require("discord.js");
+const Gfycat = require("gfycat-sdk");
+const config = require("../../config.json");
 var gfycat = new Gfycat({
   clientId: config.client_id,
   clientSecret: config.client_secret
@@ -16,16 +16,19 @@ exports.run = async (bot, message, args) => {
   };
   const pending = await message.channel.send("**Getting Data...**");
   const reply = await pending;
-  const result = gfycat.search(options).then(data => {
-    const embed = new Discord.RichEmbed()
-      .setAuthor("Miku -- gfycat")
-      .setColor(0x1a9ca8)
-      .setFooter("gfycat-sdk")
-      .setImage(`${data.gfycats[0].gifUrl}`);
-    reply.edit({
-      embed
+  const result = gfycat
+    .search(options)
+    .then(data => {
+      const embed = new Discord.RichEmbed()
+        .setAuthor("Miku -- gfycat")
+        .setColor(0x1a9ca8)
+        .setFooter("gfycat-sdk")
+        .setImage(`${data.gfycats[0].gifUrl}`);
+      reply.edit({ embed });
     })
-  }).catch(e => reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**.`));
+    .catch(e =>
+      reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**.`)
+    );
 };
 
 exports.conf = {

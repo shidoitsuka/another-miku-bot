@@ -1,10 +1,10 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
 exports.run = (bot, message, args) => {
-  const embed = new Discord.RichEmbed().setColor("#36393e").setDescription("**Pinging...**");
-  message.channel.send({
-    embed
-  }).then(m => {
+  const embed = new Discord.RichEmbed()
+    .setColor("#36393e")
+    .setDescription("**Pinging...**");
+  message.channel.send({ embed }).then(m => {
     let time = m.createdTimestamp - message.createdTimestamp;
     const answers = [
       `:ping_pong: | Well done **${message.author.username}**-kun. You just wasted \`${time}ms\` of my time!`,
@@ -14,11 +14,9 @@ exports.run = (bot, message, args) => {
       `:ping_pong: | \`${time}ms\` to read & edit this message!`
     ].random();
     embed.setDescription(answers);
-    m.edit({
-      embed
-    });
+    m.edit({ embed });
   });
-}
+};
 
 exports.conf = {
   aliases: ["p"],

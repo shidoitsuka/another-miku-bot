@@ -1,12 +1,14 @@
-const Discord = require('discord.js');
-const nekoclient = require('nekos.life');
+const Discord = require("discord.js");
+const nekoclient = require("nekos.life");
 const neko = new nekoclient();
-const answers = ["Try again later (〜￣▽￣)〜",
+
+const answers = [
+  "Try again later (〜￣▽￣)〜",
   "I-i don't know (UwU)",
   // positives
   "Yessu!",
   "Of course! OwO)-b",
-  "Seems like a yes \`(OwO)\`",
+  "Seems like a yes `(OwO)`",
   "Errr yes, probably?",
   // negatives
   "No",
@@ -17,7 +19,10 @@ const answers = ["Try again later (〜￣▽￣)〜",
 
 exports.run = async (bot, message, args) => {
   const ebans = answers.random();
-  if (!args[0]) return message.channel.send(":question::question::question::question::question:");
+  if (!args[0])
+    return message.channel.send(
+      ":question::question::question::question::question:"
+    );
   if (args[0] == "-i") {
     const eightball = await neko.getSFW8Ball();
     const embed = new Discord.RichEmbed()
@@ -26,10 +31,7 @@ exports.run = async (bot, message, args) => {
       .setDescription(eightball.response)
       .setImage(`${eightball.url}`)
       .setFooter("Image by nekos.life");
-    message.channel.send("**Thinking...**")
-      .then(m => m.edit({
-        embed
-      }));
+    message.channel.send("**Thinking...**").then(m => m.edit({ embed }));
   } else {
     message.channel.send(ebans);
   }

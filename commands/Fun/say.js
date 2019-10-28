@@ -5,7 +5,7 @@ exports.run = (bot, message, args) => {
       message.delete().then(args.shift());
       message.channel.send(args.join(" "));
     } else {
-      message.channel.send(args.join(" "))
+      message.channel.send(args.join(" "));
     }
   }
 };
@@ -19,7 +19,7 @@ exports.conf = {
 exports.help = {
   name: "say",
   category: "Fun",
-  description: "Too shy to say it? I\'ll do it for you!",
+  description: "Too shy to say it? I'll do it for you!",
   usage: "say [parameter] <text>",
   param: "-d  :  delete",
   aliases: "echo"

@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const math = require('mathjs');
+const Discord = require("discord.js");
+const math = require("mathjs");
 const answers = [
   "Should be ",
   "I guess it's ",
@@ -17,28 +17,24 @@ exports.run = (bot, message, args) => {
         .setColor(0x1a9ca8)
         .setDescription("Let him answer you:")
         .setImage("https://goo.gl/tVGvMX");
-      message.channel.send({
-        embed
-      });
+      message.channel.send({ embed });
     } else {
       var ans = math.eval(txt);
       const embed = new Discord.RichEmbed()
         .setAuthor("Miku -- Math", "https://tinyurl.com/MikuCalc")
         .setColor(0x1a9ca8)
         .setDescription(`${theAnswer}\`${ans}\``);
-      message.channel.send({
-        embed
-      });
+      message.channel.send({ embed });
     }
   } catch (err) {
     const embed = new Discord.RichEmbed()
       .setAuthor("Miku -- Error")
       .setThumbnail("https://tinyurl.com/MikuError")
       .setColor(0xf44336)
-      .setDescription(`Something went wrong!\n**Error**  : \n${err.name} ${err.message}`);
-    message.channel.send({
-      embed
-    });
+      .setDescription(
+        `Something went wrong!\n**Error**  : \n${err.name} ${err.message}`
+      );
+    message.channel.send({ embed });
   }
 };
 

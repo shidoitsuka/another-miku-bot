@@ -1,25 +1,21 @@
-const Discord = require('discord.js');
-const fs = require('fs');
+const Discord = require("discord.js");
+const fs = require("fs");
 let file = JSON.parse(fs.readFileSync("./assets/f.json", "utf8"));
 
 exports.run = (bot, message, args) => {
-  if (!file) file = {
-    total: 0
-  }
+  if (!file) file = { total: 0 };
   const total = file.total + 1;
   file = {
     total: total
-  }
-  fs.writeFile('./assets/f.json', JSON.stringify(file), (err) => {
-    if (err) console.log(err.stack)
+  };
+  fs.writeFile("./assets/f.json", JSON.stringify(file), err => {
+    if (err) console.log(err.stack);
   });
   const embed = new Discord.RichEmbed()
     .setDescription(`**${message.author.username}** has paid their respect!`)
     .setColor(0x1a9ca8)
     .setFooter(`Total respect paid: ${file.total}.`);
-  message.channel.send({
-    embed
-  });
+  message.channel.send({ embed });
 };
 
 exports.conf = {
