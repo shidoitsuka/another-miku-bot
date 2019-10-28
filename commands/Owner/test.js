@@ -1,8 +1,4 @@
-exports.run = (bot, message) => {
-  const args = message.content.slice("q".length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-  console.log(bot.commands);
-};
+exports.run = (bot, message) => {};
 
 exports.conf = {
   aliases: [],
