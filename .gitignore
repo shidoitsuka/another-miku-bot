@@ -1,5 +1,5 @@
 #modules
-node_modules
+node_modules/
 *.rar
 
 #linux-stuff
@@ -10,7 +10,7 @@ node_modules
 #my-ideas
 *.old
 *.idea
-test.js
+/commands/Owner/test.js
 
 #sensitive
 config.json
@@ -21,4 +21,4 @@ yarn.lock
 /images/
 
 #misc
-/commands/canvas
+/commands/canvas/
