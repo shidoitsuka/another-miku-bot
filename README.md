@@ -19,13 +19,13 @@ This bot is a just4fun bot, which does not meant to do administrator-side stuffs
 
 ### Usage & Modules
 
-You need [Node.js](https://nodejs.org/) v8+ to run the bot.
+You need [Node.js](https://nodejs.org/) v10+ to run the bot.
 Please install *windows-build-tools* if you are using windows in order to run canvas commands.
 
 Head to the bot directory and then simply run
 ```sh
 $ npm i -S
-# if you are using windows run this command as well
+# if you are using windows run this command as well, else just skip
 $ npm i -S windows-build-tools
 # and then
 $ node index.js
