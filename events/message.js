@@ -87,7 +87,7 @@ module.exports = message => {
       .setColor("#1a9ca8")
       .setDescription(`${afkSaid}\n\`\`\`${reason}\`\`\``)
       .setFooter(
-        `${message.author.username}, they are AFK at the moment, please try again later!.`
+        `${message.author.username}, they are AFK at the moment. Please try again later!.`
       );
     message.channel.send({ embed });
   }
