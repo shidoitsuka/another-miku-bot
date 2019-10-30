@@ -54,9 +54,7 @@ exports.run = (bot, message, args, prefix) => {
         } second${cmdConf.cooldown == 1 ? "" : "(s)"}\nguildOnly    :: ${
           cmdConf.guildOnly
         }\n\n=================================`,
-        {
-          code: "asciidoc"
-        }
+        { code: "asciidoc" }
       );
     }
   } catch (_) {
@@ -72,9 +70,7 @@ exports.run = (bot, message, args, prefix) => {
       .setThumbnail("https://tinyurl.com/MikuError")
       .setColor(0xf44336)
       .setDescription(idk);
-    message.channel.send({
-      embed
-    });
+    message.channel.send({ embed });
   } // END CATCH
 };
 

@@ -13,9 +13,7 @@ exports.run = (bot, message, args) => {
       )
       .then(m => m.delete(3000));
   request(
-    {
-      uri: `http://tinyurl.com/api-create.php?url=${args[0]}`
-    },
+    { uri: `http://tinyurl.com/api-create.php?url=${args[0]}` },
     (error, response, body) => {
       const embed = new Discord.RichEmbed()
         .setAuthor("Miku -- Shorten")
