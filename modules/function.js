@@ -1,5 +1,6 @@
 const chalk = require("chalk");
 const walker = require("walker");
+const { get } = require("snekfetch");
 const fs = require("fs");
 
 module.exports = (bot, message) => {
@@ -23,13 +24,17 @@ module.exports = (bot, message) => {
   // LOAD COMMAND
   bot.loadCommand = commandName => {
     try {
+      /*
+      walker("./commands/").on("dir", dir => {
+        const category = dir.slice(dir.lastIndexOf("/") + 1);
+        bot.availableCommands.set(category, []);
+      });
+      */
       // walk through the sub folders using walker
       const folder = walker(`./commands/`).on("file", file => {
         if (!file.endsWith(".js")) return;
         const props = require(`../${file}`);
-        if (props.init) {
-          props.init(bot);
-        }
+        if (props.init) props.init(bot);
         // set command's config
         bot.commandsConf.set(props.help.name, props.conf.guildOnly);
         // set the command's name
@@ -40,6 +45,7 @@ module.exports = (bot, message) => {
         props.conf.aliases.forEach(alias => {
           bot.aliases.set(alias, props.help.name);
         });
+        // bot.availableCommands.push(props.help.category, props.help.name);
       });
       console.log(chalk.bgWhite.black(`Loaded ${commandName}`));
       return false;
@@ -59,5 +65,12 @@ module.exports = (bot, message) => {
     fs.writeFile(`${directory}.json`, JSON.stringify(varName), err => {
       if (err) console.log(err.stack);
     });
+  };
+
+  fetchAvatar = (bot, userID, size) => {
+    if (typeof userID != "string")
+      throw new Error("Fetch Error: Type of UserID must be a string.");
+    const imageUrlRegex = /\?size=2048$/g;
+    return bot.users.get(userID).displayAvatarURL.replace(imageUrlRegex, size);
   };
 };
