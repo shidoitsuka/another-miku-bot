@@ -6,7 +6,7 @@ exports.run = async (bot, message, args) => {
   const pending = await message.channel.send(":mag:**Searching...**");
   if (!args[0]) {
     dictionary = await urban.random();
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setAuthor("Miku -- Urban Dictionary", "", dictionary.urbanURL)
       .setThumbnail("https://tinyurl.com/y95f3ztk")
       .setColor(0x795548)
@@ -19,7 +19,7 @@ exports.run = async (bot, message, args) => {
   if (args[0]) {
     try {
       dictionary = await urban(args.join(" "));
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setAuthor("Miku -- Urban Dictionary", "", dictionary.urbanURL)
         .setThumbnail("https://tinyurl.com/y95f3ztk")
         .setColor(0x795548)

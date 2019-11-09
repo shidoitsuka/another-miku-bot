@@ -3,7 +3,7 @@ const lewdLink = require("../../assets/lewd.json");
 
 exports.run = async (bot, message, args) => {
   const image = lewdLink.random();
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Lewd")
     .setColor(0x1a9ca8)
     .setDescription(

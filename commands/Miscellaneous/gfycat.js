@@ -19,7 +19,7 @@ exports.run = async (bot, message, args) => {
   const result = gfycat
     .search(options)
     .then(data => {
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setAuthor("Miku -- gfycat")
         .setColor(0x1a9ca8)
         .setFooter("gfycat-sdk")

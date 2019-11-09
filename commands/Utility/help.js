@@ -1,40 +1,53 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const embed = new Discord.RichEmbed();
 const fs = require("fs");
 
 exports.run = (bot, message, args, prefix) => {
+  const embed = new Discord.MessageEmbed();
   // variables
   const subFolders = fs
     .readdirSync("./commands/")
-    .filter(folders => folders != "Owner");
-  let cmdCategory = [],
-    textToBeSend = "";
-
+    .filter(folders => folders != "Owner" && folders != "NSFW");
+  let commands = {};
   try {
-    // BEGIN TRY
+    embed.setAuthor("Miku -- Help", "http://tinyurl.com/ybabktzo");
+    embed.setThumbnail("https://tinyurl.com/MikuHelp");
+    embed.setColor(0x0776b7);
+    embed.setFooter(
+      `Use ${prefix}help <command name> for advanced help. (Including usage, aliases, etc.)`
+    );
+    // all commands
     if (!args[0]) {
-      for (let i = 0; i < subFolders.length; i++) {
-        cmdCategory.push(`**__${subFolders[i]}__**`);
-        let availableCommands = fs
-          .readdirSync(`./commands/${subFolders[i]}`)
-          .filter(files => files.endsWith(".js"))
-          .map(x => x.replace(".js", ""))
-          .join(", ");
-        embed.addField(cmdCategory, availableCommands, true);
-        cmdCategory.splice(subFolders[i], 1);
+      if (message.channel.nsfw) {
+        const nsfw = fs
+          .readdirSync("./commands/NSFW")
+          .map(files => files.replace(".js", ""));
+        embed.addField("__**NSFW**__", nsfw.join(", "), true)
+        message.channel.send({ embed });
+      } else {
+        subFolders.forEach(folders => {
+          commands[folders] = [];
+          fs.readdirSync(`./commands/${folders}/`)
+            .filter(files => files.endsWith(".js"))
+            .map(files => files.replace(".js", ""))
+            .map(files => {
+              commands[folders].push(files);
+            });
+        });
+        for (var i = 0; i < Object.keys(commands).length; i++) {
+          embed.addField(
+            `__**${Object.keys(commands)[i]}**__`,
+            commands[Object.keys(commands)[i]].join(", "),
+            true
+          );
+        }
+        embed.setDescription(
+          `Usage: \`${prefix}command\`\nDescription: \`<this-is-required>\` \`[this-is-optional]\`\nPlease use NSFW channel to see available NSFW command(s).`
+        );
+        message.channel.send({ embed });
       }
-      embed.setAuthor("Miku -- Help", "http://tinyurl.com/ybabktzo");
-      embed.setDescription(
-        `Usage: \`${prefix}command\`\nDescription: \`<this-is-required>\` \`[this-is-optional]\`\nPlease use NSFW channel to run NSFW command(s).`
-      );
-      embed.setThumbnail("https://tinyurl.com/MikuHelp");
-      embed.setColor(0x0776b7);
-      embed.setFooter(
-        `Use ${prefix}help <command name> for advanced help. (Including usage, aliases, etc.)`
-      );
-      message.channel.send({ embed });
     } else {
+      // advanced help
       let cmd = args[0];
       let find;
       if (bot.commands.has(cmd)) find = bot.commands.get(cmd);
@@ -57,15 +70,14 @@ exports.run = (bot, message, args, prefix) => {
         { code: "asciidoc" }
       );
     }
-  } catch (_) {
+  } catch (e) {
     // END TRY
-    // BEGIN CATCH
     const idk = [
       `I cannot find **${args[0]}** in me (UωU)`,
       `**${args[0]}** is not a command, nor aliases! (QωQ)`,
-      `Please run __help__ for available commands, **${message.author.username}** (OωO)`
+      `Please run __${prefix}help__ for available commands, **${message.author.username}** (OωO)`
     ].random();
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setAuthor("Not found!")
       .setThumbnail("https://tinyurl.com/MikuError")
       .setColor(0xf44336)
@@ -76,7 +88,7 @@ exports.run = (bot, message, args, prefix) => {
 
 exports.conf = {
   aliases: ["h", "halp"],
-  cooldown: 3,
+  cooldown: 0.1,
   guildOnly: false
 };
 

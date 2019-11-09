@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 exports.run = (bot, message, args) => {
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor("Miku")
     .setColor(0x1a9ca8)
     .setImage(

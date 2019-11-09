@@ -11,7 +11,7 @@ exports.run = async (bot, message, args) => {
   ];
   // VARIABLES
   const wordAnswer = words.random(),
-    answers = await neko.getSFWPat(),
+    answers = await neko.sfw.pat(),
     idkI = "https://tinyurl.com/MikuIDK",
     idkD = `**${message.author.username}** trying to pat themselves,\nI wonder how...`;
   let description, image;
@@ -22,7 +22,7 @@ exports.run = async (bot, message, args) => {
     : ((description = wordAnswer), (image = answers.url));
 
   // BEGIN
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Pat", "", `${image}`)
     .setColor(0x1a9ca8)
     .setDescription(description)

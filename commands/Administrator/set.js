@@ -4,10 +4,11 @@ const parameters = [
   '-welcome    : set guild\'s greeting channel. (use "off" to turn off the feature)'
 ].join("\n");
 
-exports.run = async (bot, message, args) => {
+exports.run = (bot, message, args) => {
   // DB_FILES
   let welcomes = JSON.parse(fs.readFileSync("./assets/welcome.json", "utf8"));
   let prefixes = JSON.parse(fs.readFileSync("./assets/prefixes.json", "utf8"));
+  let star = JSON.parse(fs.readFileSync("./assets/g.json", "utf8"));
   // VARIABLES
   let channelID = message.channel.id,
     guildID = message.guild.id,
@@ -37,16 +38,18 @@ welcome-channel :: #${welcomeChannel} (${
         return message.channel.send("Please mention a channel for me!");
       if (args[1].toLowerCase() == "off") {
         delete welcomes[guildID];
+        // writeFile("./assets/welcome.json", welcomes);
         fs.writeFile("./assets/welcome.json", JSON.stringify(welcomes), err => {
-          if (err) console.log(err);
+          if (err) console.error(err);
         });
         message.channel.send("Turned off greeting!");
       } else {
         if (!message.mentions.channels.first())
           return message.channel.send("Please mention a channel for me!");
         welcomes[guildID] = message.mentions.channels.first().id;
+        // writeFile("./assets/welcome.json", welcomes);
         fs.writeFile("./assets/welcome.json", JSON.stringify(welcomes), err => {
-          if (err) console.log(err);
+          if (err) console.error(err);
         });
         message.channel.send("Aight, I've set the greeting channel!");
       }
@@ -66,7 +69,7 @@ welcome-channel :: #${welcomeChannel} (${
           "./assets/prefixes.json",
           JSON.stringify(prefixes),
           err => {
-            if (err) console.log(err);
+            if (err) console.error(err);
           }
         );
         return message.channel.send("Reseted to default prefix!");
@@ -76,13 +79,31 @@ welcome-channel :: #${welcomeChannel} (${
           "./assets/prefixes.json",
           JSON.stringify(prefixes),
           err => {
-            if (err) console.log(err);
+            if (err) console.error(err);
           }
         );
         message.channel.send(
           `Changed my prefix in this guild to \`${args[1]}\``
         );
       }
+      break;
+    case "-star":
+      if (!message.member.permissions.has("MANAGE_GUILD"))
+        return message.channel.send("You don't have permission to run this!");
+      if (args[1] == "off") {
+        delete star[guildID];
+        fs.writeFile("./assets/g.json", JSON.stringify(star), err => {
+          if (err) console.error(err);
+        });
+        return message.channel.send("Turned off star system!");
+      }
+      const channel = message.mentions.channels.first();
+      if (!channel) return message.channel.send("No channel selected!");
+      star[guildID] = channel.id;
+      fs.writeFile("./assets/g.json", JSON.stringify(star), err => {
+        if (err) console.error(err);
+      });
+      message.channel.send(`I\'ve set \`#${channel.name}\` as star channel!`);
       break;
     // DEFAULT VALUE
     default:

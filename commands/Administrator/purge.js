@@ -1,8 +1,6 @@
 exports.run = async (bot, message, args) => {
   if (!message.member.hasPermission("MANAGE_MESSAGES"))
-    return message.reply(
-      "🔒 Sorry, you lack the **MANAGE_MESSAGES** permission."
-    );
+    return message.reply("Sorry, you lack the **MANAGE_MESSAGES** permission.");
   const user = message.mentions.users.first();
   const amount = !!parseInt(message.content.split(" ")[1])
     ? parseInt(message.content.split(" ")[1])

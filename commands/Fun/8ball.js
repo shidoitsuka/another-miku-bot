@@ -24,7 +24,7 @@ exports.run = async (bot, message, args) => {
       ":question::question::question::question::question:"
     );
   if (args[0] == "-i") {
-    const eightball = await neko.getSFW8Ball();
+    const eightball = await neko.sfw["8Ball"]();
     const embed = new Discord.RichEmbed()
       .setAuthor("Miku -- Magic 8ball", "", `${eightball.url}`)
       .setColor(0x1a9ca8)

@@ -12,7 +12,7 @@ exports.run = (bot, message, args) => {
   var txt = message.content.slice(6);
   try {
     if (txt == "2+2" || txt == "2+ 2" || txt == "2 +2" || txt == "2 + 2") {
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setAuthor("Miku", "https://tinyurl.com/MikuCalc")
         .setColor(0x1a9ca8)
         .setDescription("Let him answer you:")
@@ -20,14 +20,14 @@ exports.run = (bot, message, args) => {
       message.channel.send({ embed });
     } else {
       var ans = math.eval(txt);
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setAuthor("Miku -- Math", "https://tinyurl.com/MikuCalc")
         .setColor(0x1a9ca8)
         .setDescription(`${theAnswer}\`${ans}\``);
       message.channel.send({ embed });
     }
   } catch (err) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setAuthor("Miku -- Error")
       .setThumbnail("https://tinyurl.com/MikuError")
       .setColor(0xf44336)

@@ -14,7 +14,7 @@ exports.run = async (bot, message, args) => {
       page: pageNo
     })
     .then(images => {
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setAuthor("Miku -- Google Image Search")
         .setColor(0x1a9ca8)
         .setImage(images[random].url)

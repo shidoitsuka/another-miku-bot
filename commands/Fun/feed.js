@@ -10,7 +10,7 @@ exports.run = async (bot, message, args) => {
   ];
   // VARIABLES
   const wordAnswer = words.random(),
-    answers = await neko.getSFWFeed(),
+    answers = await neko.sfw.feed(),
     idkI = "https://tinyurl.com/MikuIDK",
     idkD = `**${message.author.username}** trying to feed themselves,\nI wonder how...`;
   let description, image;
@@ -21,7 +21,7 @@ exports.run = async (bot, message, args) => {
     : ((description = wordAnswer), (image = answers.url));
 
   // BEGIN
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Feed", "", `${image}`)
     .setColor(0x1a9ca8)
     .setDescription(description)

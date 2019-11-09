@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 exports.run = (bot, message, args) => {
   if (!message.mentions.users.size) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setAuthor("Miku -- Avatar", "", message.author.displayAvatarURL)
       .setColor(0x1a9ca8)
       .setFooter(`${message.author.username}\'s avatar`)
@@ -10,7 +10,7 @@ exports.run = (bot, message, args) => {
     message.channel.send({ embed });
   } else {
     const mentionMember = message.mentions.users.first();
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setAuthor("Miku -- Avatar", "", mentionMember.displayAvatarURL)
       .setColor(0x1a9ca8)
       .setImage(mentionMember.displayAvatarURL)

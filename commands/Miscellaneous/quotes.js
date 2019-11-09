@@ -6,7 +6,7 @@ exports.run = (bot, message, args) => {
   const quotesMotiv =
     quotes.motivate[Math.floor(Math.random() * quotes.motivate.length)];
 
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Quotes")
     .setColor(0x795548)
     .setDescription(args[0] == "-m" ? quotesMotiv : theAnswer)

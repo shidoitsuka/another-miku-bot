@@ -15,7 +15,7 @@ exports.run = (bot, message, args) => {
   request(
     { uri: `http://tinyurl.com/api-create.php?url=${args[0]}` },
     (error, response, body) => {
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setAuthor("Miku -- Shorten")
         .setColor(0xaed581)
         .addField("URL:", args[0], true)

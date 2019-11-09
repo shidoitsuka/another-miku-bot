@@ -38,7 +38,7 @@ exports.conf = {
 
 exports.help = {
   name: "canvas",
-  category: "Util.",
+  category: "Owner",
   description: "Try your canvas-constructor here!",
   usage: "canvas new Canvas(width, height).chain().(...)().toBuffer();",
   param: "",

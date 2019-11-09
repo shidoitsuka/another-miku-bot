@@ -53,7 +53,7 @@ exports.conf = {
 
 exports.help = {
   name: "log",
-  category: "**OWNER ONLY**",
+  category: "Owner",
   description: "",
   usage: "",
   param: "",

@@ -29,6 +29,7 @@ exports.conf = {
 
 exports.help = {
   name: "eval",
+  category: "Owner",
   description: "**OWNER ONLY**",
   usage: "",
   param: "",

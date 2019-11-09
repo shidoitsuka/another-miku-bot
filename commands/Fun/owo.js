@@ -13,7 +13,7 @@ exports.run = async (bot, message, args) => {
       ].random()
     );
   else {
-    const text = await neko.getSFWOwOify({ text: args.join(" ") });
+    const text = await neko.sfw.OwOify({ text: args.join(" ") });
     message.channel
       .send(
         [

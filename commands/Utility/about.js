@@ -8,7 +8,7 @@ exports.run = (bot, message, args) => {
   const cpu = Math.round((process.cpuUsage().system / 1024 / 1024) * 100) + "%";
   const memory =
     Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + " MB";
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor(
       `Miku -- About me`,
       "",

@@ -12,7 +12,7 @@ exports.run = (bot, message, args) => {
     try {
       const tagKeysInGuild = Object.keys(tagFile[message.guild.id]);
       if (tagKeysInGuild.length == 0) throw Error();
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setAuthor("Available Tags")
         .setColor(0xf5ab35)
         .setDescription(`\`\`\`${tagKeysInGuild}\`\`\``);

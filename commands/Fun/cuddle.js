@@ -11,7 +11,7 @@ exports.run = async (bot, message, args) => {
   ];
   // VARIABLES
   const wordAnswer = words.random(),
-    answers = await neko.getSFWCuddle(),
+    answers = await neko.sfw.cuddle(),
     idkI = "https://tinyurl.com/MikuIDK",
     idkD = `**${message.author.username}** trying to cuddle themselves,\nAre you that lonely...?`;
   let description, image;
