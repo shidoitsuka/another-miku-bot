@@ -1,22 +1,23 @@
 const Discord = require("discord.js");
-const embed = new Discord.RichEmbed();
 const config = require("../config.json");
 const chalk = require("chalk");
 const fs = require("fs");
 const { promisify } = require("util");
 const readdir = promisify(fs.readdir);
-let talkedRecently = JSON.parse(
-  fs.readFileSync("./assets/cooldowns.json", "utf8")
-);
 let totalCommands = JSON.parse(
   fs.readFileSync("./assets/totalCmd.json", "utf8")
 );
 
 // START
 module.exports = message => {
+  const embed = new Discord.MessageEmbed();
+  if (message.author.id != "332424370272337923" && message.author.id != "182531489773125632" && message.author.id != "467350316761743370") return;
   // JSON's DATA
   let prefixes = JSON.parse(fs.readFileSync("./assets/prefixes.json", "utf8"));
   let AFKdata = JSON.parse(fs.readFileSync("./assets/afk.json", "utf8"));
+  let talkedRecently = JSON.parse(
+    fs.readFileSync("./assets/cooldowns.json", "utf8")
+  );
 
   /**
    * To separate command and arguments

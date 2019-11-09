@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client();
+const bot = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 const fs = require("fs");
 const Enmap = require("enmap");
 const chalk = require("chalk");
@@ -12,6 +12,7 @@ bot.commands = new Enmap();
 bot.aliases = new Enmap();
 bot.cdTime = new Enmap();
 bot.commandsConf = new Enmap();
+// bot.availableCommands = new Enmap();
 
 // INITIALIZATION
 const init = async () => {
@@ -23,12 +24,11 @@ const init = async () => {
 };
 
 // CLEAN USER COOLDOWNS
-/*
-const talkedRecently = { };
+
+const talkedRecently = {};
 fs.writeFile("./assets/cooldowns.json", JSON.stringify(talkedRecently), err => {
   if (err) console.log(err);
 });
-*/
 
 init();
 bot.login(bot.config.token);
