@@ -10,7 +10,7 @@ const rates = [
   "9/10 :heart_eyes:",
   "10/10 :clap:"
 ];
-const config = require("../../config.json");
+const { config } = require("../../config.js");
 
 exports.run = (bot, message, args) => {
   if (!args[0]) {

@@ -8,8 +8,7 @@ const chalk = require("chalk");
 const walker = require("walker");
 require("./util/eventLoader.js")(bot);
 require("./modules/function.js")(bot);
-
-bot.config = require("./config.json");
+bot.config = require("./config.js").config;
 bot.commands = new Enmap();
 bot.aliases = new Enmap();
 bot.cdTime = new Enmap();
@@ -26,9 +25,6 @@ const init = async () => {
 
 // CLEAN USER COOLDOWNS
 const talkedRecently = {};
-fs.writeFile("./assets/cooldowns.json", JSON.stringify(talkedRecently), err => {
-  if (err) console.log(err);
-});
-
+writeFile("./assets/cooldowns", talkedRecently);
 init();
 bot.login(bot.config.token);

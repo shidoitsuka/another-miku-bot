@@ -1,0 +1,11 @@
+const config = {
+  "prefix": "q",
+  "botID": "bot_id",
+  "ownerID": "your_id",
+  "token": "bot_token",
+  "googleid": "google_image_search_id",
+  "googleapi": "google_image_search_token",
+  "gfycatid": "gfy_cat_id",
+  "gfycatapi": "gfy_cat_token"
+};
+exports.config = config;

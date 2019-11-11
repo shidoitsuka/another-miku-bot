@@ -1,16 +1,15 @@
 const Discord = require("discord.js");
-const config = require("../config.json");
+const { config } = require("../config.js");
 const chalk = require("chalk");
 const fs = require("fs");
-const { promisify } = require("util");
-const readdir = promisify(fs.readdir);
 
 // START
 module.exports = message => {
+  if (message.channel.type == "dm") return;
   const embed = new Discord.MessageEmbed();
   // JSON DATA
   let DB = readFile("./assets/guildDB");
-  if (!(message.guild.id in DB)) {
+  if (DB[message.guild.id] == undefined) {
     DB[message.guild.id] = {
       prefix: "q",
       greetingChannel: "",

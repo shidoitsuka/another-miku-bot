@@ -13,7 +13,7 @@ node_modules/
 /commands/Owner/test.js
 
 #sensitive
-config.json
+config.js
 package-lock.json
 yarn.lock
 /data/
