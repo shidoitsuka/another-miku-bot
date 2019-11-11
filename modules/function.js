@@ -67,10 +67,7 @@ module.exports = (bot, message) => {
     });
   };
 
-  fetchAvatar = (bot, userID, size) => {
-    if (typeof userID != "string")
-      throw new Error("Fetch Error: Type of UserID must be a string.");
-    const imageUrlRegex = /\?size=2048$/g;
-    return bot.users.get(userID).displayAvatarURL.replace(imageUrlRegex, size);
+  readFile = (directory, encoding = "utf8") => {
+    return JSON.parse(fs.readFileSync(`${directory}.json`, `${encoding}`));
   };
 };
