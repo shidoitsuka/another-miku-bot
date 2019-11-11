@@ -84,7 +84,7 @@ module.exports = message => {
       return AFKdata[user.id];
     });
 
-    // miku tryna remember what was your reason
+    // miku tryna remember whats your reason
     const afkSaid = [
       "They said: ",
       "If I remember it correctly, they said: ",

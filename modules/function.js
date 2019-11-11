@@ -24,12 +24,6 @@ module.exports = (bot, message) => {
   // LOAD COMMAND
   bot.loadCommand = commandName => {
     try {
-      /*
-      walker("./commands/").on("dir", dir => {
-        const category = dir.slice(dir.lastIndexOf("/") + 1);
-        bot.availableCommands.set(category, []);
-      });
-      */
       // walk through the sub folders using walker
       const folder = walker(`./commands/`).on("file", file => {
         if (!file.endsWith(".js")) return;
@@ -45,7 +39,6 @@ module.exports = (bot, message) => {
         props.conf.aliases.forEach(alias => {
           bot.aliases.set(alias, props.help.name);
         });
-        // bot.availableCommands.push(props.help.category, props.help.name);
       });
       console.log(chalk.bgWhite.black(`Loaded ${commandName}`));
       return false;

@@ -14,7 +14,6 @@ bot.commands = new Enmap();
 bot.aliases = new Enmap();
 bot.cdTime = new Enmap();
 bot.commandsConf = new Enmap();
-// bot.availableCommands = new Enmap();
 
 // INITIALIZATION
 const init = async () => {
