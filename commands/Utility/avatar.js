@@ -1,22 +1,28 @@
 const Discord = require("discord.js");
 
 exports.run = (bot, message, args) => {
+  const embed = new Discord.MessageEmbed().setColor(0x1a9ca8);
   if (!message.mentions.users.size) {
-    const embed = new Discord.MessageEmbed()
-      .setAuthor("Miku -- Avatar", "", message.author.displayAvatarURL)
-      .setColor(0x1a9ca8)
+    embed
+      .setAuthor(
+        "Miku -- Avatar",
+        "",
+        message.author.displayAvatarURL({ format: "png", size: 2048 })
+      )
       .setFooter(`${message.author.username}\'s avatar`)
-      .setImage(message.author.displayAvatarURL);
-    message.channel.send({ embed });
+      .setImage(message.author.displayAvatarURL({ format: "png", size: 2048 }));
   } else {
     const mentionMember = message.mentions.users.first();
-    const embed = new Discord.MessageEmbed()
-      .setAuthor("Miku -- Avatar", "", mentionMember.displayAvatarURL)
-      .setColor(0x1a9ca8)
-      .setImage(mentionMember.displayAvatarURL)
+    embed
+      .setAuthor(
+        "Miku -- Avatar",
+        "",
+        mentionMember.displayAvatarURL({ format: "png", size: 2048 })
+      )
+      .setImage(mentionMember.displayAvatarURL({ format: "png", size: 2048 }))
       .setFooter(`${mentionMember.username}\'s avatar`);
-    message.channel.send({ embed });
   }
+  message.channel.send({ embed });
 };
 
 exports.conf = {
