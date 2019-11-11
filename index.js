@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const bot = new Discord.Client({
+  partials: ["MESSAGE", "CHANNEL", "REACTION"]
+});
 const fs = require("fs");
 const Enmap = require("enmap");
 const chalk = require("chalk");
@@ -24,7 +26,6 @@ const init = async () => {
 };
 
 // CLEAN USER COOLDOWNS
-
 const talkedRecently = {};
 fs.writeFile("./assets/cooldowns.json", JSON.stringify(talkedRecently), err => {
   if (err) console.log(err);
