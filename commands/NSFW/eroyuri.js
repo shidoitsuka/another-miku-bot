@@ -12,39 +12,38 @@ exports.run = async (bot, message, args) => {
   const reply = await message.channel.send("**Getting Data...**");
   const image = await neko.nsfw.eroYuri();
   const embed = new Discord.MessageEmbed()
-    .setAuthor("Miku -- ero yuri")
     .setColor(0x1a9ca8)
     .setDescription(`[Click here to download](${image.url})`)
     .setImage(image.url)
     .setFooter(
       `nekos.life | react with 🔄 within 10 seconds to generate new image.`
     );
-  reply.edit({ embed }).then(m => {
+  reply.delete();
+  message.channel.send({ embed }).then(m => {
     const collector = m.createReactionCollector(filter);
-    m.react("🔄").then(_ => {
+    m.react("🔄").then(r => {
       let stopper = setTimeout(() => {
         collector.stop();
       }, 10000);
-      collector.on("collect", r => {
+      collector.on("collect", _ => {
         clearTimeout(stopper);
-        r.remove(message.author.id);
+        r.users.remove(message.author.id);
         embed.setDescription("**Getting Data...**");
         embed.setImage("");
-        reply.edit({ embed });
-        // generate new image
+        m.edit({ embed });
         neko.nsfw.eroYuri().then(newImage => {
           embed.setDescription(`[Click here to download](${newImage.url})`);
           embed.setImage(newImage.url);
-          reply.edit({ embed });
+          m.edit({ embed });
           stopper = setTimeout(() => {
             collector.stop();
           }, 10000);
         });
       });
-      collector.on("end", collected => {
-        m.clearReactions();
+      collector.on("end", _ => {
+        m.reactions.removeAll();
         embed.setFooter("nekos.life | timed out!");
-        reply.edit({ embed });
+        m.edit({ embed });
       });
     });
   });

@@ -55,7 +55,7 @@ module.exports = (bot, message) => {
 
   // WRITE JSON FILES
   writeFile = (directory, varName) => {
-    fs.writeFile(`${directory}.json`, JSON.stringify(varName), err => {
+    return fs.writeFile(`${directory}.json`, JSON.stringify(varName), err => {
       if (err) console.log(err.stack);
     });
   };

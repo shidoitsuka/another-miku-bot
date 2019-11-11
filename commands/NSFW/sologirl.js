@@ -3,46 +3,47 @@ const nekoclient = require("nekos.life");
 const neko = new nekoclient();
 
 exports.run = async (bot, message, args) => {
-  const filter = (reaction, user) =>
-    reaction.emoji.name === "🔄" && user.id === message.author.id;
   if (!message.channel.nsfw)
     return message.channel
-      .send("Please use **NSFW** Channel.")
+      .send("**NSFW Channel Only.**")
       .then(m => m.delete(3000));
-  const pending = message.channel.send("**Getting Data...**");
-  const reply = await pending;
+  const filter = (reaction, user) =>
+    reaction.emoji.name === "🔄" && user.id === message.author.id;
+  const reply = await message.channel.send("**Getting Data...**");
   const image = await neko.nsfw.girlSolo();
   const embed = new Discord.MessageEmbed()
-    .setAuthor("Miku -- Solo Girl")
     .setColor(0x1a9ca8)
+    .setDescription(`[Click here to download](${image.url})`)
     .setImage(image.url)
     .setFooter(
       `nekos.life | react with 🔄 within 10 seconds to generate new image.`
     );
-  reply.edit({ embed }).then(m => {
+  reply.delete();
+  message.channel.send({ embed }).then(m => {
     const collector = m.createReactionCollector(filter);
-    m.react("🔄").then(_ => {
-      let y = setTimeout(() => {
+    m.react("🔄").then(r => {
+      let stopper = setTimeout(() => {
         collector.stop();
       }, 10000);
-      collector.on("collect", r => {
-        clearTimeout(y);
+      collector.on("collect", _ => {
+        clearTimeout(stopper);
+        r.users.remove(message.author.id);
         embed.setDescription("**Getting Data...**");
         embed.setImage("");
-        reply.edit({ embed });
-        neko.nsfw.girlSolo().then(img => {
-          embed.setDescription("");
-          embed.setImage(img.url);
-          reply.edit({ embed });
+        m.edit({ embed });
+        neko.nsfw.girlSolo().then(newImage => {
+          embed.setDescription(`[Click here to download](${newImage.url})`);
+          embed.setImage(newImage.url);
+          m.edit({ embed });
+          stopper = setTimeout(() => {
+            collector.stop();
+          }, 10000);
         });
-        y = setTimeout(() => {
-          collector.stop();
-        }, 10000);
       });
-      collector.on("end", collected => {
-        m.clearReactions();
+      collector.on("end", _ => {
+        m.reactions.removeAll();
         embed.setFooter("nekos.life | timed out!");
-        reply.edit({ embed });
+        m.edit({ embed });
       });
     });
   });

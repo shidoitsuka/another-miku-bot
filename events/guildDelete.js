@@ -4,7 +4,7 @@ const fs = require("fs");
 module.exports = guild => {
   let DB = readFile("./assets/guildDB");
 
-  if (!(guild.id in DB)) return;
+  if (DB[guild.id] == undefined) return;
   delete DB[guild.id];
   writeFile("./assets/guildDB", DB);
 };
