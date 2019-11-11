@@ -2,13 +2,29 @@ const Discord = require("discord.js");
 const fs = require("fs");
 
 module.exports = async (reaction, user) => {
-  // if (!reaction.message.guild.members.get(user.id).permissions.has("MANAGE_GUILD")) return;
-  if (user.id != '332424370272337923') return;
+  // if DM, return
+  if (reaction.message.channel.type == "dm") return;
+  // if not star, return
   if (reaction.emoji.name != "⭐") return;
-  let star = JSON.parse(fs.readFileSync("./assets/g.json", "utf8"));
-  if (!reaction.message.guild.id in star) return reaction.message.channel.send("You haven\'t set starboard channel yet!");
+  // if message is reacted by bot, return
+  if (user.bot) return;
+  // if reaction is less than 5, return
+  if (reaction.count < 5) return;
+  // after minimum reaction is reached, return
+  if (reaction.count > 5) return;
+  // DB
+  let DB = readFile("./assets/guildDB");
+  // if star system is not active, return
+  if (DB[reaction.message.guild.id].star.starChannel == "") return;
+  // if it exist in starchannel, return
+  if (DB[reaction.message.guild.id].star.used.includes(reaction.message.id))
+    return;
+  // var
   let msg;
-
+  /*
+   * check if the message is old
+   * if its old, fetch it first
+   */
   if (reaction.message.partial) {
     try {
       msg = await reaction.message.fetch();
@@ -17,5 +33,49 @@ module.exports = async (reaction, user) => {
     }
   }
   msg = reaction.message;
-  reaction.message.guild.channels.get(star[reaction.message.guild.id]).send(msg);
+  // if the message is from bot, return
+  if (msg.author.bot) return;
+  const embed = new Discord.MessageEmbed()
+    .setColor(0x1a9ca8)
+    .setThumbnail(
+      `${reaction.message.author.displayAvatarURL({
+        format: "png",
+        size: 1024
+      })}`
+    )
+    .addField("__**Author**__", `${msg.author}`, true)
+    .addField("__**Channel**__", `<#${reaction.message.channel.id}>`, true)
+    .addField(
+      "__**Link**__",
+      `[Click here](${msg.url})`,
+      msg.content.length > 25 ? false : true
+    )
+    .setFooter(`${msg.id}`)
+    .setTimestamp();
+  if (msg.attachments.size == 0) {
+    embed.addField(
+      "__**Content**__",
+      `${msg.content}`,
+      msg.content.length > 25 ? false : true
+    );
+  } else {
+    const attachment = msg.attachments.map(a => a.url);
+    if (msg.content.length != 0) {
+      embed.addField(
+        "__**Content**__",
+        `${msg.content}`,
+        msg.content.length > 25 ? false : true
+      );
+    }
+    embed.setImage(`${attachment}`);
+  }
+
+  // get starchannel id and send it
+  reaction.message.guild.channels
+    .get(DB[reaction.message.guild.id].star.starChannel)
+    .send({ embed })
+    .then(m => m.react("⭐"));
+  // then push used message id into DB, so it won't spam
+  DB[reaction.message.guild.id].star.used.push(reaction.message.id);
+  writeFile("./assets/guildDB", DB);
 };

@@ -1,5 +1,6 @@
-const chalk = require('chalk');
-const plays = require('../assets/plays.json');
+const chalk = require("chalk");
+const plays = require("../assets/plays.json");
+
 module.exports = bot => {
   console.log(chalk.bgGreen.white(`Logged in as ${bot.user.tag}!`));
   setInterval(() => {

@@ -4,20 +4,27 @@ const chalk = require("chalk");
 const fs = require("fs");
 const { promisify } = require("util");
 const readdir = promisify(fs.readdir);
-let totalCommands = JSON.parse(
-  fs.readFileSync("./assets/totalCmd.json", "utf8")
-);
 
 // START
 module.exports = message => {
   const embed = new Discord.MessageEmbed();
-  if (message.author.id != "332424370272337923" && message.author.id != "182531489773125632" && message.author.id != "467350316761743370") return;
-  // JSON's DATA
-  let prefixes = JSON.parse(fs.readFileSync("./assets/prefixes.json", "utf8"));
-  let AFKdata = JSON.parse(fs.readFileSync("./assets/afk.json", "utf8"));
-  let talkedRecently = JSON.parse(
-    fs.readFileSync("./assets/cooldowns.json", "utf8")
-  );
+  // JSON DATA
+  let DB = readFile("./assets/guildDB");
+  if (!(message.guild.id in DB)) {
+    DB[message.guild.id] = {
+      prefix: "q",
+      greetingChannel: "",
+      tag: {},
+      star: {
+        starChannel: "",
+        used: []
+      }
+    };
+    writeFile("./assets/guildDB", DB);
+  }
+  let AFKdata = readFile("./assets/afk");
+  let talkedRecently = readFile("./assets/cooldowns");
+  let totalCommands = readFile("./assets/totalCmd");
 
   /**
    * To separate command and arguments
@@ -31,7 +38,7 @@ module.exports = message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-  const prefix = config.prefix || prefixes[message.guild.id];
+  const prefix = config.prefix || DB[message.guild.id].prefix;
   let bot = message.client;
   let cmd;
 
@@ -110,16 +117,10 @@ module.exports = message => {
     ].random();
     // when miku is mentioned
     const hello = [
-      `M-my prefix is \`${prefixes[message.guild.id]}\``,
+      `M-my prefix is \`${DB[message.guild.id].prefix}\``,
       "Miku desu!",
       "Hi!"
     ].random();
-
-    // MAKE A DEFAULT PREFIX
-    if (!prefixes[message.guild.id]) {
-      prefixes[message.guild.id] = config.prefix;
-      writeFile("./assets/prefixes", prefixes);
-    }
 
     // what to do when miku is mentioned
     if (
@@ -130,7 +131,7 @@ module.exports = message => {
     }
     // if it does not starts with guild's custom prefix or default prefix or it's a bot, do nothing
     if (
-      (!message.content.startsWith(prefixes[message.guild.id]) &&
+      (!message.content.startsWith(DB[message.guild.id].prefix) &&
         !message.content.startsWith(config.prefix)) ||
       message.author.bot
     )
