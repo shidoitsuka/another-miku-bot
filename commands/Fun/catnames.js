@@ -14,7 +14,7 @@ exports.run = (bot, message, args) => {
     "👌",
     "😙"
   ].random();
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Cat Names")
     .setColor(0x1a9ca8)
     .setDescription(`If you were my dog, I\'d name you **${name}**!${emoji}`)

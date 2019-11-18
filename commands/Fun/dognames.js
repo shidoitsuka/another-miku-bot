@@ -21,7 +21,7 @@ exports.run = (bot, message, args) => {
     "👌",
     "😙"
   ].random();
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor(
       `Miku -- Dog Names ${
         !args[0] ? "" : args[0] == "-f" ? "(F)" : args[0] == "-m" ? "(M)" : ""
