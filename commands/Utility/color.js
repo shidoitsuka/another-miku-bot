@@ -1,6 +1,6 @@
 const { Canvas } = require("canvas-constructor");
 const { resolve, join } = require("path");
-const { Attachment } = require("discord.js");
+const { MessageAttachment } = require("discord.js");
 
 // Canvas.registerFont(resolve(join(__dirname, "./assets/whatever.ttf")), "Discord");
 exports.run = async (bot, message, args) => {
@@ -23,7 +23,7 @@ exports.run = async (bot, message, args) => {
     m.delete(3000);
   });
   await message.channel
-    .send(new Attachment(await color(), `color-${message.author.id}.jpg`))
+    .send(new MessageAttachment(await color(), `color-${message.author.id}.jpg`))
     .then(message.channel.stopTyping());
 };
 
