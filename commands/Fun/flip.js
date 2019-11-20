@@ -12,7 +12,7 @@ exports.conf = {
 exports.help = {
   name: "flip",
   category: "Fun",
-  description: "Should i go...? Or nah....? I'll just flip a coin!",
+  description: "Flip a coin",
   usage: "flip",
   param: "",
   aliases: "flipcoin, flipcoins, flips"

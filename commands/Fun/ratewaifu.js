@@ -54,7 +54,7 @@ exports.conf = {
 exports.help = {
   name: "ratewaifu",
   category: "Fun",
-  description: "I believe i have been programmed to rate you accurately.",
+  description: "I believe I have been programmed to rate you accurately.",
   usage: "ratewaifu <mention-user> or <name>",
   param: "",
   aliases: ""

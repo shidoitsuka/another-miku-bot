@@ -1,6 +1,6 @@
 {
   "name": "miku",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Miku Tutorial Bot",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,9 @@
     "gfycat-sdk": "^1.4.18",
     "google-images": "^2.1.0",
     "mathjs": "^6.2.3",
+    "mongodb": "^3.3.4",
     "nekos.life": "^2.0.4",
+    "node-fetch": "^2.6.0",
     "relevant-urban": "^2.0.0",
     "request": "^2.88.0",
     "walker": "^1.0.7"

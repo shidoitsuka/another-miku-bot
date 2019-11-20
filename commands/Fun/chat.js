@@ -28,7 +28,7 @@ exports.conf = {
 exports.help = {
   name: "chat",
   category: "Fun",
-  description: "Talk with me!",
+  description: "Talk to AI",
   usage: "chat [param] <text>",
   param: "-owo  :  OwO What's dis?",
   aliases: "c, talk"

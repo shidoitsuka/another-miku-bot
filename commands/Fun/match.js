@@ -45,8 +45,7 @@ exports.conf = {
 exports.help = {
   name: "match",
   category: "Fun",
-  description:
-    "Are you going to be a great couple together?\nOnly two names are allowed.",
+  description: "Are you going to be a great couple together?",
   usage: "match <x> with <y>",
   param: "",
   aliases: "cocok"

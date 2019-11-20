@@ -16,7 +16,7 @@ exports.conf = {
 exports.help = {
   name: "greentext",
   category: "Fun",
-  description: "Make a green colored text.",
+  description: "Generate a green colored text.",
   usage: "greentext <text>",
   param: "-d  :  delete",
   aliases: "gtext"

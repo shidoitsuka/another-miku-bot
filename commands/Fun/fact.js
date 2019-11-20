@@ -21,7 +21,7 @@ exports.conf = {
 exports.help = {
   name: "fact",
   category: "Fun",
-  description: "Are you bored enough to run this command?",
+  description: "Generate random facts",
   usage: "fact",
   param: "",
   aliases: "funfact"

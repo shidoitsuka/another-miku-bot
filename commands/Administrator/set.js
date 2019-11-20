@@ -97,7 +97,7 @@ exports.conf = {
 exports.help = {
   name: "set",
   category: "Administrator",
-  description: "Configure your server.",
+  description: "Guild configuration",
   usage: "set -<param>",
   param: parameters,
   aliases: ""

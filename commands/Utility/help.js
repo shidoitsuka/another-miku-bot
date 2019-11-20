@@ -11,7 +11,7 @@ exports.run = (bot, message, args, prefix) => {
   let commands = {};
   try {
     embed.setAuthor("Miku -- Help", "http://tinyurl.com/ybabktzo");
-    embed.setThumbnail("https://tinyurl.com/MikuHelp");
+    // embed.setThumbnail("https://tinyurl.com/MikuHelp");
     embed.setColor(0x0776b7);
     embed.setFooter(
       `Use ${prefix}help <command name> for advanced help. (Including usage, aliases, etc.)`
@@ -38,7 +38,7 @@ exports.run = (bot, message, args, prefix) => {
           embed.addField(
             `__**${Object.keys(commands)[i]}**__`,
             commands[Object.keys(commands)[i]].join(", "),
-            true
+            false
           );
         }
         embed.setDescription(

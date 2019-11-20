@@ -25,7 +25,7 @@ exports.conf = {
 exports.help = {
   name: "f",
   category: "Fun",
-  description: "Pay your respect!",
+  description: "Pay respect.",
   usage: "f",
   param: "",
   aliases: ""

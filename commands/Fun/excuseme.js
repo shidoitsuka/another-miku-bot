@@ -16,7 +16,7 @@ exports.conf = {
 exports.help = {
   name: "excuseme",
   category: "Fun",
-  description: "Excuse me?",
+  description: "Excuse me WTF?",
   usage: "excuseme",
   param: "",
   aliases: ""

@@ -43,7 +43,7 @@ exports.conf = {
 exports.help = {
   name: "bigtext",
   category: "Fun",
-  description: "Senpai doesn't notice you? Use Bigtext!",
+  description: "Make a big text!",
   usage: "bigtext <text>",
   param: "",
   aliases: "btext"

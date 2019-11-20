@@ -31,7 +31,7 @@ exports.conf = {
 exports.help = {
   name: "catnames",
   category: "Fun",
-  description: "What's your name if you were born as a cat!? OwO",
+  description: "What is your name if you were born as a cat? OwO",
   usage: "catnames",
   param: "",
   aliases: "catname"

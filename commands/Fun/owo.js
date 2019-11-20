@@ -36,7 +36,7 @@ exports.conf = {
 exports.help = {
   name: "owo",
   category: "Fun",
-  description: "OwO What's this?\nEnygwish Twanyswatow!",
+  description: "Enygwish to OwO Twanyswatow!",
   usage: "owo <text>",
   param: "",
   aliases: ""

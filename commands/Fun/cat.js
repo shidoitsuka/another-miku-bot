@@ -55,7 +55,7 @@ exports.conf = {
 exports.help = {
   name: "cat",
   category: "Fun",
-  description: "Print out cat images.",
+  description: "Print out random cat images ♥",
   usage: "cat",
   param: "",
   aliases: "meow, neko"
