@@ -46,7 +46,7 @@ exports.conf = {
 exports.help = {
   name: "8ball",
   category: "Fun",
-  description: "Ask magic 8ball!	",
+  description: "Ask magic 8ball!",
   usage: "8ball [param] <question>",
   param: "-i  :  use nekos.life API",
   aliases: "8b"

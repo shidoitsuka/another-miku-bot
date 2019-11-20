@@ -20,7 +20,7 @@ exports.conf = {
 
 exports.help = {
   name: "omg",
-  category: "Fun",
+  category: "Images",
   description: "OMG!",
   usage: "omg",
   param: "",

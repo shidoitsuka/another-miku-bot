@@ -39,7 +39,7 @@ exports.conf = {
 
 exports.help = {
   name: "hug",
-  category: "Fun",
+  category: "Images",
   description: "Hug someone!",
   usage: "hug <mention-user> or <name>",
   param: "",

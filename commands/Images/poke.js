@@ -38,7 +38,7 @@ exports.conf = {
 
 exports.help = {
   name: "poke",
-  category: "Fun",
+  category: "Images",
   description: "Poke your senpai!",
   usage: "poke <mention-user> or <name>",
   param: "",

@@ -23,7 +23,7 @@ exports.conf = {
 
 exports.help = {
   name: "goodboi",
-  category: "Fun",
+  category: "Images",
   description: "Goodboi!! ( 0w0)-b",
   usage: "goodboi",
   param: "",

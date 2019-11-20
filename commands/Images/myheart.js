@@ -22,7 +22,7 @@ exports.conf = {
 
 exports.help = {
   name: "myheart",
-  category: "Fun",
+  category: "Images",
   description: "Your heart, Your soul.\n-Angel Beats",
   usage: "myheart",
   aliases: "mahart, mhahart, mhaheart"

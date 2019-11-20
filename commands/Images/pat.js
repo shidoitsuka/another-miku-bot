@@ -39,7 +39,7 @@ exports.conf = {
 
 exports.help = {
   name: "pat",
-  category: "Fun",
+  category: "Images",
   description: "Pat someone!",
   usage: "pat <mention-user> or <name>",
   param: "",

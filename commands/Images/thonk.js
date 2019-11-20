@@ -26,7 +26,7 @@ exports.conf = {
 
 exports.help = {
   name: "thonk",
-  category: "Fun",
+  category: "Images",
   description: "DID YOU JUST THONKING ABOUT SOMETHING!?",
   usage: "thonk",
   param: "",

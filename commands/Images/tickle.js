@@ -38,7 +38,7 @@ exports.conf = {
 
 exports.help = {
   name: "tickle",
-  category: "Fun",
+  category: "Images",
   description: "Tickle someone!",
   usage: "tickle [mention-user] or [name]",
   param: "",

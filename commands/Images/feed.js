@@ -38,7 +38,7 @@ exports.conf = {
 
 exports.help = {
   name: "feed",
-  category: "Fun",
+  category: "Images",
   description: "Feed your senpai!",
   usage: "feed <mention-user> or <name>",
   param: "",
