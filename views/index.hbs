@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="HandheldFriendly" content="true" />
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- !fonts -->
+  <title>Miku Bot</title>
+  <!-- libs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typeit@6.1.1/dist/typeit.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- !libs -->
+  <!-- user-defined -->
+  <script src="js/user.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/user.css" />
+  <!-- !user-defined -->
+</head>
+
+<body>
+  <!-- header -->
+  <div class="canvas-header">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Miku</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#about">About</a></li>
+          <li><a href="#commands">Commands</a></li>
+          <li><a href="#more">Additional Features!</a></li>
+          <li><a href="#">Invite!</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- header image -->
+    <div class="parallax-container header-image">
+      <h1 id="typewriting"></h1>
+      <div class="parallax"><img src="https://cdn.glitch.com/66028ce3-d8f3-4656-aee3-c294c177ba0c%2F1.png?v=1574709973716" /></div>
+    </div>
+    <!-- !header image -->
+  </div>
+  <!-- !header -->
+
+  <div class="body">
+    <!-- about -->
+    <div class="section white" id="about">
+      <div class="row container">
+        <h2 class="header ohidden">About</h2>
+        <p class="grey-text text-darken-3 lighten-3 ohidden">
+          Miku is a <i>just4fun</i> bot made by <i>12042#5754</i> with all
+          of his <b>♡</b>!
+        </p>
+      </div>
+    </div>
+    <!-- !about -->
+
+    <!-- 2nd image -->
+    <div class="parallax-container">
+      <div class="parallax"><img src="https://cdn.glitch.com/66028ce3-d8f3-4656-aee3-c294c177ba0c%2F3.png?v=1574710050745" /></div>
+    </div>
+    <!-- !2nd image -->
+    <!-- commands -->
+    <div class="section white" id="commands">
+      <div class="row container">
+        <h2 class="header ohidden">Available Commands</h2>
+        <ul class="collapsible ohidden">
+          {{#each data.command}}
+            <li>
+              <div class="collapsible-header">{{@key}}</div>
+              <div class="collapsible-body commands">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Usage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each this}}
+                      <tr>
+                        <td>{{this.help.name}}</td>
+                        <td>{{this.help.description}}</td>
+                        <td>{{this.help.usage}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <!-- !commands -->
+
+    <!-- 3rd image -->
+    <div class="parallax-container more">
+      <h1>🌟🌟🌟</h1>
+      <div class="parallax"><img src="https://cdn.glitch.com/66028ce3-d8f3-4656-aee3-c294c177ba0c%2F4.png?v=1574710040425" /></div>
+    </div>
+    <!-- !3rd image -->
+
+    <!-- more features -->
+    <div class="section white" id="more">
+      <div class="row container">
+        <h2 class="header ohidden">More Features!</h2>
+        <p class="grey-text text-darken-3 lighten-3 ohidden">
+          Miku also comes with few more feature includings :
+        </p>
+        <table class="more-feature ohidden">
+          <tr>
+            <td>Greeting system</td>
+            <td>:</td>
+            <td>Miku will greet new members</td>
+          </tr>
+          <tr>
+            <td>Custom prefix system</td>
+            <td>:</td>
+            <td>Tired of using default prefix? Change it!</td>
+          </tr>
+          <tr>
+            <td>Starboard system</td>
+            <td>:</td>
+            <td>
+              Everytime a message has more than 3 stars, Miku will send it
+              to your server's starboard channel! ⭐⭐⭐
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- !more features -->
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="grey-text text-darken-4">Lorem Ipsum</h5>
+            <hr>
+            <p class="grey-text text-darken-2">Lorem ipsum dolor sit amet, what should I type here?</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="grey-text text-darken-4">Useful Links</h5>
+            <hr>
+            <p class="grey-text text-darken-2">No links yet!</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container center">
+          <span class="grey-text text-darken-1">standinshd</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
