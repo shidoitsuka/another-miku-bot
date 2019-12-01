@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
-const { config } = require("../config.js");
+const {
+  config
+} = require("../config.js");
 const chalk = require("chalk");
 const fs = require("fs");
 
@@ -73,15 +75,11 @@ module.exports = message => {
    */
 
   // this one will filter the mentioned users
-  const AFKandMentioned = message.mentions.users.filter(user => {
-    return user.id in AFKdata;
-  });
+  const AFKandMentioned = message.mentions.users.filter(user => user.id in AFKdata);
   // WHEN SOMEONE IS MENTIONED AND THE MENTIONED AFK IS TRUE
   if (AFKandMentioned.size) {
     // get the mentioned & afk user's reason
-    const reason = AFKandMentioned.map(user => {
-      return AFKdata[user.id];
-    });
+    const reason = AFKandMentioned.map(user => AFKdata[user.id]});
 
     // miku tryna remember whats your reason
     const afkSaid = [
@@ -93,9 +91,7 @@ module.exports = message => {
       .setAuthor("User AFK")
       .setColor("#1a9ca8")
       .setDescription(`${afkSaid}\n\`\`\`${reason}\`\`\``)
-      .setFooter(
-        `${message.author.username}, they are AFK at the moment. Please try again later!.`
-      );
+      .setFooter(`${message.author.username}, they are AFK at the moment. Please try again later!.`);
     message.channel.send({ embed });
   }
   /* end-AFK */
@@ -122,22 +118,11 @@ module.exports = message => {
     ].random();
 
     // what to do when miku is mentioned
-    if (
-      message.content.startsWith(`<@${config.botID}>`) ||
-      message.content.startsWith(`<@!${config.botID}>`)
-    ) {
-      message.channel.send(`${hello} ${emojis}`);
-    }
+    if (message.content.startsWith(`<@${config.botID}>`) || message.content.startsWith(`<@!${config.botID}>`)) message.channel.send(`${hello} ${emojis}`);
     // if it does not starts with guild's custom prefix or default prefix or it's a bot, do nothing
-    if (
-      (!message.content.startsWith(DB[message.guild.id].prefix) &&
-        !message.content.startsWith(config.prefix)) ||
-      message.author.bot
-    )
-      return;
+    if ((!message.content.startsWith(DB[message.guild.id].prefix) && !message.content.startsWith(config.prefix)) || message.author.bot) return;
   } else if (message.channel.type == "dm") {
-    if (bot.commandsConf.get(command))
-      return message.channel.send("You cannot run that command in a DM!");
+    if (bot.commandsConf.get(command)) return message.channel.send("You cannot run that command in a DM!");
     if (!message.content.startsWith(config.prefix)) return;
   }
   /* end-IF ITS NOT A DM */
@@ -153,16 +138,32 @@ module.exports = message => {
   // RUN COMMAND/ALIASES
   try {
     // VARIABLES
-    let theCmd, find, cd;
+    let theCmd, find, cd, userperm, botperm;
     if (bot.commands.has(command)) {
       find = bot.commands.get(command); // find the command
       theCmd = find.help.name; // find command's name
       cd = find.conf.cooldown * 1000; // find the cooldown and then make it second
+      userperm = find.conf.userPerm;
+      botperm = find.conf.botPerm;
+      userperm[0].length == 0 ? (userperm = "SEND_MESSAGES") : "";
+      botperm[0].length == 0 ? (botperm = "SEND_MESSAGES") : "";
     } else if (bot.aliases.has(command)) {
       find = bot.commands.get(bot.aliases.get(command));
       theCmd = find.help.name;
       cd = find.conf.cooldown * 1000;
+      userperm = find.conf.userPerm;
+      botperm = find.conf.botPerm;
+      userperm[0].length == 0 ? (userperm = "SEND_MESSAGES") : "";
+      botperm[0].length == 0 ? (botperm = "SEND_MESSAGES") : "";
     }
+
+    // if miku has no permission to send
+    if (!message.guild.me.hasPermission("SEND_MESSAGES")) return;
+    // if user has no permission for specific command
+    if (!message.member.hasPermission(userperm) || !message.channel.permissionsFor(message.member).has(userperm)) return message.channel.send(`❌ | You don't have any right to run that command!\n_missing ${userperm} permission(s)_`);
+    // if miku has no permission for specific command
+    if (!message.guild.me.hasPermission(botperm) || !message.channel.permissionsFor(bot.user).has(botperm)) return message.channel.send(`❌ | Lacks one or more of these permission(s) : \`${botperm.join(", ")}\``);
+
     // what miku will say if you're on cooldown
     const cooldowns = [
       `O//w//O I-I-I\'m Getting Dizzy!\n_(cooling down)_`,
@@ -196,9 +197,7 @@ guild ID    : ${message.guild.id}
 
       // +1 total commands ran
       const total = totalCommands.total + 1;
-      totalCommands = {
-        total: total
-      };
+      totalCommands = { total: total };
       writeFile("./assets/totalCmd", totalCommands);
 
       if (!talkedRecently[message.author.id])
