@@ -79,7 +79,7 @@ module.exports = message => {
   // WHEN SOMEONE IS MENTIONED AND THE MENTIONED AFK IS TRUE
   if (AFKandMentioned.size) {
     // get the mentioned & afk user's reason
-    const reason = AFKandMentioned.map(user => AFKdata[user.id]});
+    const reason = AFKandMentioned.map(user => AFKdata[user.id]);
 
     // miku tryna remember whats your reason
     const afkSaid = [
