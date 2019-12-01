@@ -1,4 +1,3 @@
-const Discord = require("discord.js");
 const nekoclient = require("nekos.life");
 const neko = new nekoclient();
 
@@ -30,7 +29,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: [],
   cooldown: 2,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -38,6 +39,5 @@ exports.help = {
   category: "Fun",
   description: "Enygwish to OwO Twanyswatow!",
   usage: "owo <text>",
-  param: "",
-  aliases: ""
+  param: ""
 };

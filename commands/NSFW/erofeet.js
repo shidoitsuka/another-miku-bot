@@ -53,7 +53,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: [],
   cooldown: 5,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS", "ADD_REACTIONS"]
 };
 
 exports.help = {
@@ -61,6 +63,5 @@ exports.help = {
   category: "NSFW",
   description: "Print out erotic feet images.",
   usage: "erofeet",
-  param: "",
-  aliases: ""
+  param: ""
 };

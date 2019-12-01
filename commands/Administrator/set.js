@@ -50,8 +50,6 @@ star            :: ${starChannel}`,
     case "-p":
     case "-pref":
     case "-prefix":
-      if (!message.member.permissions.has("MANAGE_GUILD"))
-        return message.channel.send("You don't have permission to run this!");
       if (args[1].toLowerCase() == "default") {
         DB[guildID].prefix = "q";
         writeFile("./assets/guildDB", DB);
@@ -69,8 +67,6 @@ star            :: ${starChannel}`,
       }
       break;
     case "-star":
-      if (!message.member.permissions.has("MANAGE_GUILD"))
-        return message.channel.send("You don't have permission to run this!");
       if (args[1] == "off") {
         DB[guildID].star.starChannel = "";
         writeFile("./assets/guildDB", DB);
@@ -91,7 +87,9 @@ star            :: ${starChannel}`,
 exports.conf = {
   aliases: [],
   cooldown: 1,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: ["MANAGE_GUILD"],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -100,5 +98,4 @@ exports.help = {
   description: "Guild configuration",
   usage: "set -<param>",
   param: parameters,
-  aliases: ""
 };

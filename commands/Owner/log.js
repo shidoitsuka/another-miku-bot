@@ -48,7 +48,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: [],
   cooldown: 1,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -56,6 +58,5 @@ exports.help = {
   category: "Owner",
   description: "",
   usage: "",
-  param: "",
-  aliases: ""
+  param: ""
 };

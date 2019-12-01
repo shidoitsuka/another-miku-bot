@@ -52,7 +52,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: ["navatar"],
   cooldown: 5,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS", "ADD_REACTIONS"]
 };
 
 exports.help = {
@@ -60,6 +62,5 @@ exports.help = {
   category: "NSFW",
   description: "Print out avatar (perhaps a short-haired-girls?) porn images.",
   usage: "nsfwavatar",
-  param: "",
-  aliases: "navatar"
+  param: ""
 };

@@ -28,7 +28,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["pfp"],
   cooldown: 5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -36,6 +38,5 @@ exports.help = {
   category: "Utility",
   description: "Display someone's avatar.",
   usage: "avatar [mention-user]",
-  param: "",
-  aliases: "pfp"
+  param: ""
 };

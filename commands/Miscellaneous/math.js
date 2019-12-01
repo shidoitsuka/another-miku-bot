@@ -41,7 +41,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["mafs", "maffs", "maff"],
   cooldown: 1,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -49,6 +51,5 @@ exports.help = {
   category: "Miscellaneous",
   description: "Let me do complex math for you!",
   usage: "math <expression>",
-  param: "",
-  aliases: "mafs, maffs, maff"
+  param: ""
 };

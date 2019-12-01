@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const { imgflipid, imgflipapi } = require("../../config.js").config;
 const https = require("https");
 const BASE = "https://api.imgflip.com/caption_image";
-const id = "188390779";
+const id = "87743020";
 
 exports.run = async (bot, message, args, prefix) => {
   if (!args[0]) return message.channel.send("You provided no text!");
@@ -38,7 +38,9 @@ exports.run = async (bot, message, args, prefix) => {
 exports.conf = {
   aliases: ["tbutton"],
   cooldown: 5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -46,6 +48,5 @@ exports.help = {
   category: "Memes",
   description: "Make two buttons that you can't choose.",
   usage: "twobutton <text1>;[text2]",
-  param: "",
-  aliases: "tbutton"
+  param: ""
 };

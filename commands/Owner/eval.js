@@ -24,7 +24,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: ["ev"],
   cooldown: 0.1,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -32,6 +34,5 @@ exports.help = {
   category: "Owner",
   description: "**OWNER ONLY**",
   usage: "",
-  param: "",
-  aliases: "ev"
+  param: ""
 };

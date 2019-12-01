@@ -38,7 +38,9 @@ exports.run = async (bot, message, args, prefix) => {
 exports.conf = {
   aliases: ["wyell"],
   cooldown: 5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -46,6 +48,5 @@ exports.help = {
   category: "Memes",
   description: "Make yourself that girl yelling at a cat meme!",
   usage: "womanyell <text1>;[text2]",
-  param: "",
-  aliases: "wyell"
+  param: ""
 };

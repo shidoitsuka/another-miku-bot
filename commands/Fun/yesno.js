@@ -15,7 +15,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: [],
   cooldown: 1.5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -23,6 +25,5 @@ exports.help = {
   category: "Fun",
   description: "Is it a yes or a no?",
   usage: "yesno <question>",
-  param: "",
-  aliases: ""
+  param: ""
 };

@@ -18,7 +18,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["goodboy", "gboi", "gboy", "gb"],
   cooldown: 2,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -26,6 +28,5 @@ exports.help = {
   category: "Images",
   description: "Goodboi!! ( 0w0)-b",
   usage: "goodboi",
-  param: "",
-  aliases: "goodboy, gboy, gboi, gb"
+  param: ""
 };

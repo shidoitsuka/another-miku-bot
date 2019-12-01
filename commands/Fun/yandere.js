@@ -20,7 +20,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: [],
   cooldown: 1.5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -28,6 +30,5 @@ exports.help = {
   category: "Fun",
   description: "This is how yandere person prove their love!",
   usage: "yandere",
-  param: "",
-  aliases: ""
+  param: ""
 };

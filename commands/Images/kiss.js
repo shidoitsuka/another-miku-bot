@@ -34,7 +34,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: ["kissu"],
   cooldown: 6,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -42,6 +44,5 @@ exports.help = {
   category: "Images",
   description: "Kiss someone!",
   usage: "kiss <mention-user> or <name>",
-  param: "",
-  aliases: "kissu"
+  param: ""
 };

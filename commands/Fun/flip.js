@@ -6,7 +6,9 @@ exports.run = function(bot, message, args) {
 exports.conf = {
   aliases: ["flipcoin", "flipcoins", "flips"],
   cooldown: 3,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -14,6 +16,5 @@ exports.help = {
   category: "Fun",
   description: "Flip a coin",
   usage: "flip",
-  param: "",
-  aliases: "flipcoin, flipcoins, flips"
+  param: ""
 };

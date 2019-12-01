@@ -62,7 +62,7 @@ exports.run = (bot, message, args, prefix) => {
           cmdName.description
         }\nUsage        :: ${cmdName.usage}\nParameter(s) :: ${
           cmdName.param
-        }\nAliases      :: ${cmdName.aliases}\nCooldown     :: ${
+        }\nAliases      :: ${cmdConf.aliases.length == 0 ? "" : cmdConf.aliases.join(", ")}\nCooldown     :: ${
           cmdConf.cooldown
         } second${cmdConf.cooldown == 1 ? "" : "(s)"}\nguildOnly    :: ${
           cmdConf.guildOnly
@@ -89,7 +89,9 @@ exports.run = (bot, message, args, prefix) => {
 exports.conf = {
   aliases: ["h", "halp"],
   cooldown: 0.1,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -97,6 +99,5 @@ exports.help = {
   category: "Utility",
   description: "Displays all available commands.",
   usage: "help [param]",
-  param: "",
-  aliases: "h, halp"
+  param: ""
 };

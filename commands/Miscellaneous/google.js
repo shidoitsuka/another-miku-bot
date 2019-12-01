@@ -39,7 +39,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: ["gs"],
   cooldown: 3,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -47,6 +49,5 @@ exports.help = {
   category: "Miscellaneous",
   description: "Google image search",
   usage: "google <search-query>",
-  param: "",
-  aliases: "gs"
+  param: ""
 };

@@ -21,7 +21,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["think", "thnk"],
   cooldown: 2,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -29,6 +31,5 @@ exports.help = {
   category: "Images",
   description: "DID YOU JUST THONKING ABOUT SOMETHING!?",
   usage: "thonk",
-  param: "",
-  aliases: "think, thnk"
+  param: ""
 };

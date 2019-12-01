@@ -17,7 +17,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["quote", "qotd"],
   cooldown: 1.5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -25,6 +27,5 @@ exports.help = {
   category: "Miscellaneous",
   description: "Print out great quotes!",
   usage: "quotes [param]",
-  param: "-m  :  motivation",
-  aliases: "quote, qotd"
+  param: "-m  :  motivation"
 };

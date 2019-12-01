@@ -15,7 +15,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: ["funfact"],
   cooldown: 3,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -23,6 +25,5 @@ exports.help = {
   category: "Fun",
   description: "Generate random facts",
   usage: "fact",
-  param: "",
-  aliases: "funfact"
+  param: ""
 };

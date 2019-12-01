@@ -15,7 +15,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["hmg"],
   cooldown: 2,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -23,6 +25,5 @@ exports.help = {
   category: "Images",
   description: "OMG!",
   usage: "omg",
-  param: "",
-  aliases: "hmg"
+  param: ""
 };

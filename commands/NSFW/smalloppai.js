@@ -52,7 +52,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: ["soppai", "sboobs"],
   cooldown: 2,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS", "ADD_REACTIONS"]
 };
 
 exports.help = {
@@ -60,6 +62,5 @@ exports.help = {
   category: "NSFW",
   description: "Print out small oppai porn images.",
   usage: "smalloppai",
-  param: "",
-  aliases: "soppai, sboobs"
+  param: ""
 };

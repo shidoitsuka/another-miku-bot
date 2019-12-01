@@ -13,7 +13,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["echo"],
   cooldown: 2,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -21,6 +23,5 @@ exports.help = {
   category: "Fun",
   description: "Too shy to say it? I'll do it for you!",
   usage: "say [parameter] <text>",
-  param: "-d  :  delete",
-  aliases: "echo"
+  param: "-d  :  delete"
 };

@@ -10,7 +10,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["gtext"],
   cooldown: 1,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -18,6 +20,5 @@ exports.help = {
   category: "Fun",
   description: "Generate a green colored text.",
   usage: "greentext <text>",
-  param: "-d  :  delete",
-  aliases: "gtext"
+  param: "-d  :  delete"
 };

@@ -22,7 +22,7 @@ exports.run = async (bot, message, args) => {
     : ((description = wordAnswer), (image = answers.url));
 
   // BEGIN
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Cuddle", "", `${image}`)
     .setColor(0x1a9ca8)
     .setDescription(description)
@@ -37,7 +37,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: [],
   cooldown: 6,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -45,6 +47,5 @@ exports.help = {
   category: "Images",
   description: "Cuddle someone!",
   usage: "cuddle <mention-user> or <name>",
-  param: "",
-  aliases: ""
+  param: ""
 };

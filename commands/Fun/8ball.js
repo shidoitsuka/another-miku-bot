@@ -18,29 +18,33 @@ const answers = [
 ];
 
 exports.run = async (bot, message, args) => {
-  const ebans = answers.random();
   if (!args[0])
     return message.channel.send(
       ":question::question::question::question::question:"
     );
+  const ebans = answers.random();
+  const embed = new Discord.MessageEmbed()
+    .setAuthor("Miku -- Magic 8ball", "", `${eightball.url}`)
+    .setColor(0x1a9ca8);
   if (args[0] == "-i") {
     const eightball = await neko.sfw["8Ball"]();
-    const embed = new Discord.MessageEmbed()
-      .setAuthor("Miku -- Magic 8ball", "", `${eightball.url}`)
-      .setColor(0x1a9ca8)
+    embed
       .setDescription(eightball.response)
       .setImage(`${eightball.url}`)
       .setFooter("Image by nekos.life");
-    message.channel.send("**Thinking...**").then(m => m.edit({ embed }));
+    message.channel.send({ embed });
   } else {
-    message.channel.send(ebans);
+    embed.setDescription(ebans);
+    message.channel.send({ embed });
   }
 };
 
 exports.conf = {
   aliases: ["8b"],
   cooldown: 3,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -48,6 +52,5 @@ exports.help = {
   category: "Fun",
   description: "Ask magic 8ball!",
   usage: "8ball [param] <question>",
-  param: "-i  :  use nekos.life API",
-  aliases: "8b"
+  param: "-i  :  use nekos.life API"
 };

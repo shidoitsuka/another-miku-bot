@@ -31,7 +31,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["pick", "choose", "thisthat"],
   cooldown: 3,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -39,6 +41,5 @@ exports.help = {
   category: "Fun",
   description: "Let me choose which one!",
   usage: "which <x> or <y> or ....[n]",
-  param: "",
-  aliases: "pick, choose, thisthat"
+  param: ""
 };

@@ -30,7 +30,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: [],
   cooldown: 3,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["ATTACH_FILES"]
 };
 
 exports.help = {
@@ -38,6 +40,5 @@ exports.help = {
   category: "Utility",
   description: "Give me the color code, I'll give you the exact color.",
   usage: "color <HEX-COLORCODE>",
-  param: "",
-  aliases: ""
+  param: ""
 };

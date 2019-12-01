@@ -21,7 +21,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["p"],
   cooldown: 1,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -29,6 +31,5 @@ exports.help = {
   category: "Utility",
   description: "Pong!",
   usage: "ping",
-  param: "",
-  aliases: "p"
+  param: ""
 };

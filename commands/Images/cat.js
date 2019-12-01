@@ -3,15 +3,12 @@ const nekoclient = require("nekos.life");
 const neko = new nekoclient();
 
 exports.run = async (bot, message, args) => {
-  if (!message.channel.nsfw)
-    return message.channel
-      .send("**NSFW Channel Only.**")
-      .then(m => m.delete(3000));
   const filter = (reaction, user) =>
     reaction.emoji.name === "🔄" && user.id === message.author.id;
   const reply = await message.channel.send("**Getting Data...**");
-  const image = await neko.nsfw.tits();
+  const image = await neko.sfw.meow();
   const embed = new Discord.MessageEmbed()
+    .setAuthor("Miku -- Meow")
     .setColor(0x1a9ca8)
     .setDescription(`[Click here to download](${image.url})`)
     .setImage(image.url)
@@ -31,7 +28,7 @@ exports.run = async (bot, message, args) => {
         embed.setDescription("**Getting Data...**");
         embed.setImage("");
         m.edit({ embed });
-        neko.nsfw.tits().then(newImage => {
+        neko.sfw.meow().then(newImage => {
           embed.setDescription(`[Click here to download](${newImage.url})`);
           embed.setImage(newImage.url);
           m.edit({ embed });
@@ -50,17 +47,17 @@ exports.run = async (bot, message, args) => {
 };
 
 exports.conf = {
-  aliases: [],
-  cooldown: 2,
+  aliases: ["meow", "neko"],
+  cooldown: 5,
   guildOnly: true,
   userPerm: [""],
   botPerm: ["EMBED_LINKS", "ADD_REACTIONS"]
 };
 
 exports.help = {
-  name: "tits",
-  category: "NSFW",
-  description: "Print out tits images.",
-  usage: "tits",
+  name: "cat",
+  category: "Images",
+  description: "Print out random cat images ♥",
+  usage: "cat",
   param: ""
 };

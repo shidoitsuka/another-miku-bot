@@ -25,7 +25,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["catname"],
   cooldown: 4,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -33,6 +35,5 @@ exports.help = {
   category: "Fun",
   description: "What is your name if you were born as a cat? OwO",
   usage: "catnames",
-  param: "",
-  aliases: "catname"
+  param: ""
 };

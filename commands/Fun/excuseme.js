@@ -10,7 +10,9 @@ exports.run = (bot, message) => {
 exports.conf = {
   aliases: [],
   cooldown: 1,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -18,6 +20,5 @@ exports.help = {
   category: "Fun",
   description: "Excuse me WTF?",
   usage: "excuseme",
-  param: "",
-  aliases: ""
+  param: ""
 };

@@ -37,7 +37,9 @@ exports.run = async (bot, message, args, prefix) => {
 exports.conf = {
   aliases: [],
   cooldown: 5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -45,6 +47,5 @@ exports.help = {
   category: "Memes",
   description: "One does not simply, run this command!",
   usage: "onedoes <text1>",
-  param: "",
-  aliases: ""
+  param: ""
 };

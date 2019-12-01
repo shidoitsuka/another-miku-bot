@@ -86,7 +86,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["tags"],
   cooldown: 1.5,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -94,6 +96,5 @@ exports.help = {
   category: "Utility",
   description: "",
   usage: "tag <tag-name>",
-  param: parameters,
-  aliases: "tags"
+  param: parameters
 };

@@ -42,13 +42,14 @@ exports.run = (bot, message, args) => {
       );
     }
   }
-  delete require.cache[require.resolve("./ratewaifu.js")];
 };
 
 exports.conf = {
   aliases: [],
   cooldown: 2,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -56,6 +57,5 @@ exports.help = {
   category: "Fun",
   description: "I believe I have been programmed to rate you accurately.",
   usage: "ratewaifu <mention-user> or <name>",
-  param: "",
-  aliases: ""
+  param: ""
 };

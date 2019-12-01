@@ -37,7 +37,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["btext"],
   cooldown: 5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -45,6 +47,5 @@ exports.help = {
   category: "Fun",
   description: "Make a big text!",
   usage: "bigtext <text>",
-  param: "",
-  aliases: "btext"
+  param: ""
 };

@@ -7,7 +7,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["indi"],
   cooldown: 1,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -15,6 +17,5 @@ exports.help = {
   category: "Miscellaneous",
   description: "I\'ll give you link for text-indicator that you\'re looking for.",
   usage: "indicator <letter>",
-  param: "",
-  aliases: "indi"
+  param: ""
 };

@@ -29,7 +29,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["shorten", "shrink"],
   cooldown: 5,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -38,6 +40,5 @@ exports.help = {
   description:
     "Give me your super-long-URL and I'll give you the short version of that.",
   usage: "short <url>",
-  param: "",
-  aliases: "shorten, shrink"
+  param: ""
 };

@@ -17,13 +17,14 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["mahart", "mhahart", "mhaheart"],
   cooldown: 2,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
   name: "myheart",
   category: "Images",
   description: "Your heart, Your soul.\n-Angel Beats",
-  usage: "myheart",
-  aliases: "mahart, mhahart, mhaheart"
+  usage: "myheart"
 };

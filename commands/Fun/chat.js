@@ -14,7 +14,7 @@ exports.run = async (bot, message, args) => {
       .send("**Thinykinyg... OwO**")
       .then(m => m.edit(theChat.response));
   } else {
-    const theChat = await neko.getSFWChat({ text: args.join(" ") });
+    const theChat = await neko.sfw.chat({ text: args.join(" ") });
     message.channel.send("**Thinking...**").then(m => m.edit(theChat.response));
   }
 };
@@ -22,7 +22,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: ["c", "talk"],
   cooldown: 2,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -30,6 +32,5 @@ exports.help = {
   category: "Fun",
   description: "Talk to AI",
   usage: "chat [param] <text>",
-  param: "-owo  :  OwO What's dis?",
-  aliases: "c, talk"
+  param: "-owo  :  OwO What's dis?"
 };

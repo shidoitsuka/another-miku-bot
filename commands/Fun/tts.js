@@ -13,7 +13,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["speak"],
   cooldown: 3,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: ["SEND_TTS_MESSAGES"]
 };
 
 exports.help = {
@@ -21,6 +23,5 @@ exports.help = {
   category: "Fun",
   description: "Too shy to say it? I'll do it for you, with voice! (OwO)",
   usage: "tts [parameter] <text>",
-  param: "-d  :  delete",
-  aliases: "speak"
+  param: "-d  :  delete"
 };

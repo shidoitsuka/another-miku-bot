@@ -39,7 +39,9 @@ exports.run = (bot, message, args) => {
 exports.conf = {
   aliases: ["cocok"],
   cooldown: 2.5,
-  guildOnly: true
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: [""]
 };
 
 exports.help = {
@@ -47,6 +49,5 @@ exports.help = {
   category: "Fun",
   description: "Are you going to be a great couple together?",
   usage: "match <x> with <y>",
-  param: "",
-  aliases: "cocok"
+  param: ""
 };

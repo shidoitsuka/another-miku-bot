@@ -34,7 +34,9 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   aliases: ["gfy", "gfys"],
   cooldown: 3,
-  guildOnly: false
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
 };
 
 exports.help = {
@@ -42,6 +44,5 @@ exports.help = {
   category: "Miscellaneous",
   description: "Search GIF Images using gfycat API.",
   usage: "gfycat <search-query>",
-  param: "",
-  aliases: "gfy, gfys"
+  param: ""
 };
