@@ -7,7 +7,7 @@ module.exports = () => {
 
   app.use(express.static(path.join(__dirname, "views")));
   app.set("view engine", "hbs");
-  app.get("/", (request, response) => {
+  app.get("/", (req, res) => {
     let command = {};
     readdirSync("./commands")
       .filter(folders => folders !== "Owner")
@@ -19,7 +19,7 @@ module.exports = () => {
           ] = require(`./commands/${folders}/${files}`);
         });
       });
-    response.render("index", { data: { command } });
+    res.render("index", { data: { command } });
   });
 
   app.listen(3000, console.log("site is ready"));
