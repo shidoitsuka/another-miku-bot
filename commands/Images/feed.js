@@ -9,16 +9,13 @@ exports.run = async (bot, message, args) => {
     `${message.author.username} : Here, you can have it!`
   ];
   // VARIABLES
-  const wordAnswer = words.random(),
-    answers = await neko.sfw.feed(),
-    idkI = "https://tinyurl.com/MikuIDK",
-    idkD = `**${message.author.username}** trying to feed themselves,\nI wonder how...`;
+  // prettier-ignore
+  const wordAnswer = words.random(), answers = await neko.sfw.feed(), idkI = "https://tinyurl.com/MikuIDK", idkD = `**${message.author.username}** trying to feed themselves,\nI wonder how...`;
   let description, image;
 
   // STATEMENT
-  !args[0]
-    ? ((description = idkD), (image = idkI))
-    : ((description = wordAnswer), (image = answers.url));
+  // prettier-ignore
+  !args[0] ? ((description = idkD), (image = idkI)) : ((description = wordAnswer), (image = answers.url));
 
   // BEGIN
   const embed = new Discord.MessageEmbed()

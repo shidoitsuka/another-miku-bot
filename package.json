@@ -1,6 +1,6 @@
 {
   "name": "miku",
-  "version": "1.6.0",
+  "version": "1.6.2",
   "description": "Miku Tutorial Bot",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,9 @@
     "request": "^2.88.0",
     "walker": "^1.0.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint-config-prettier": "^6.7.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shidoitsuka/another-miku-bot.git"

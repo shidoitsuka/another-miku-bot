@@ -1,17 +1,10 @@
 exports.run = (bot, message, args) => {
   if (!args[1] || same(args)) return message.channel.send(":question:");
   const splitted = args.join(" ").split("  with  ");
-  const values = splitted
-    .join(" ")
-    .trim()
-    .split(" with ");
-  if (
-    !args.join(" ").includes("with") ||
-    same(values) ||
-    args[0] == "with" ||
-    values[2]
-  )
-    return message.channel.send(":question:");
+  // prettier-ignore
+  const values = splitted.join(" ").trim().split(" with ");
+  // prettier-ignore
+  if (!args.join(" ").includes("with") || same(values) || args[0] == "with" || values[2]) return message.channel.send(":question:");
   const or = [" out of ", "/"].random();
   const rates = [
     `1${or}10 :poop:`,

@@ -1,12 +1,10 @@
 exports.run = (bot, message, args) => {
   if (!args[1] || same(args)) return message.channel.send(":question:");
   const splitted = args.join(" ").split(" or ");
-  const values = splitted
-    .join(" ")
-    .trim()
-    .split(" ");
-  if (!args.join(" ").includes("or") || same(values) || args[0] == "or")
-    return message.channel.send(":question:");
+  // prettier-ignore
+  const values = splitted.join(" ").trim().split(" ");
+  // prettier-ignore
+  if (!args.join(" ").includes("or") || same(values) || args[0] == "or") return message.channel.send(":question:");
   // const answers = values.blank().random().trim();
   const answers = splitted.random();
   const words = [
@@ -17,14 +15,9 @@ exports.run = (bot, message, args) => {
     "Shuuuud be",
     "I think it's"
   ].random();
+  // prettier-ignore
   message.channel
-    .send(
-      `${words} **${answers.trim()}**${[".", "!"].random()} ${[
-        "UwU",
-        "OwO",
-        "( 0w0)-b"
-      ].random()}`
-    )
+    .send(`${words} **${answers.trim()}**${[".", "!"].random()} ${["UwU", "OwO", "( 0w0)-b"].random()}`)
     .catch(err => message.channel.send("❌ | Tell something."));
 };
 

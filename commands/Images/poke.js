@@ -4,21 +4,16 @@ const neko = new nekoclient();
 
 // START-MAIN
 exports.run = async (bot, message, args) => {
-  const words = [
-    `${message.author.username} is poking **${args[0]}**!`,
-    `Poke poke!`
-  ];
+  // prettier-ignore
+  const words = [`${message.author.username} is poking **${args[0]}**!`, `Poke poke!`];
   // VARIABLES
-  const wordAnswer = words.random(),
-    answers = await neko.sfw.poke(),
-    idkI = "https://tinyurl.com/MikuIDK",
-    idkD = `**${message.author.username}** trying to poke themselves,\nI wonder how...`;
+  // prettier-ignore
+  const wordAnswer = words.random(), answers = await neko.sfw.poke(), idkI = "https://tinyurl.com/MikuIDK", idkD = `**${message.author.username}** trying to poke themselves,\nI wonder how...`;
   let description, image;
 
   // STATEMENT
-  !args[0]
-    ? ((description = idkD), (image = idkI))
-    : ((description = wordAnswer), (image = answers.url));
+  // prettier-ignore
+  !args[0] ? ((description = idkD), (image = idkI)) : ((description = wordAnswer), (image = answers.url));
 
   // BEGIN
   const embed = new Discord.MessageEmbed()

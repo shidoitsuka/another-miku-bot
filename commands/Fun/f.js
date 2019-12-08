@@ -5,9 +5,7 @@ exports.run = (bot, message, args) => {
   let file = readFile("./assets/f");
   if (!file) file = { total: 0 };
   const total = file.total + 1;
-  file = {
-    total: total
-  };
+  file = { total: total };
   writeFile("./assets/f", file);
   const embed = new Discord.MessageEmbed()
     .setDescription(`**${message.author.username}** has paid their respect!`)

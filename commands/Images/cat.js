@@ -3,18 +3,17 @@ const nekoclient = require("nekos.life");
 const neko = new nekoclient();
 
 exports.run = async (bot, message, args) => {
-  const filter = (reaction, user) =>
-    reaction.emoji.name === "🔄" && user.id === message.author.id;
+  // prettier-ignore
+  const filter = (reaction, user) => reaction.emoji.name === "🔄" && user.id === message.author.id;
   const reply = await message.channel.send("**Getting Data...**");
   const image = await neko.sfw.meow();
+  // prettier-ignore
   const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Meow")
     .setColor(0x1a9ca8)
     .setDescription(`[Click here to download](${image.url})`)
     .setImage(image.url)
-    .setFooter(
-      `nekos.life | react with 🔄 within 10 seconds to generate new image.`
-    );
+    .setFooter(`nekos.life | react with 🔄 within 10 seconds to generate new image.`);
   reply.delete();
   message.channel.send({ embed }).then(m => {
     const collector = m.createReactionCollector(filter);

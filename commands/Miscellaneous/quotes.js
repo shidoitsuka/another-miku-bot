@@ -3,8 +3,8 @@ const quotes = require("../../assets/quotes.json"); // the quotes
 
 exports.run = (bot, message, args) => {
   const theAnswer = quotes["random"].random();
-  const quotesMotiv =
-    quotes.motivate[Math.floor(Math.random() * quotes.motivate.length)];
+  // prettier-ignore
+  const quotesMotiv = quotes.motivate[Math.floor(Math.random() * quotes.motivate.length)];
 
   const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Quotes")

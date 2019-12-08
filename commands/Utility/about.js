@@ -6,32 +6,16 @@ exports.run = (bot, message, args) => {
   const subtotal = JSON.parse(fs.readFileSync("./assets/totalCmd.json"));
   const total = subtotal.total;
   const cpu = Math.round((process.cpuUsage().system / 1024 / 1024) * 100) + "%";
-  const memory =
-    Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + " MB";
+  // prettier-ignore
+  const memory = Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + " MB";
+  // prettier-ignore
   const embed = new Discord.MessageEmbed()
-    .setAuthor(
-      `Miku -- About me`,
-      "",
-      "https://github.com/shidoitsuka/another-miku-bot"
-    )
+    .setAuthor(`Miku -- About me`, "", "https://github.com/shidoitsuka/another-miku-bot")
     .setThumbnail("https://tinyurl.com/MikuLogo")
     .setColor(0x1a9ca8)
-    .setDescription(
-      "Hello, I'm Miku!\nA `just4fun` discord bot written over discord.js framework with ❤ by 12042#5754."
-    )
-    .addField(
-      "NodeJS version:",
-      `${process.version
-        .slice(1)
-        .split(".")
-        .join(".")}`,
-      true
-    )
-    .addField(
-      "discord.js version:",
-      `${package.dependencies["discord.js"].slice(1)}`,
-      true
-    )
+    .setDescription("Hello, I'm Miku!\nA `just4fun` discord bot written over discord.js framework with ❤ by 12042#5754.")
+    .addField("NodeJS version:", `${process.version.slice(1).split(".").join(".")}`, true)
+    .addField("discord.js version:", `${package.dependencies["discord.js"].slice(1)}`, true)
     // .addField("canvas version:", `${package.dependencies["canvas"].slice(1)}`, true)
     // .addField("canvas-constructor version:", `${package.dependencies["canvas-constructor"].slice(1)}`, true)
     // .addField("cat-names version:", `${package.dependencies["cat-names"].slice(1)}`, true)
@@ -48,16 +32,8 @@ exports.run = (bot, message, args) => {
     .addField("Executed Command(s):", total, true)
     .addField("CPU Usage:", cpu, true)
     .addField("Memory Usage:", memory, true)
-    .addField(
-      "Invite link:",
-      "[Click Me!](https://discordapp.com/oauth2/authorize/?permissions=2080898303&scope=bot&client_id=364242246314360843)",
-      true
-    )
-    .addField(
-      "Fan server is here!!",
-      "[Click Me!](https://discord.gg/uxseTvy)",
-      true
-    )
+    .addField("Invite link:", "[Click Me!](https://discordapp.com/oauth2/authorize/?permissions=2080898303&scope=bot&client_id=364242246314360843)", true)
+    .addField("Fan server is here!!", "[Click Me!](https://discord.gg/uxseTvy)", true)
     .setFooter(`Click title for my source-code | v${package.version}-beta`);
   message.channel.send({ embed });
 };

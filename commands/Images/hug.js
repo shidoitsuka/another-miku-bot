@@ -4,24 +4,16 @@ const neko = new nekoclient();
 
 // START-MAIN
 exports.run = async (bot, message, args) => {
-  const words = [
-    `${message.author.username} is hugging **${args[0]}** >////<`,
-    `Look at ${message.author.username} and **${args[0]}**! O////O`,
-    `How cute, ${message.author.username} is hugging **${args[0]}**!`
-  ];
+  // prettier-ignore
+  const words = [`${message.author.username} is hugging **${args[0]}** >////<`, `Look at ${message.author.username} and **${args[0]}**! O////O`, `How cute, ${message.author.username} is hugging **${args[0]}**!`];
   // VARIABLES
-  const wordAnswer = words.random(),
-    answers = await neko.sfw.hug(),
-    idkI = "https://tinyurl.com/MikuIDK",
-    idkD = `**${message.author.username}** trying to hug themselves,\nI wonder how...`;
+  // prettier-ignore
+  const wordAnswer = words.random(), answers = await neko.sfw.hug(), idkI = "https://tinyurl.com/MikuIDK", idkD = `**${message.author.username}** trying to hug themselves,\nI wonder how...`;
   let description, image;
 
   // STATEMENT
-  !args[0]
-    ? ((description = idkD), (image = idkI))
-    : ((description = wordAnswer), (image = answers.url));
-
-  // BEGIN
+  // prettier-ignore
+  !args[0] ? ((description = idkD), (image = idkI)) : ((description = wordAnswer), (image = answers.url));// BEGIN
   const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Hug", "", `${image}`)
     .setColor(0x1a9ca8)

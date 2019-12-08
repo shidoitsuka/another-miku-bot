@@ -10,40 +10,29 @@ exports.run = (bot, message, args, prefix) => {
     .filter(folders => folders != "Owner" && folders != "NSFW");
   let commands = {};
   try {
-    embed.setAuthor("Miku -- Help", "http://tinyurl.com/ybabktzo");
-    // embed.setThumbnail("https://tinyurl.com/MikuHelp");
-    embed.setColor(0x0776b7);
-    embed.setFooter(
-      `Use ${prefix}help <command name> for advanced help. (Including usage, aliases, etc.)`
-    );
+    // prettier-ignore
+    embed.setAuthor("Miku -- Help", "http://tinyurl.com/ybabktzo")
+    .setColor(0x0776b7)
+    .setFooter(`Use ${prefix}help <command name> for advanced help. (Including usage, aliases, etc.)`);
     // all commands
     if (!args[0]) {
       if (message.channel.nsfw) {
-        const nsfw = fs
-          .readdirSync("./commands/NSFW")
-          .map(files => files.replace(".js", ""));
-        embed.addField("__**NSFW**__", nsfw.join(", "), true)
+        // prettier-ignore
+        const nsfw = fs.readdirSync("./commands/NSFW").map(files => files.replace(".js", ""));
+        embed.addField("__**NSFW**__", nsfw.join(", "), true);
         message.channel.send({ embed });
       } else {
         subFolders.forEach(folders => {
           commands[folders] = [];
-          fs.readdirSync(`./commands/${folders}/`)
-            .filter(files => files.endsWith(".js"))
-            .map(files => files.replace(".js", ""))
-            .map(files => {
-              commands[folders].push(files);
-            });
+          // prettier-ignore
+          fs.readdirSync(`./commands/${folders}/`).filter(files => files.endsWith(".js")).map(files => files.replace(".js", "")).map(files => commands[folders].push(files) );
         });
         for (var i = 0; i < Object.keys(commands).length; i++) {
-          embed.addField(
-            `__**${Object.keys(commands)[i]}**__`,
-            commands[Object.keys(commands)[i]].join(", "),
-            false
-          );
+          // prettier-ignore
+          embed.addField(`__**${Object.keys(commands)[i]}**__`, commands[Object.keys(commands)[i]].join(", "), false);
         }
-        embed.setDescription(
-          `Usage: \`${prefix}command\`\nDescription: \`<this-is-required>\` \`[this-is-optional]\`\nPlease use NSFW channel to see available NSFW command(s).`
-        );
+        // prettier-ignore
+        embed.setDescription(`Usage: \`${prefix}command\`\nDescription: \`<this-is-required>\` \`[this-is-optional]\`\nPlease use NSFW channel to see available NSFW command(s).`);
         message.channel.send({ embed });
       }
     } else {
@@ -51,24 +40,13 @@ exports.run = (bot, message, args, prefix) => {
       let cmd = args[0];
       let find;
       if (bot.commands.has(cmd)) find = bot.commands.get(cmd);
-      else if (bot.aliases.has(cmd))
-        find = bot.commands.get(bot.aliases.get(cmd));
+      // prettier-ignore
+      else if (bot.aliases.has(cmd)) find = bot.commands.get(bot.aliases.get(cmd));
       let cmdName = find.help;
       let cmdConf = find.conf;
-      message.channel.send(
-        `==== ==== Advanced Help ==== ====\n\nCommand      :: ${
-          cmdName.name
-        }\nCategory     :: ${cmdName.category}\nDescription  :: ${
-          cmdName.description
-        }\nUsage        :: ${cmdName.usage}\nParameter(s) :: ${
-          cmdName.param
-        }\nAliases      :: ${cmdConf.aliases.length == 0 ? "" : cmdConf.aliases.join(", ")}\nCooldown     :: ${
-          cmdConf.cooldown
-        } second${cmdConf.cooldown == 1 ? "" : "(s)"}\nguildOnly    :: ${
-          cmdConf.guildOnly
-        }\n\n=================================`,
-        { code: "asciidoc" }
-      );
+      // prettier-ignore
+      message.channel.send(`==== ==== Advanced Help ==== ====\n\nCommand      :: ${cmdName.name}\nCategory     :: ${cmdName.category}\nDescription  :: ${cmdName.description}\nUsage        :: ${cmdName.usage}\nParameter(s) :: ${cmdName.param}\nAliases      :: ${cmdConf.aliases.length == 0 ? "" : cmdConf.aliases.join(", ")}\nCooldown     :: ${cmdConf.cooldown} second${cmdConf.cooldown == 1 ? "" : "(s)"}\nguildOnly    :: ${cmdConf.guildOnly}\n\n=================================`,
+        { code: "asciidoc" });
     }
   } catch (e) {
     // END TRY

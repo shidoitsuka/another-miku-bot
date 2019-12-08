@@ -1,9 +1,8 @@
 const Discord = require("discord.js");
 
 exports.run = (bot, message, args) => {
-  const embed = new Discord.MessageEmbed()
-    .setColor("#36393e")
-    .setDescription("**Pinging...**");
+  // prettier-ignore
+  const embed = new Discord.MessageEmbed().setColor("#36393e").setDescription("**Pinging...**");
   message.channel.send({ embed }).then(m => {
     let time = m.createdTimestamp - message.createdTimestamp;
     const answers = [

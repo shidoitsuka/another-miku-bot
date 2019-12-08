@@ -3,17 +3,10 @@ const Discord = require("discord.js");
 
 exports.run = (bot, message, args) => {
   if (!args[0]) return message.channel.send(":question:");
-  if (
-    !args[0].toLowerCase().startsWith("http://") &&
-    !args[0].toLowerCase().startsWith("https://")
-  )
-    return message.channel
-      .send(
-        "Either **http://** nor **https://** are not found.\n_(case sensitive)_"
-      )
-      .then(m => m.delete(3000));
-  request(
-    { uri: `http://tinyurl.com/api-create.php?url=${args[0]}` },
+  // prettier-ignore
+  if (!args[0].toLowerCase().startsWith("http://") && !args[0].toLowerCase().startsWith("https://")) return message.channel.send("Either **http://** nor **https://** are not found.\n_(case sensitive)_").then(m => m.delete(3000));
+  // prettier-ignore
+  request({ uri: `http://tinyurl.com/api-create.php?url=${args[0]}` },
     (error, response, body) => {
       const embed = new Discord.MessageEmbed()
         .setAuthor("Miku -- Shorten")

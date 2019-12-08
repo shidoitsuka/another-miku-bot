@@ -17,8 +17,8 @@ module.exports = async (reaction, user) => {
   // if star system is not active, return
   if (DB[reaction.message.guild.id].star.starChannel == "") return;
   // if it exist in starchannel, return
-  if (DB[reaction.message.guild.id].star.used.includes(reaction.message.id))
-    return;
+  // prettier-ignore
+  if (DB[reaction.message.guild.id].star.used.includes(reaction.message.id)) return;
   // var
   let msg;
   /*
@@ -35,37 +35,23 @@ module.exports = async (reaction, user) => {
   msg = reaction.message;
   // if the message is from bot, return
   if (msg.author.bot) return;
+  // prettier-ignore
   const embed = new Discord.MessageEmbed()
     .setColor(0x1a9ca8)
-    .setThumbnail(
-      `${reaction.message.author.displayAvatarURL({
-        format: "png",
-        size: 1024
-      })}`
-    )
+    .setThumbnail(`${reaction.message.author.displayAvatarURL({ format: "png", size: 1024 })}`)
     .addField("__**Author**__", `${msg.author}`, true)
     .addField("__**Channel**__", `<#${reaction.message.channel.id}>`, true)
-    .addField(
-      "__**Link**__",
-      `[Click here](${msg.url})`,
-      msg.content.length > 25 ? false : true
-    )
+    .addField("__**Link**__", `[Click here](${msg.url})`, msg.content.length > 25 ? false : true)
     .setFooter(`${msg.id}`)
     .setTimestamp();
   if (msg.attachments.size == 0) {
-    embed.addField(
-      "__**Content**__",
-      `${msg.content}`,
-      msg.content.length > 25 ? false : true
-    );
+    // prettier-ignore
+    embed.addField("__**Content**__", `${msg.content}`, msg.content.length > 25 ? false : true);
   } else {
     const attachment = msg.attachments.map(a => a.url);
     if (msg.content.length != 0) {
-      embed.addField(
-        "__**Content**__",
-        `${msg.content}`,
-        msg.content.length > 25 ? false : true
-      );
+      // prettier-ignore
+      embed.addField("__**Content**__", `${msg.content}`, msg.content.length > 25 ? false : true);
     }
     embed.setImage(`${attachment}`);
   }

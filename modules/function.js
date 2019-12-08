@@ -6,9 +6,8 @@ const fs = require("fs");
 module.exports = (bot, message) => {
   // NUMBER FORMATTER
   String.prototype.toMoney = function() {
-    return Number(this)
-      .toFixed(2)
-      .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    // prettier-ignore
+    return Number(this).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
   };
 
   // RANDOM

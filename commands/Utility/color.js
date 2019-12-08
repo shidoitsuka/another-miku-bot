@@ -4,15 +4,11 @@ const { MessageAttachment } = require("discord.js");
 
 // Canvas.registerFont(resolve(join(__dirname, "./assets/whatever.ttf")), "Discord");
 exports.run = async (bot, message, args) => {
-  if (!args[0])
-    return message.channel.send(
-      `W-wakaranai **${message.author.username}**-san UwU\nI don\'t know that kind of color QwQ`
-    );
+  // prettier-ignore
+  if (!args[0]) return message.channel.send(`W-wakaranai **${message.author.username}**-san UwU\nI don\'t know that kind of color QwQ`);
   async function color() {
-    return new Canvas(200, 50)
-      .setColor(`#${args[0]}`)
-      .addRect(0, 0, 200, 50)
-      .toBufferAsync();
+    // prettier-ignore
+    return new Canvas(200, 50).setColor(`#${args[0]}`).addRect(0, 0, 200, 50).toBufferAsync();
   }
 
   // STARTS HERE
@@ -22,6 +18,7 @@ exports.run = async (bot, message, args) => {
     m.edit(`\`${Date.now() - now}ms\``);
     m.delete(3000);
   });
+  // prettier-ignore
   await message.channel
     .send(new MessageAttachment(await color(), `color-${message.author.id}.jpg`))
     .then(message.channel.stopTyping());

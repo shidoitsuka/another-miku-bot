@@ -9,13 +9,11 @@ const parameters = [
 exports.run = (bot, message, args) => {
   const embed = new Discord.MessageEmbed();
   let DB = readFile("./assets/guildDB");
-  let guildID = message.guild.id,
-    availableTag,
-    tagKey,
-    tagContent;
+  // prettier-ignore
+  let guildID = message.guild.id, availableTag, tagKey, tagContent;
   if (!args[0]) {
-    if (Object.keys(DB[guildID].tag).length == 0)
-      return message.channel.send("❌ | This guild does not have any tags!");
+    // prettier-ignore
+    if (Object.keys(DB[guildID].tag).length == 0) return message.channel.send("❌ | This guild does not have any tags!");
     availableTag = Object.keys(DB[guildID].tag).join(", ");
     embed
       .setAuthor("Available Tags")
@@ -28,12 +26,10 @@ exports.run = (bot, message, args) => {
     case "-add":
       args.shift();
       tagKey = args[0];
-      if (tagKey in DB[guildID].tag)
-        return message.channel.send(
-          `❌ | **${tagKey}** already exist.\nUse \`-override\` instead.`
-        );
-      if (!tagKey)
-        return message.channel.send("❌ | Please provide the tag's name.");
+      // prettier-ignore
+      if (tagKey in DB[guildID].tag) return message.channel.send(`❌ | **${tagKey}** already exist.\nUse \`-override\` instead.`);
+      // prettier-ignore
+      if (!tagKey) return message.channel.send("❌ | Please provide the tag's name.");
       args.shift();
       if (!args[0]) return message.channel.send("❌ | Invalid tag content.");
       tagContent = args.join(" ");
@@ -46,8 +42,8 @@ exports.run = (bot, message, args) => {
     case "-ov":
       args.shift();
       tagKey = args[0];
-      if (!tagKey)
-        return message.channel.send("❌ | Please provide the tag's name.");
+      // prettier-ignore
+      if (!tagKey) return message.channel.send("❌ | Please provide the tag's name.");
       args.shift();
       if (!args[0]) return message.channel.send("❌ | Invalid tag content.");
       tagContent = args.join(" ");
@@ -61,10 +57,10 @@ exports.run = (bot, message, args) => {
     case "-del":
       args.shift();
       tagKey = args[0];
-      if (!args[0])
-        return message.channel.send("❌ | Please provide the tag's name.");
-      if (!(tagKey in DB[guildID].tag))
-        return message.channel.send(`❌ | **${tagKey}** not found!`);
+      // prettier-ignore
+      if (!args[0]) return message.channel.send("❌ | Please provide the tag's name.");
+      // prettier-ignore
+      if (!(tagKey in DB[guildID].tag)) return message.channel.send(`❌ | **${tagKey}** not found!`);
       delete DB[guildID].tag[tagKey];
       writeFile("./assets/guildDB", DB);
       return message.channel.send(`✅ | Removed **${tagKey}**!`);
@@ -77,9 +73,8 @@ exports.run = (bot, message, args) => {
     if (!(args[0] in DB[guildID].tag)) throw Error();
     return message.channel.send(DB[guildID].tag[tagKey]);
   } catch (e) {
-    return message.channel.send(
-      `❌ | **${tagKey}** does not exists in this guild.`
-    );
+    // prettier-ignore
+    return message.channel.send(`❌ | **${tagKey}** does not exists in this guild.`);
   }
 };
 

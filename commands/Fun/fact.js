@@ -10,7 +10,7 @@ exports.run = async (bot, message, args) => {
   embed.setDescription(facts.fact);
   embed.setFooter("Powered by nekos.life");
   message.channel.send({ embed });
-}; // END exports
+};
 
 exports.conf = {
   aliases: ["funfact"],

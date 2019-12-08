@@ -18,7 +18,7 @@ exports.run = (bot, message, args) => {
     .setAuthor("Miku -- Cat Names")
     .setColor(0x1a9ca8)
     .setDescription(`If you were my dog, I\'d name you **${name}**!${emoji}`)
-    .setFooter("cat-names (npm)");
+    .setFooter("cat-names");
   message.channel.send({ embed });
 };
 

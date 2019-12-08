@@ -4,21 +4,16 @@ const neko = new nekoclient();
 
 exports.run = async (bot, message, args) => {
   // Words to be answered
-  const words = [
-    `${message.author.username} is tickling **${args[0]}**!`,
-    `${message.author.username} : Take this!\n${args[0]} : NO! STOP!`
-  ];
+  // prettier-ignore
+  const words = [`${message.author.username} is tickling **${args[0]}**!`, `${message.author.username} : Take this!\n${args[0]} : NO! STOP!`];
   // VARIABLES
-  const wordAnswer = words.random(),
-    answers = await neko.sfw.tickle(),
-    idkI = "https://tinyurl.com/MikuIDK",
-    idkD = `**${message.author.username}** trying to cuddle themselves,\nI wonder how...`;
+  // prettier-ignore
+  const wordAnswer = words.random(), answers = await neko.sfw.tickle(), idkI = "https://tinyurl.com/MikuIDK", idkD = `**${message.author.username}** trying to cuddle themselves,\nI wonder how...`;
   let description, image;
 
   // STATEMENT
-  !args[0]
-    ? ((description = idkD), (image = idkI))
-    : ((description = wordAnswer), (image = answers.url));
+  // prettier-ignore
+  !args[0] ? ((description = idkD), (image = idkI)) : ((description = wordAnswer), (image = answers.url));
 
   // BEGIN
   const embed = new Discord.MessageEmbed()

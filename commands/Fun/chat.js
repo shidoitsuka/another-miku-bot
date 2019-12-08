@@ -5,10 +5,8 @@ const neko = new nekoclient();
 exports.run = async (bot, message, args) => {
   if (!args[0]) return message.channel.send(".....");
   if (args[0] == "-owo") {
-    const theChat = await neko.sfw.chat({
-      text: args.join(" "),
-      owo: "true"
-    });
+    // prettier-ignore
+    const theChat = await neko.sfw.chat({ text: args.join(" "), owo: "true" });
     args.shift();
     message.channel
       .send("**Thinykinyg... OwO**")

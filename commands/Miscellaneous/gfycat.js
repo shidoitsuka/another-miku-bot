@@ -9,15 +9,12 @@ const gfycat = new Gfycat({
 // STARTS
 exports.run = async (bot, message, args) => {
   if (!args[0]) return message.channel.send(":mag: :question:");
-  let options = {
-    search_text: args.join(" "),
-    count: 1,
-    first: 1
-  };
+  // prettier-ignore
+  let options = { search_text: args.join(" "), count: 1, first: 1 };
   const pending = await message.channel.send("**Getting Data...**");
   const reply = await pending;
-  const result = gfycat
-    .search(options)
+  // prettier-ignore
+  const result = gfycat.search(options)
     .then(data => {
       const embed = new Discord.MessageEmbed()
         .setAuthor("Miku -- gfycat")
@@ -26,9 +23,8 @@ exports.run = async (bot, message, args) => {
         .setImage(`${data.gfycats[0].gifUrl}`);
       reply.edit({ embed });
     })
-    .catch(e =>
-      reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**.`)
-    );
+    // prettier-ignore
+    .catch(e => reply.edit(`❌ | **Error :** Unable to find **${args.join(" ")}**.`));
 };
 
 exports.conf = {

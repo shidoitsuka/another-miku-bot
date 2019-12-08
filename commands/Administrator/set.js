@@ -7,22 +7,17 @@ const parameters = [
 exports.run = (bot, message, args) => {
   // DB_FILES
   let DB = readFile("./assets/guildDB");
+
   // VARIABLES
-  let channelID = message.channel.id,
-    guildID = message.guild.id,
-    greetingChannel,
-    starChannel;
+  // prettier-ignore
+  let channelID = message.channel.id, guildID = message.guild.id, greetingChannel, starChannel;
+  // prettier-ignore
+  DB[guildID].greetingChannel == "" ? (greetingChannel = "not specified") : (greetingChannel = bot.channels.get(DB[guildID].greetingChannel).name);
+  // prettier-ignore
+  DB[guildID].star.starChannel == "" ? (starChannel = "not specified") : (starChannel = bot.channels.get(DB[guildID].star.starChannel).name);
 
-  DB[guildID].greetingChannel == ""
-    ? (greetingChannel = "not specified")
-    : (greetingChannel = bot.channels.get(DB[guildID].greetingChannel).name);
-  DB[guildID].star.starChannel == ""
-    ? (starChannel = "not specified")
-    : (starChannel = bot.channels.get(DB[guildID].star.starChannel).name);
-
-  if (!args[0])
-    return message.channel.send(
-      `prefix          :: ${DB[guildID].prefix}
+  // prettier-ignore
+  if (!args[0]) return message.channel.send(`prefix          :: ${DB[guildID].prefix}
 welcome-channel :: ${greetingChannel}
 star            :: ${starChannel}`,
       { code: "asciidoc" }
@@ -30,43 +25,47 @@ star            :: ${starChannel}`,
 
   // SWITCH
   switch (args[0]) {
+    // welcome
     case "-greet":
     case "-greeting":
     case "-welcome":
-      if (!args[1])
-        return message.channel.send("Please mention a channel for me!");
+      // if no channel is mentioned
+      // prettier-ignore
+      if (!args[1]) return message.channel.send("Please mention a channel for me!");
+      // parameter to turn off greeting system
       if (args[1].toLowerCase() == "off") {
         DB[guildID].greetingChannel = "";
         writeFile("./assets/guildDB", DB);
         message.channel.send("Turned off greeting!");
       } else {
-        if (!message.mentions.channels.first())
-          return message.channel.send("Please mention a channel for me!");
+        // prettier-ignore
+        if (!message.mentions.channels.first()) return message.channel.send("Please mention a channel for me!");
         DB[guildID].greetingChannel = message.mentions.channels.first().id;
         writeFile("./assets/guildDB", DB);
         message.channel.send("Aight, I've set the greeting channel!");
       }
       break;
+    // prefix
     case "-p":
     case "-pref":
     case "-prefix":
+      // parameter to use default prefix
       if (args[1].toLowerCase() == "default") {
         DB[guildID].prefix = "q";
         writeFile("./assets/guildDB", DB);
         message.channel.send("Reseted to default prefix!");
       } else {
-        if (!args[1] || args[1].length > 1)
-          return message.channel.send(
-            "Please input one length of custom prefix."
-          );
+        // prettier-ignore
+        if (!args[1] || args[1].length > 1) return message.channel.send("Please input one length of custom prefix.");
         DB[guildID].prefix = args[1];
         writeFile("./assets/guildDB", DB);
-        message.channel.send(
-          `Changed my prefix in this guild to \`${args[1]}\``
-        );
+        // prettier-ignore
+        message.channel.send(`Changed my prefix in this guild to \`${args[1]}\``);
       }
       break;
+    // starboard
     case "-star":
+      // parameter to turn off starboard system
       if (args[1] == "off") {
         DB[guildID].star.starChannel = "";
         writeFile("./assets/guildDB", DB);
@@ -97,5 +96,5 @@ exports.help = {
   category: "Administrator",
   description: "Guild configuration",
   usage: "set -<param>",
-  param: parameters,
+  param: parameters
 };

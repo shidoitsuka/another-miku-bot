@@ -18,10 +18,8 @@ const answers = [
 ];
 
 exports.run = async (bot, message, args) => {
-  if (!args[0])
-    return message.channel.send(
-      ":question::question::question::question::question:"
-    );
+  // prettier-ignore
+  if (!args[0]) return message.channel.send(":question::question::question::question::question:");
   const ebans = answers.random();
   const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Magic 8ball", "", `${eightball.url}`)

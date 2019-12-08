@@ -13,34 +13,21 @@ const rates = [
 const { config } = require("../../config.js");
 
 exports.run = (bot, message, args) => {
-  if (!args[0]) {
-    message.channel.send("I can't rate *nobody* :confused:");
-  }
+  if (!args[0]) message.channel.send("I can't rate *nobody* :confused:");
   // if they rate owner
-  if (message.content.includes(config.ownerID)) {
-    message.channel.send(`I'd rate <@${config.ownerID}> a 11/10! :heart:`);
-  }
+  // prettier-ignore
+  if (message.content.includes(config.ownerID)) message.channel.send(`I'd rate <@${config.ownerID}> a 11/10! :heart:`);
   // if they rate miku
-  if (message.content.includes(config.botID)) {
-    message.channel.send(
-      "I'd rate myself a 11/10. Just like him! :revolving_hearts:"
-    );
-  } else if (args[0]) {
+  // prettier-ignore
+  if (message.content.includes(config.botID)) message.channel.send("I'd rate myself a 11/10. Just like him! :revolving_hearts:");
+  else if (args[0]) {
     const waifus = rates.random();
-    if (
-      message.content.includes(config.ownerID) ||
-      message.content.includes(config.botID)
-    )
-      return;
-    if (args[0] == message.author.id || args[0] == "me") {
-      message.channel.send(`Sure, lemme give you a ${waifus}.`);
-    } else {
-      message.channel.send(
-        `Sure **${message.author.username}**. I'll give${message.content.substr(
-          10
-        )} a ${waifus}`
-      );
-    }
+    // prettier-ignore
+    if (message.content.includes(config.ownerID) || message.content.includes(config.botID)) return;
+    // prettier-ignore
+    if (args[0] == message.author.id || args[0] == "me") message.channel.send(`Sure, lemme give you a ${waifus}.`);
+    // prettier-ignore
+    else message.channel.send(`Sure **${message.author.username}**. I'll give${message.content.substr(10)} a ${waifus}`);
   }
 };
 

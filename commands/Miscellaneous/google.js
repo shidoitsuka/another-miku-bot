@@ -9,28 +9,15 @@ exports.run = async (bot, message, args) => {
   const pageNo = Math.floor(Math.random() * 11);
   const pending = await message.channel.send("**Searching...**");
   const reply = await pending;
+  // prettier-ignore
   const result = client
-    .search(args.join(" "), {
-      page: pageNo
-    })
+    .search(args.join(" "), { page: pageNo })
     .then(images => {
       const embed = new Discord.MessageEmbed()
         .setAuthor("Miku -- Google Image Search")
         .setColor(0x1a9ca8)
         .setImage(images[random].url)
-        .setFooter(
-          `page: ${pageNo} | google-images | ${
-            random == 0
-              ? (random += 1)
-              : random == 1
-              ? random + "st"
-              : random == 2
-              ? random + "nd"
-              : random == 3
-              ? random + "rd"
-              : random + "th"
-          } Image.`
-        );
+        .setFooter(`page: ${pageNo} | google-images | ${random == 0 ? (random += 1) : random == 1 ? random + "st" : random == 2 ? random + "nd" : random == 3 ? random + "rd" : random + "th"} Image.`);
       reply.edit({ embed });
     })
     .catch(e => reply.edit(`❌ | Something went wrong. Please try again.`));

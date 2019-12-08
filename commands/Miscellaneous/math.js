@@ -8,11 +8,12 @@ const answers = [
 ];
 
 exports.run = (bot, message, args) => {
+  const embed = new Discord.MessageEmbed();
   const theAnswer = answers.random();
   var txt = message.content.slice(6);
   try {
     if (txt == "2+2" || txt == "2+ 2" || txt == "2 +2" || txt == "2 + 2") {
-      const embed = new Discord.MessageEmbed()
+      embed
         .setAuthor("Miku", "https://tinyurl.com/MikuCalc")
         .setColor(0x1a9ca8)
         .setDescription("Let him answer you:")
@@ -20,20 +21,19 @@ exports.run = (bot, message, args) => {
       message.channel.send({ embed });
     } else {
       var ans = math.eval(txt);
-      const embed = new Discord.MessageEmbed()
+      embed
         .setAuthor("Miku -- Math", "https://tinyurl.com/MikuCalc")
         .setColor(0x1a9ca8)
         .setDescription(`${theAnswer}\`${ans}\``);
       message.channel.send({ embed });
     }
   } catch (err) {
-    const embed = new Discord.MessageEmbed()
+    // prettier-ignore
+    embed
       .setAuthor("Miku -- Error")
       .setThumbnail("https://tinyurl.com/MikuError")
       .setColor(0xf44336)
-      .setDescription(
-        `Something went wrong!\n**Error**  : \n${err.name} ${err.message}`
-      );
+      .setDescription(`Something went wrong!\n**Error**  : \n${err.name} ${err.message}`);
     message.channel.send({ embed });
   }
 };
