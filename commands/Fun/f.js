@@ -9,7 +9,7 @@ exports.run = (bot, message, args) => {
     total: total
   };
   writeFile("./assets/f", file);
-  const embed = new Discord.MesageEmbed()
+  const embed = new Discord.MessageEmbed()
     .setDescription(`**${message.author.username}** has paid their respect!`)
     .setColor(0x1a9ca8)
     .setFooter(`Total respect paid: ${file.total}.`);
