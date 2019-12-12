@@ -5,21 +5,16 @@ const parameters = [
 ].join("\n");
 
 exports.run = (bot, message, args) => {
-  // DB_FILES
-  let DB = readFile("./assets/guildDB");
-
-  // VARIABLES
+  let prefix, welcome, star;
+  prefix = bot.db.get("guildConf", `${message.guild.id}.prefix`);
   // prettier-ignore
-  let channelID = message.channel.id, guildID = message.guild.id, greetingChannel, starChannel;
+  bot.db.get("guildConf", `${message.guild.id}.greetingChannel`) == null ? welcome = "not specified!" : welcome = bot.channels.get(bot.db.get("guildConf", `${message.guild.id}.greetingChannel`)).name;
   // prettier-ignore
-  DB[guildID].greetingChannel == "" ? (greetingChannel = "not specified") : (greetingChannel = bot.channels.get(DB[guildID].greetingChannel).name);
+  bot.db.get("guildConf", `${message.guild.id}.star.starChannel`) == null ? star = "not specified!" : star = bot.channels.get(bot.db.get("guildConf", `${message.guild.id}.star.starChannel`)).name;
   // prettier-ignore
-  DB[guildID].star.starChannel == "" ? (starChannel = "not specified") : (starChannel = bot.channels.get(DB[guildID].star.starChannel).name);
-
-  // prettier-ignore
-  if (!args[0]) return message.channel.send(`prefix          :: ${DB[guildID].prefix}
-welcome-channel :: ${greetingChannel}
-star            :: ${starChannel}`,
+  if (!args[0]) return message.channel.send(`prefix          :: ${prefix}
+welcome-channel :: ${welcome}
+star            :: ${star}`,
       { code: "asciidoc" }
     );
 
@@ -31,17 +26,16 @@ star            :: ${starChannel}`,
     case "-welcome":
       // if no channel is mentioned
       // prettier-ignore
-      if (!args[1]) return message.channel.send("Please mention a channel for me!");
+      if (!args[1]) return message.channel.send("Please mention a channel for me or use `off` to turn off!");
       // parameter to turn off greeting system
       if (args[1].toLowerCase() == "off") {
-        DB[guildID].greetingChannel = "";
-        writeFile("./assets/guildDB", DB);
+        bot.db.set("guildConf", null, `${message.guild.id}.greetingChannel`);
         message.channel.send("Turned off greeting!");
       } else {
         // prettier-ignore
         if (!message.mentions.channels.first()) return message.channel.send("Please mention a channel for me!");
-        DB[guildID].greetingChannel = message.mentions.channels.first().id;
-        writeFile("./assets/guildDB", DB);
+        // prettier-ignore
+        bot.db.set("guildConf", message.mentions.channels.first().id, `${message.guild.id}.greetingChannel`);
         message.channel.send("Aight, I've set the greeting channel!");
       }
       break;
@@ -51,14 +45,12 @@ star            :: ${starChannel}`,
     case "-prefix":
       // parameter to use default prefix
       if (args[1].toLowerCase() == "default") {
-        DB[guildID].prefix = "q";
-        writeFile("./assets/guildDB", DB);
+        bot.db.set("guildConf", "q", `${message.guild.id}.prefix`);
         message.channel.send("Reseted to default prefix!");
       } else {
         // prettier-ignore
         if (!args[1] || args[1].length > 1) return message.channel.send("Please input one length of custom prefix.");
-        DB[guildID].prefix = args[1];
-        writeFile("./assets/guildDB", DB);
+        bot.db.set("guildConf", args[1], `${message.guild.id}.prefix`);
         // prettier-ignore
         message.channel.send(`Changed my prefix in this guild to \`${args[1]}\``);
       }
@@ -67,15 +59,15 @@ star            :: ${starChannel}`,
     case "-star":
       // parameter to turn off starboard system
       if (args[1] == "off") {
-        DB[guildID].star.starChannel = "";
-        writeFile("./assets/guildDB", DB);
+        bot.db.set("guildConf", null, `${message.guild.id}.star.starChannel`);
         return message.channel.send("Turned off star system!");
       }
-      const channel = message.mentions.channels.first();
-      if (!channel) return message.channel.send("No channel selected!");
-      DB[guildID].star.starChannel = channel.id;
-      writeFile("./assets/guildDB", DB);
-      message.channel.send(`I\'ve set \`#${channel.name}\` as star channel!`);
+      // prettier-ignore
+      if (!message.mentions.channels.first()) return message.channel.send("No channel selected!");
+      // prettier-ignore
+      bot.db.set("guildConf", message.mentions.channels.first().id, `${message.guild.id}.star.starChannel`);
+      // prettier-ignore
+      message.channel.send(`I\'ve set \`#${message.mentions.channels.first().name}\` as star channel!`);
       break;
     // DEFAULT VALUE
     default:
