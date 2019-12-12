@@ -1,26 +1,11 @@
 const Discord = require("discord.js");
 const nekoclient = require("nekos.life");
 const neko = new nekoclient();
-
-const answers = [
-  "Try again later (〜￣▽￣)〜",
-  "I-i don't know (UwU)",
-  // positives
-  "Yessu!",
-  "Of course! OwO)-b",
-  "Seems like a yes `(OwO)`",
-  "Errr yes, probably?",
-  // negatives
-  "No",
-  "Nyuu, Baka! >w<",
-  "Don't count on it ƪ(˘⌣˘)ʃ",
-  "I haven't been programmed to know that yet (⌯˃̶᷄ ﹏ ˂̶᷄⌯)ﾟ"
-];
+const texts = require("../../modules/texts.js");
 
 exports.run = async (bot, message, args) => {
   // prettier-ignore
-  if (!args[0]) return message.channel.send(":question::question::question::question::question:");
-  const ebans = answers.random();
+  if (!args[0]) return message.channel.send(":question:");
   const embed = new Discord.MessageEmbed()
     .setAuthor("Miku -- Magic 8ball")
     .setColor(0x1a9ca8);
@@ -32,7 +17,7 @@ exports.run = async (bot, message, args) => {
       .setFooter("Image by nekos.life");
     message.channel.send({ embed });
   } else {
-    embed.setDescription(ebans);
+    embed.setDescription(texts.EightballTexts());
     message.channel.send({ embed });
   }
 };
