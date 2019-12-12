@@ -1,7 +1,7 @@
 {
   "name": "miku",
-  "version": "1.6.2",
-  "description": "Miku Tutorial Bot",
+  "version": "2.0.0",
+  "description": "Miku Discord Bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,12 +23,12 @@
     "fs-nextra": "^0.4.5",
     "gfycat-sdk": "^1.4.18",
     "google-images": "^2.1.0",
-    "google-spreadsheet": "^2.0.8",
     "hbs": "^4.0.6",
     "mathjs": "^6.2.3",
     "mongodb": "^3.3.4",
     "nekos.life": "^2.0.4",
     "node-fetch": "^2.6.0",
+    "node-os-utils": "^1.1.0",
     "relevant-urban": "^2.0.0",
     "request": "^2.88.0",
     "walker": "^1.0.7"
