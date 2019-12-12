@@ -2,15 +2,12 @@ const Discord = require("discord.js");
 const fs = require("fs");
 
 exports.run = (bot, message, args) => {
-  let file = readFile("./assets/f");
-  if (!file) file = { total: 0 };
-  const total = file.total + 1;
-  file = { total: total };
-  writeFile("./assets/f", file);
+  if (!bot.db.has("respects")) bot.db.set("respects", 1);
+  bot.db.set("respects", bot.db.get("respects") + 1);
   const embed = new Discord.MessageEmbed()
     .setDescription(`**${message.author.username}** has paid their respect!`)
     .setColor(0x1a9ca8)
-    .setFooter(`Total respect paid: ${file.total}.`);
+    .setFooter(`Total respect paid: ${bot.db.get("respects")}.`);
   message.channel.send({ embed });
 };
 
