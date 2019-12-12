@@ -1,17 +1,18 @@
-const Discord = require("discord.js");
-const fs = require("fs");
-
 module.exports = guild => {
-  let DB = readFile("./assets/guildDB");
-  if (DB[guild.id] != undefined) return;
-  DB[guild.id] = {
-    prefix: "q",
-    greetingChannel: "",
-    tag: {},
-    star: {
-      starChannel: "",
-      used: []
-    }
-  };
-  writeFile("./assets/guildDB", DB);
+  const bot = guild.client;
+  try {
+    const checker = bot.db.get("guildConf", guild.id);
+    if (checker == undefined) throw Error();
+  } catch (_) {
+    // prettier-ignore
+    bot.db.set("guildConf", {
+       prefix: "q",
+       greetingChannel: null,
+       tags: {},
+       star: {
+         starChannel: null,
+         used: []
+       }
+     }, guild.id);
+  }
 };
