@@ -7,14 +7,13 @@ const reasons = [
 ];
 
 exports.run = async (bot, message, args) => {
-  let data = readFile("./assets/afk");
   let reason = args.join(" ");
   if (!reason) reason = reasons.random();
   // prettier-ignore
-  if (Object.keys(data).includes(message.author.id)) return message.channel.send("You are in AFK mode already!");
-  data[message.author.id] = reason;
+  if (bot.db.get("afk", message.author.id, "status") == true) return message.channel.send("You are in AFK mode already!");
+  bot.db.set("afk", true, `${message.author.id}.status`);
+  bot.db.set("afk", reason, `${message.author.id}.reason`)
   message.channel.send("You are in AFK mode now!");
-  writeFile("./assets/afk", data);
 };
 
 exports.conf = {
