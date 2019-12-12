@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 
 module.exports = async (reaction, user) => {
+  const bot = reaction.message.client;
   // if DM, return
   if (reaction.message.channel.type == "dm") return;
   // if not star, return
@@ -9,16 +10,16 @@ module.exports = async (reaction, user) => {
   // if message is reacted by bot, return
   if (user.bot) return;
   // if reaction is less than 5, return
-  if (reaction.count < 5) return;
+  if (reaction.count < 3) return;
   // after minimum reaction is reached, return
-  if (reaction.count > 5) return;
-  // DB
-  let DB = readFile("./assets/guildDB");
+  if (reaction.count > 3) return;
+
   // if star system is not active, return
-  if (DB[reaction.message.guild.id].star.starChannel == "") return;
+  // prettier-ignore
+  if (bot.db.get("guildConf", `${reaction.message.guild.id}.star.starChannel`) == null) return;
   // if it exist in starchannel, return
   // prettier-ignore
-  if (DB[reaction.message.guild.id].star.used.includes(reaction.message.id)) return;
+  if (bot.db.get("guildConf", `${reaction.message.guild.id}.star.used`).includes(reaction.message.id)) return;
   // var
   let msg;
   /*
@@ -57,11 +58,12 @@ module.exports = async (reaction, user) => {
   }
 
   // get starchannel id and send it
+  // prettier-ignore
   reaction.message.guild.channels
-    .get(DB[reaction.message.guild.id].star.starChannel)
+    .get(bot.db.get("guildConf", `${reaction.message.guild.id}.star.starChannel`))
     .send({ embed })
     .then(m => m.react("⭐"));
   // then push used message id into DB, so it won't spam
-  DB[reaction.message.guild.id].star.used.push(reaction.message.id);
-  writeFile("./assets/guildDB", DB);
+  // prettier-ignore
+  bot.db.push("guildConf", reaction.message.id, `${reaction.message.guild.id}.star.used`);
 };
