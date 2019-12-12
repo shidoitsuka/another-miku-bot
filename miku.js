@@ -10,12 +10,13 @@ module.exports = () => {
   require("./util/eventLoader.js")(bot);
   require("./modules/function.js")(bot);
   bot.config = require("./config.js").config;
+  bot.db = new Enmap({ name: "db" });
   bot.commands = new Enmap();
   bot.aliases = new Enmap();
   bot.cdTime = new Enmap();
   bot.commandsConf = new Enmap();
 
-  // INITIALIZATION
+  // Initialization
   const init = async () => {
     const folder = walker(`./commands/`).on("file", file => {
       if (!file.endsWith(".js")) return;
@@ -24,9 +25,10 @@ module.exports = () => {
     });
   };
 
-  // CLEAN USER COOLDOWNS
-  const talkedRecently = {};
-  writeFile("./assets/cooldowns", talkedRecently);
+  // Clean all cooldowns to avoid errors
+  bot.db.set("cooldowns", {});
+
+  // Initialization
   init();
   bot.login(bot.config.token);
 };
