@@ -25,7 +25,6 @@
     "google-images": "^2.1.0",
     "hbs": "^4.0.6",
     "mathjs": "^6.2.3",
-    "mongodb": "^3.3.4",
     "nekos.life": "^2.0.4",
     "node-fetch": "^2.6.0",
     "node-os-utils": "^1.1.0",
