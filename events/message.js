@@ -4,7 +4,6 @@ const texts = require("../modules/texts.js");
 
 module.exports = message => {
   const bot = message.client;
-  if (message.author.id != "332424370272337923" && message.author.id != "642790658968518706" && message.author.id != "467350316761743370" && message.author.id != "214059134155227136") return;
   // ignore DMs
   if (message.channel.type == "dm") return;
   // make a new embed
