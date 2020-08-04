@@ -1,0 +1,46 @@
+{
+  "name": "miku",
+  "version": "2.0.0",
+  "description": "Miku Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "author": "brian",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^7.1.0",
+    "canvas": "^2.6.1",
+    "canvas-constructor": "^3.2.0",
+    "cat-names": "^3.0.0",
+    "cheerio": "^0.22.0",
+    "dog-names": "^2.0.0",
+    "enmap": "^5.4.1",
+    "express": "^4.17.1",
+    "fs-nextra": "^0.5.1",
+    "gfycat-sdk": "^1.4.18",
+    "google-images": "^2.1.0",
+    "hbs": "^4.1.1",
+    "mathjs": "^7.1.0",
+    "nekos.life": "^2.0.7",
+    "node-os-utils": "^1.3.0",
+    "relevant-urban": "^2.0.0",
+    "request": "^2.88.2",
+    "walker": "^1.0.7",
+    "discord.js": "^12.2.0",
+    "node-fetch": "^2.6.0",
+    "chalk": "^4.1.0"
+  },
+  "engines": {
+    "node": "v12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shidoitsuka/another-miku-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shidoitsuka/another-miku-bot/issues"
+  },
+  "homepage": "https://github.com/shidoitsuka/another-miku-bot#readme"
+}

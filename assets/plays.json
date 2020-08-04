@@ -1,0 +1,41 @@
+[{
+  "type": "PLAYING",
+  "activity": "in your room!",
+  "status": "idle"
+}, {
+  "type": "PLAYING",
+  "activity": "qhelp!",
+  "status": "online"
+}, {
+  "type": "PLAYING",
+  "activity": "OωO Wats dis?",
+  "status": "online"
+}, {
+  "type": "PLAYING",
+  "activity": "and eatin' pizza! OωO",
+  "status": "idle"
+}, {
+  "type": "PLAYING",
+  "activity": "with you!",
+  "status": "online"
+}, {
+  "type": "PLAYING",
+  "activity": "type qhelp",
+  "status": "online"
+}, {
+  "type": "PLAYING",
+  "activity": "tsundere? yandere? your choice!",
+  "status": "idle"
+}, {
+  "type": "PLAYING",
+  "activity": "what's the point of reading this?",
+  "status": "dnd"
+}, {
+  "type": "PLAYING",
+  "activity": "with 12042!",
+  "status": "idle"
+}, {
+  "type": "WATCHING",
+  "activity": "with you!",
+  "status": "online"
+}]

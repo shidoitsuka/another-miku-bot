@@ -1,0 +1,60 @@
+const { Canvas } = require("canvas-constructor");
+const { resolve, join } = require("path");
+const { MessageAttachment } = require("discord.js");
+const { get } = require("snekfetch");
+const fsn = require("fs-nextra");
+const imageUrlRegex = /\?size=2048$/g;
+
+// Canvas.registerFont(resolve(join(__dirname, "./assets/whatever.ttf")), "Discord");
+exports.run = async (bot, message, args) => {
+  const mentionMember = message.mentions.users.first();
+  if (!mentionMember)
+    return message.channel.send(
+      `**${message.author.username}**-san, can you **mention someone** for me, please? UwU`
+    );
+  async function bulge() {
+    const { body: img } = await get("https://i.imgsafe.org/a9/a9f94052e6.png").catch((_) => message.channel.send("Sorry, an error has occurred! :("));
+    const { body: avatar } = await get(mentionMember.displayAvatarURL({ format: "png", size: 2048 }).replace(imageUrlRegex, "?size=128"));
+    return new Canvas(1000, 500)
+      .addImage(img, 0, 0, 1000, 500)
+      .save()
+      .addRoundImage(avatar, 480, 265, 80, 80, 40)
+      .restore()
+      .save()
+      .addRoundImage(avatar, 350, 30, 128, 128, 64)
+      .restore()
+      .save()
+      .addRoundImage(avatar, 510, 130, 100, 100, 50)
+      .restore()
+      .toBufferAsync();
+  }
+
+  // STARTS HERE
+  let now = Date.now();
+  message.channel.startTyping();
+  message.channel.send("**Rendering...**").then(async m => {
+    m.edit(`Rendered in \`${Date.now() - now}ms\``);
+    m.edit("**Sending...**");
+    await message.channel
+      .send(new MessageAttachment(await bulge(), `bulge-${message.author.id}.jpg`))
+      .then(message.channel.stopTyping())
+      .catch((_) => message.channel.send("Sorry, an error has occurred! :("));
+    m.delete();
+  });
+};
+
+exports.conf = {
+  aliases: [],
+  cooldown: 5,
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["ATTACH_FILES"]
+};
+
+exports.help = {
+  name: "bulge",
+  category: "Fun",
+  description: "Make a deathbulge party saga meme	",
+  usage: "bulge <mention-user>",
+  param: ""
+};
