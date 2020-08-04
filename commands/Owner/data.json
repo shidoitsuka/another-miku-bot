@@ -1,0 +1,66 @@
+{
+  "name": "db",
+  "version": "5.2.1",
+  "exportDate": 1576182693698,
+  "keys": [
+    {
+      "key": "afk",
+      "value": {}
+    },
+    {
+      "key": "guildConf",
+      "value": {
+        "332877090003091456": {
+          "prefix": ";",
+          "greetingChannel": "615704560677158912",
+          "tags": {
+            "caratanya": "__**Cara Bertanya**__\n1. Defenisikan permasalahan\n_<gw ada masalah nih sama ini>_\n2. Lalu (jika ada) sertakan usaha yang sudah kalian kerjakan\n_<ini code gw> _\n3. Setelah itu beritahu apa yang seharusnya program kalian jalankan, dan beritahu juga apa yang malah program kalian jalankan\n_<harusnya dia gini, tapi malah gitu>_",
+            "tanya": "**Jangan tanyakan _apakah ada yang bisa bantu saya?_ Tapi tanyakan langsung permasalahan kalian. Yang lain akan menjawab secepat dan setepat mungkin tanpa harus anda tanyakan bisa atau tidak**",
+            "error": "\nKalau ingin bertanya _Kenapa error begini?_\n**Akan jauh lebih baik jika kalian sertakan:**\n-Error di-line keberapa\n-Error name\n-Code kalian\n-Kalau bisa screenshot/kirim code.",
+            "belajarjs": "**Javascript**:\nEloquent Javascript, e-book gratis: <http://eloquentjavascript.net/>\nMDN JavaScript: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction>\n\n**NodeJS**:\n<https://nodeschool.io/>\n<https://www.codeschool.com/courses/real-time-web-with-node-js>\n\n**Discord.JS Library & Tutorial**:\n<https://discordjs.guide/#/>\n<https://anidiots.guide/>\n<https://www.youtube.com/channel/UCEBwAP6zmJ5-buW-Cc2FB6Q/videos>\n<https://www.youtube.com/channel/UCLun-hgcYUgNvCCj4sIa-jA/videos>\n\n**Javascript docs**:\n<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>\n\n**Discord.JS docs**:\n<https://discord.js.org/#!/docs/>",
+            "mention": "DILARANG:\n**-MENTION**\n**-DM**\n**-SPAM**\nPARA STAFF ATAUPUN MEMBER LAINNYA HANYA UNTUK MEMINTA BANTUAN!\nDISINI KAMI MEMBANTU SEBISA KAMI, CUKUP:\n-TANYAKAN SAJA PEMASALAHAN APA _(xtag caratanya)_\n-GUNAKAN CHANNEL YANG BENAR :\n<#429301168255139840> : seputar discord.js library\n<#449923339532632065> : seputar nodejs\ndi <#425150159278833664> boleh saja,asalkan **TIDAK ADA SPAM**!\nPERINGATAN SEKALI LAGI!\n.\n.\n.\nKAMI BUKAN **PEMBANTU** KALIAN, KITA DISINI PERKUMPULAN _(COMMUNITY)!_",
+            "code": "```SHOW US THE FUCKING CODE```",
+            "kode": "```KASIH LIAT KODE-NYA AKMJ```",
+            "?": "http://i.imgur.com/3eue6GG.gif",
+            "hosting": "***Note***: Silahkan pilih :.\n\n**Free**:\n- __**Openshift**__: <https://www.openshift.com/>\n 4 core - 1GB RAM and 1GB storage free for 30-days, you can renew it.\n- __**Heroku**__: <https://heroku.com/>\n No CLI or SSH, no file access, might make your app sleep if you reach monthly uptime limit.\n- __**Glitch**__: <https://glitch.com/>\n Good for development and very small bots but requires some work to get up. See guide on <https://anidiots.guide/other-guides/hosting-on-glitchcom.html>\n\n**Berbayar**:\n- __**OVH**__: <https://www.ovh.com/us/vps/>\n Mulai dari $3.35/bulan (USD), 2GB RAM and 10GB storage, high reliability.\n- __**Digital Ocean**__: <https://m.do.co/>\n Mulai dari $5/bulan (USD), 1GB RAM and 25GB storage, high reliability.\n- __**Linode**__: <https://www.linode.com/>\n Mulai dari $5/bulan (USD), 1GB RAM and 20GB storage.\n- __**Vultr**__: <https://www.vultr.com/>\n Mulai dari $2.5/bulan (USD), 512MB RAM and 20GB storage, plan only available on certain regions.\n- __**Amazon(AWS) Lightsail**__: <https://amazonlightsail.com/>\n Mulai dari $5/bulan (USD) (first bulan free), 512MB RAM and 20GB storage, high reliability.\n- __**Time4VPS**__: <https://www.time4vps.eu/>\n Mulai dari €2.99/bulan (billed every 4 bulan for €11.96/quarter), 512MB RAM and 20GB storage, free backups.\n- __**VIRMACH**__: <http://virmach.com/>\n Mulai dari $1/bulan (USD), 192MB RAM and 10GB storage, free DDoS protection, 1 CPU core.\n- __**VPSDime**__: <https://vpsdime.com/>\n Mulai dari $7/bulan (USD), 4 CPU Cores, 6GB RAM, 30GB SSD Storage, 2TB Traffic and 10 Gbps Uplink\n- __**Servercheap**__: <https://servercheap.net/>\n Mulai dari $4.50/bulan (USD), 2 CPU Cores, 2GB RAM, 30GB SSD Storage, Unmetered Bandiwdth\n- __**Scaleway**__: <https://www.scaleway.com/>\n Mulai dari €2.99/bulan (Euro), 2 CPU Cores, 2GB RAM, 50GB SSD Storage",
+            "asyncEval": "(async function () {\n// code\n})();",
+            "PYexampleBot": "https://github.com/Rapptz/discord.py/blob/rewrite/examples/basic_bot.py",
+            "try": "http://i.imgur.com/6A6tcD0.png",
+            "nocode": "It’s hard to answer a programming question without code. In order to help, helpers are going to have to see what the code is. (source: https://idownvotedbecau.se/nocode)\nPlease share your code! If it's short, wrap it directly into Discord. If it's long, use a third-party service (e.g. Hastebin). If you don't know how to wrap code, type `;tag wrapmini`.",
+            "wrapmini": "Surround code with:\n\\`\\`\\`language\nfoo = 42\n\\`\\`\\`\n\nThis outputs:\n```languange\nfoo = 42\n```\nReplace \"language\" in the example with java, cpp, python, etc. There should no space/line between the language and the first backtick (`), not to be confused with a single quote (').",
+            "imageofcode": "An image of your code is not helpful. Helpers need the text of the code and images are not an acceptable substitute. (source: http://idownvotedbecau.se/imageofcode)\nPlease share your code as text! If it's short, wrap it directly in Discord. If it's long, use a third-party service (e.g. Hastebin). If you don't know how to wrap code, type `;tag wrapmini`.",
+            "selfbot": "Please do not discuss or use selfbots: They are expressly forbidden by Discord's Terms of Service. If we find out you're using a selfbot, we'll remove you from the server. Reference: https://support.discordapp.com/hc/en-us/articles/115002192352-Automated-user-accounts-self-bots-",
+            "how2code": "handwrite the code, take a picture of it, send it to your email, fax it to your work, use their scanner to port it to your computer, use handwriting recognition software, screenshot the results, move things around in Photoshop to get it right, send it through the OCR again, copy the text and paste it in an email to yourself, go home, copy and paste text into your editor of choice",
+            "onoff": "have you tried to turn it off and on again?",
+            "caratanyaeng": "__**How to ask**__\n1. Tell us your problem\n_<i have problem with ...>_\n2. Then include the code that you are working on _(if you have any)_\n```this is my code```\n3. Afterwards, tell us what should your program do and what does it run instead\n_<I want my program do this but instead it does that>_",
+            "WoW": "https://cdn.discordapp.com/attachments/615548620065865729/645207402991452171/unnamed-_1_.gif",
+            "wow": "https://cdn.discordapp.com/attachments/615548620065865729/645207402991452171/unnamed-_1_.gif",
+            "coli": "https://cdn.discordapp.com/attachments/615548620065865729/650658358721904640/unknown.png",
+            "tryit": "http://i.imgur.com/6A6tcD0.png",
+            "var": "```gay```",
+            "tias": "​https://tryitands.ee/",
+            "asmrwow": "https://tenor.com/view/wow-binomo-budi-setiawan-gif-15647303",
+            "admin": "https://cdn.discordapp.com/attachments/641229265253171200/652698242555052044/FB_IMG_1575685754368.jpg",
+            "log": "```LOG EVERYTHING.```"
+          },
+          "star": {
+            "starChannel": "643086372038770709",
+            "used": []
+          }
+        }
+      }
+    },
+    {
+      "key": "totalCommands",
+      "value": 4128
+    },
+    {
+      "key": "cooldowns",
+      "value": {
+        "332424370272337923": [
+          "eval"
+        ]
+      }
+    }
+  ]
+}

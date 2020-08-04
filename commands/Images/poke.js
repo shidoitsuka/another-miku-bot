@@ -1,0 +1,42 @@
+const Discord = require("discord.js");
+const nekoclient = require("nekos.life");
+const neko = new nekoclient();
+
+// START-MAIN
+exports.run = async (bot, message, args) => {
+  // prettier-ignore
+  const words = [`${message.author.username} is poking **${args[0]}**!`, `Poke poke!`];
+  // VARIABLES
+  // prettier-ignore
+  const wordAnswer = words.random(), answers = await neko.sfw.poke(), idkI = "https://tinyurl.com/MikuIDK", idkD = `**${message.author.username}** trying to poke themselves,\nI wonder how...`;
+  let description, image;
+
+  // STATEMENT
+  // prettier-ignore
+  !args[0] ? ((description = idkD), (image = idkI)) : ((description = wordAnswer), (image = answers.url));
+
+  // BEGIN
+  const embed = new Discord.MessageEmbed()
+    .setAuthor("Miku -- Poke", "", `${image}`)
+    .setColor(0x1a9ca8)
+    .setDescription(description)
+    .setImage(`${image}`)
+    .setFooter(`${!args[0] ? "" : "Image by nekos.life"}`);
+  message.channel.send("**Loading Image...**").then(m => m.edit({ embed }));
+};
+
+exports.conf = {
+  aliases: [],
+  cooldown: 6,
+  guildOnly: true,
+  userPerm: [""],
+  botPerm: ["EMBED_LINKS"]
+};
+
+exports.help = {
+  name: "poke",
+  category: "Images",
+  description: "Poke your senpai!",
+  usage: "poke <mention-user> or <name>",
+  param: ""
+};

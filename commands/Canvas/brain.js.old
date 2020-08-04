@@ -1,0 +1,138 @@
+/*
+3 = https://preview.ibb.co/cgVSzd/brain3.png
+4 = https://preview.ibb.co/bFko5J/brain4.png
+5 = https://preview.ibb.co/jYGT5J/brain5.png
+6 = https://image.ibb.co/cdfued/brain6.png
+*/
+const { Canvas } = require("canvas-constructor");
+const { resolve, join } = require("path");
+const { MessageAttachment } = require("discord.js");
+const { get } = require("snekfetch");
+const fsn = require("fs-nextra");
+
+// Canvas.registerFont(resolve(join(__dirname, "./assets/Sans.ttf")), "Discord");
+exports.run = async (bot, message, args, prefix) => {
+  const joined = args.join(" ").split(";");
+  if (!joined[2])
+    return message.channel.send(`Run \`${prefix}help brain\` UwU`);
+  const first = joined[0];
+  const second = joined[1];
+  const third = joined[2];
+  const fourth = joined[3];
+  const fifth = joined[4];
+  const sixth = joined[5];
+  // if (first.length > 17 || second.length > 17 || third.length > 17) return message.channel.send("Less than **17 character(s)**, please UwU");
+  // if (fourth && fourth.length > 17) return message.channel.send("Less than **17 character(s)**, please UwU");
+  // if (fifth && fifth.length > 17) return message.channel.send("Less than **17 character(s)**, please UwU");
+  // if (sixth && sixth.length > 17) return message.channel.send("Less than **17 character(s)**, please UwU");
+
+  // functions
+  const three = async function() {
+    let { body: img } = await get(`https://i.imgsafe.org/a9/a9f83bc862.png`);
+    return new Canvas(400, 500)
+      .addImage(img, 0, 0, 400, 500)
+      .setColor("#151515")
+      .setTextFont("30px Sans")
+      .setTextAlign("center")
+      .addMultilineText(first, 100, 75, 90, 170)
+      .setTextFont("25px Sans")
+      .addMultilineText(second, 100, 250, 90, 170)
+      .setTextFont("25px Sans")
+      .addMultilineText(third, 100, 425, 90, 170)
+      .toBufferAsync();
+  };
+  const four = async function() {
+    let { body: img } = await get(`https://i.imgsafe.org/a9/a9f83b5f98.png`);
+    return new Canvas(400, 500)
+      .addImage(img, 0, 0, 400, 500)
+      .setColor("#151515")
+      .setTextFont("25px Sans")
+      .setTextAlign("center")
+      .addResponsiveText(first, 100, 63, 190)
+      .setTextFont("25px Sans")
+      .addResponsiveText(second, 100, 188, 190)
+      .setTextFont("25px Sans")
+      .addResponsiveText(third, 100, 313, 190)
+      .setTextFont("25px Sans")
+
+      .addResponsiveText(fourth, 100, 438, 190)
+      .toBufferAsync();
+  };
+  const five = async function() {
+    let { body: img } = await get(`https://i.imgsafe.org/a9/a9f8c39db4.png`);
+    return new Canvas(400, 500)
+      .addImage(img, 0, 0, 400, 500)
+      .setColor("#151515")
+      .setTextFont("25px Sans")
+      .setTextAlign("center")
+      .addResponsiveText(first, 125, 60, 230)
+      .setTextFont("25px Sans")
+      .addResponsiveText(second, 125, 160, 230)
+      .setTextFont("25px Sans")
+      .addResponsiveText(third, 125, 260, 230)
+      .setTextFont("25px Sans")
+      .addResponsiveText(fourth, 125, 360, 230)
+      .setTextFont("25px Sans")
+      .addResponsiveText(fifth, 125, 460, 230)
+      .toBufferAsync();
+  };
+  const six = async function() {
+    let { body: img } = await get(`https://i.imgsafe.org/a9/a9f8bb6079.png`);
+    return new Canvas(400, 500)
+      .addImage(img, 0, 0, 400, 500)
+      .setColor("#151515")
+      .setTextFont("25px Sans")
+      .setTextAlign("center")
+      .addResponsiveText(first, 100, 50, 190)
+      .setTextFont("25px Sans")
+      .addResponsiveText(second, 100, 125, 190)
+      .setTextFont("25px Sans")
+      .addResponsiveText(third, 100, 205, 190)
+      .setTextFont("25px Sans")
+      .addResponsiveText(fourth, 100, 290, 190)
+      .setTextFont("25px Sans")
+      .addResponsiveText(fifth, 100, 375, 190)
+      .setTextFont("25px Sans")
+      .addResponsiveText(sixth, 100, 460, 190)
+      .toBufferAsync();
+  };
+
+  // STARTS HERE
+  let now = Date.now();
+  let send;
+  joined[5]
+    ? (send = six())
+    : joined[4]
+    ? (send = five())
+    : joined[3]
+    ? (send = four())
+    : joined[2]
+    ? (send = three())
+    : (send = three());
+  message.channel.startTyping();
+  message.channel.send("**Rendering...**").then(async m => {
+    m.edit(`Rendered in \`${Date.now() - now}ms\``);
+    m.edit("**Sending...**");
+    await message.channel
+      .send(new MessageAttachment(await send, `brainy-${message.author.id}.jpg`))
+      .then(message.channel.stopTyping());
+    m.delete();
+  });
+};
+
+exports.conf = {
+  aliases: [],
+  cooldown: 5,
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["ATTACH_FILES"]
+};
+
+exports.help = {
+  name: "brain",
+  category: "Fun",
+  description: "Make a brainy meme",
+  usage:
+    "brain <first-text>;<second-text>;<third-text>;[fourth-till-sixth]-text",
+  param: ""
+};

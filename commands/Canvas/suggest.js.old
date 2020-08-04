@@ -1,0 +1,67 @@
+const { Canvas } = require("canvas-constructor");
+const { resolve, join } = require("path");
+const { MessageAttachment } = require("discord.js");
+const { get } = require("snekfetch");
+const imageUrlRegex = /\?size=2048$/g;
+
+exports.run = async (bot, message, args) => {
+  const mentionMember = message.mentions.users.first();
+  if (!mentionMember) return message.channel.send("Please mention someone!");
+  async function suggest() {
+    const { body: img } = await get("https://i.imgsafe.org/a9/a9f9870bb5.png");
+    // prettier-ignore
+    const { body: timpa } = await get("https://i.imgsafe.org/a9/a9f97e78d7.png");
+    // prettier-ignore
+    const { body: avatar } = await get(message.author.displayAvatarURL({ format: "png", size: 2048 }).replace(imageUrlRegex, "?size=128"));
+    // prettier-ignore
+    const { body: target } = await get(mentionMember.displayAvatarURL({ format: "png", size: 2048 }).replace(imageUrlRegex, "?size=512"));
+    // prettier-ignore
+    return new Canvas(500, 600)
+      .addImage(img, 0, 0, 500, 600)
+      .save()
+      .addRoundImage(avatar, 90, 60, 84, 84, 42)
+      .restore()
+      .save()
+      .addRoundImage(target, 250, 285, 282, 282, 141)
+      .restore()
+      .save()
+      .addImage(timpa, 0, 0, 500, 600)
+      .restore()
+      .setColor("#151515")
+      .setTextFont("20px impact")
+      .setTextAlign("center")
+      .addMultilineText(`${mentionMember.username.length > 10 ? mentionMember.username.substring(0, 7) + "..." : mentionMember.username}`, 140, 450, 30, 50)
+      .toBufferAsync();
+  }
+  let now = Date.now();
+  message.channel.startTyping();
+  message.channel.send("**Rendering...**").then(async m => {
+    m.edit(`Rendered in \`${Date.now() - now}ms\``);
+    m.edit("**Sending...**");
+    await message.channel
+      .send(
+        new MessageAttachment(
+          await suggest(),
+          `suggest-${message.author.id}.jpg`
+        )
+      )
+      .then(message.channel.stopTyping());
+    m.delete();
+  });
+};
+
+exports.conf = {
+  aliases: [],
+  cooldown: 5,
+  guildOnly: false,
+  userPerm: [""],
+  botPerm: ["ATTACH_FILES"]
+};
+
+exports.help = {
+  name: "suggest",
+  category: "Fun",
+  description: "Make a suggestion meme",
+  usage: "suggest <mention_user>",
+  param: ""
+};
