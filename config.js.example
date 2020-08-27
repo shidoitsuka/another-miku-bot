@@ -1,0 +1,13 @@
+const config = {
+  "prefix": "your-prefix",
+  "botID": "your-bot-id",
+  "ownerID": "your-discord-id",
+  "token": "your-bot-token",
+  "googleid": "your-google-image-id",
+  "googleapi": "your-google-image-token",
+  "gfycatid": "your-gfycat-id",
+  "gfycatapi": "your-gfycat-token",
+  "imgflipid": "your-imgflip-id",
+  "imgflipapi": "your-imgflip-token",
+};
+exports.config = config;
