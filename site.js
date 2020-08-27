@@ -28,7 +28,7 @@ module.exports = () => {
 
   app.listen(process.env.PORT, console.log("site is up"));
 
-  setInterval(() => {
+/*  setInterval(() => {
     http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-  }, 180000);
+  }, 180000);*/
 };

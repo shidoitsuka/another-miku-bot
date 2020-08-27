@@ -20,7 +20,7 @@ exports.run = (bot, message, args) => {
         .setImage("https://goo.gl/tVGvMX");
       message.channel.send({ embed });
     } else {
-      var ans = math.eval(txt);
+      var ans = math.evaluate(txt);
       embed
         .setAuthor("Miku -- Math", "https://tinyurl.com/MikuCalc")
         .setColor(0x1a9ca8)

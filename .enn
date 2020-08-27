@@ -1,0 +1,17 @@
+# Environment Config
+
+# store your secrets and config variables in here
+# only invited collaborators will be able to see your .env values
+
+# reference these in your code with process.env.SECRET
+
+TOKEN=MzY0MjQyMjQ2MzE0MzYwODQz.WdGpBg.AYfNb_u9DxPd00V2rTUr-bRkya0
+IMAGEAPI=G7V7B6TYAHAI
+TINYAPI=d0979ef7-6bb2-42a0-b690-fd106ca0bd54
+GOOGLEID=015304749108048351151:0qyepo8csv4
+GOOGLEAPI=AIzaSyACOOxQ-jEWA7BUSBSFfxqMe2tLsDP1_H8
+GFYCATID=2_q6HtBE
+GFYCATAPI=LohUIDiHCgsqGt9IAa2BJN65cn0wxYeSmuvCfo6GzWmkYsEL8kPwt10rQE924JzR
+
+# note: .env is a shell file so there can't be spaces around =
+

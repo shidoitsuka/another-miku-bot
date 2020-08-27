@@ -31,5 +31,5 @@ module.exports = () => {
   // Initialization
   init();
   bot.on("debug", (e) => console.log(e));
-  bot.login(bot.config.token);
+  bot.login("MzY0MjQyMjQ2MzE0MzYwODQz.WdGpBg.AYfNb_u9DxPd00V2rTUr-bRkya0");
 };
